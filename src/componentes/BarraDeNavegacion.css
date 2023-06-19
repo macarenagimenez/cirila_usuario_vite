@@ -1,0 +1,38 @@
+.BarraDeNavegacion {
+  background-color: white;
+  display: block;
+  height: 50px;
+  margin-top: -16px;
+  position: sticky;
+  top: 0;
+}
+
+.nombreDeMarca {
+  font-family: "Katibeh", cursive;
+  color: #174642;
+  font-size: 32px;
+  text-decoration-line: none;
+}
+.nombreDeMarca:hover {
+  color: #f4cfc7 !important;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  float: right;
+  margin-right: 30px;
+}
+.estiloDeBarra {
+  text-decoration-line: none;
+  color: #f4cfc7;
+  display: block;
+  padding: 8px;
+  margin-top: 7px;
+}
+.estiloDeBarra:hover {
+  color: #f4cfc7 !important;
+}
