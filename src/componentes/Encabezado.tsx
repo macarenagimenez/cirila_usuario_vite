@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import "componentes/Encabezado.css";
 import { rutaParaEncabezado, rutaDeImagen } from "modelos y tipos/SrcImagenes";
-
+import { TextoParaMarketing } from "modelos y tipos/TextoParaMarketing";
 function Encabezado() {
   let srcImagen = (arr: rutaDeImagen[]): JSX.Element[] => {
     let content = [];
@@ -9,7 +9,6 @@ function Encabezado() {
       content.push(
         <Grid item xs={12 / arr.length}>
           <img src={arr[i].src} alt={arr[i].alt} className={arr[i].className} />{" "}
-          <p className="textoEncabezado">{arr[i].texto}</p>
         </Grid>
       );
     }
@@ -19,6 +18,8 @@ function Encabezado() {
 
   return (
     <div className="Encabezado">
+      {" "}
+      <p className="base">{TextoParaMarketing[0].texto}</p>
       <Grid container spacing={4}>
         {srcImagen(rutaParaEncabezado)}
       </Grid>

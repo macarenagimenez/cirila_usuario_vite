@@ -10,7 +10,6 @@ let rutaParaEncabezado: rutaDeImagen[] = [
     src: "imagenes/LogoCirila.png",
     alt: "LogoGaiaCirila",
     className: "imgDeLogo",
-    texto: "Objetos únicos hechos a mano.",
   },
   {
     src: "imagenes/GifParaEncabezado.gif",
