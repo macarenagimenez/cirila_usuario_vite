@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { FichaDeProducto } from "modelos y tipos/FichaDeProducto";
+import { InformacionDeProducto } from "modelos y tipos/InformacionDeProducto";
+import CapaDeProducto from "componentes/CapaDeProducto";
+import { Grid } from "@mui/material";
 
 function ProductosDestacados() {
   const [productos, setProductos] = useState([]);
@@ -11,10 +13,9 @@ function ProductosDestacados() {
     fetch(apiURL)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        let productosDestacados: FichaDeProducto[] = [];
+        let productosDestacados: InformacionDeProducto[] = [];
 
-        data.map((producto): FichaDeProducto => {
+        data.map((producto): InformacionDeProducto => {
           const nuevoProducto = (producto) => {
             let { id, nombre, precio } = producto;
             let urlImagen = producto.imagenes[0].url;
@@ -26,7 +27,6 @@ function ProductosDestacados() {
             };
           };
           productosDestacados.push(nuevoProducto(producto));
-          console.log(productosDestacados);
           setProductos(productosDestacados);
           console.log(productos);
         });
@@ -36,7 +36,34 @@ function ProductosDestacados() {
       });
   }, []);
 
-  return <section></section>;
+  function mostrarProductosDestacados(productos) {
+    let contenidoParaRenderizar = [];
+    for (let i = 0; i < productos.length; i++) {
+      let InformaciónParaMostrar = productos[i];
+
+      contenidoParaRenderizar.push(
+        <>
+          <Grid item xs={3}>
+            <CapaDeProducto
+              informacionProducto={InformaciónParaMostrar}
+              key={i}
+            />{" "}
+          </Grid>
+        </>
+      );
+    }
+    return (
+      <Grid container spacing={2}>
+        {contenidoParaRenderizar}
+      </Grid>
+    );
+  }
+
+  return (
+    <section>
+      <div>{mostrarProductosDestacados(productos)}</div>
+    </section>
+  );
 }
 
 export default ProductosDestacados;

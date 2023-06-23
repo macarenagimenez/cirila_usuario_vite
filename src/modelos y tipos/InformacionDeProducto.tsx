@@ -1,9 +1,9 @@
 // alberga informacion
-type FichaDeProducto = {
+type InformacionDeProducto = {
   id: string;
   nombre: string;
   precio: number;
   urlImagen: string;
 };
 
-export type { FichaDeProducto };
+export type { InformacionDeProducto };
