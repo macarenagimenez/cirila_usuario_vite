@@ -23,5 +23,12 @@ let rutaParaEncabezado: rutaDeImagen[] = [
   },
 ];
 
-export { rutaParaEncabezado };
+let rutaParaDividirSecciones: rutaDeImagen[] = [
+  {
+    src: "imagenes/SomosElMejorRegalo.jpg",
+    alt: "SomosElMejorRegalo",
+  },
+];
+
+export { rutaParaEncabezado, rutaParaDividirSecciones };
 export type { rutaDeImagen };

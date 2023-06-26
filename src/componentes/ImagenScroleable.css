@@ -1,0 +1,8 @@
+.imagenScrolleable {
+  height: 800px;
+  background-image: url("/imagenes/SomosElMejorRegalo.jpg");
+  background-position: center;
+  background-size: cover;
+  display: grid;
+  place-items: center;
+}

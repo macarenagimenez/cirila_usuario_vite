@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { InformacionDeProducto } from "modelos y tipos/InformacionDeProducto";
 import CapaDeProducto from "componentes/CapaDeProducto";
+import "secciones/ProductoDestacado.css";
 import { Grid } from "@mui/material";
 
 function ProductosDestacados() {
@@ -53,7 +54,7 @@ function ProductosDestacados() {
       );
     }
     return (
-      <Grid container spacing={2}>
+      <Grid container spacing={3}>
         {contenidoParaRenderizar}
       </Grid>
     );
@@ -61,7 +62,9 @@ function ProductosDestacados() {
 
   return (
     <section>
-      <div>{mostrarProductosDestacados(productos)}</div>
+      <div className="ContenedorProductosDestacados">
+        {mostrarProductosDestacados(productos)}
+      </div>
     </section>
   );
 }
