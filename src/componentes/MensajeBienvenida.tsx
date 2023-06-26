@@ -1,7 +1,10 @@
 import "componentes/MensajeBienvenida.css";
-import { Textos } from "modelos y tipos/TextoParaMarketing";
 
-function MensajeBienvenida(props: Textos) {
-  return <div className="base">{props.texto}</div>;
+function MensajeBienvenida(props) {
+  return (
+    <div className="base">
+      <p>{props.texto}</p>
+    </div>
+  );
 }
 export default MensajeBienvenida;

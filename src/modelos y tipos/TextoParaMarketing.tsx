@@ -1,16 +1,15 @@
 type Textos = {
-  texto: JSX.Element;
+  texto: string;
   className?: string;
 };
 
 let TextoParaMarketing: Textos[] = [
   {
-    texto: <p>"Objetos únicos hechos a mano. "</p>,
+    texto: "Objetos únicos hechos a mano. ",
   },
   {
-    texto: <p>"Peli + mantita favorita + comida rica = el mejor plan."</p>,
+    texto: "Peli + mantita favorita + comida rica = el mejor plan.",
   },
-  { texto: <p> "SOMOS EL MEJOR REGALO"</p> },
 ];
 
 export { TextoParaMarketing };
