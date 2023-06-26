@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
 import BarraDeNavegacion from "componentes/BarraDeNavegacion";
-// import Footer from "./components/Footer.js";
+import PieDePagina from "componentes/PieDePagina";
 
 const CapaFija = () => {
   return (
     <>
       <BarraDeNavegacion />
       <Outlet />
-      {/* <Footer /> */}
+      <PieDePagina />
     </>
   );
 };
