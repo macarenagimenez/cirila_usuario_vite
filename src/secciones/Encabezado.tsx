@@ -1,10 +1,7 @@
 import Grid from "@mui/material/Grid";
 import "secciones/Encabezado.css";
-import {
-  rutaParaEncabezado,
-  rutaDeImagen,
-} from "modelos y tipos/RutaDeImagenes";
-import { TextoParaMarketing } from "modelos y tipos/TextoParaMarketing";
+import { rutaParaEncabezado, rutaDeImagen } from "tipos/RutaDeImagenes";
+import { TextoParaMarketing } from "tipos/TextoParaMarketing";
 import MensajeBienvenida from "componentes/MensajeBienvenida";
 
 function Encabezado() {

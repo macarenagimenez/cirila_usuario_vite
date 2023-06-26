@@ -1,5 +1,5 @@
-import { rutaParaPieDePagina } from "modelos y tipos/RutaDeImagenes";
-import type { rutaDeImagen } from "modelos y tipos/RutaDeImagenes";
+import { rutaParaPieDePagina } from "tipos/RutaDeImagenes";
+import type { rutaDeImagen } from "tipos/RutaDeImagenes";
 import "componentes/PieDePagina.css";
 
 function PieDePagina() {

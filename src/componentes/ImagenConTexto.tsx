@@ -1,6 +1,6 @@
 import "componentes/ImagenConTexto.css";
 import MensajeBienvenida from "componentes/MensajeBienvenida";
-import type { rutaDeImagen } from "modelos y tipos/RutaDeImagenes";
+import type { rutaDeImagen } from "tipos/RutaDeImagenes";
 
 function ImagenConTexto(props) {
   let contenido: rutaDeImagen = props.informacionParaImagen;

@@ -1,10 +1,10 @@
 import Encabezado from "secciones/Encabezado";
 import MensajeBienvenida from "componentes/MensajeBienvenida";
-import { TextoParaMarketing } from "modelos y tipos/TextoParaMarketing";
+import { TextoParaMarketing } from "tipos/TextoParaMarketing";
 import ProductosDestacados from "secciones/ProductosDestacados";
 import "componentes/MensajeBienvenida.css";
 import ImagenConTexto from "componentes/ImagenConTexto";
-import { rutaParaImagenesConTexto } from "modelos y tipos/RutaDeImagenes";
+import { rutaParaImagenesConTexto } from "tipos/RutaDeImagenes";
 
 function Bienvenida() {
   return (

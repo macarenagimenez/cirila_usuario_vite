@@ -1,5 +1,5 @@
 import AnimacionParaPresentacionPagina from "componentes/AnimacionParaPresentacionPagina";
-import { rutaParaPresentacionPagina } from "modelos y tipos/RutaDeImagenes";
+import { rutaParaPresentacionPagina } from "tipos/RutaDeImagenes";
 import TodosLosProductos from "secciones/TodosLosProductos";
 function PaginaDeProducto() {
   console.log(rutaParaPresentacionPagina[0]);

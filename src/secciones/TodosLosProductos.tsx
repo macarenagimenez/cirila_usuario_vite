@@ -1,5 +1,15 @@
+import LlamadaAPI from "componentes/LlamadaAPI";
+import { apiProductos } from "tipos/APIs";
+import "secciones/ProductoDestacado.css";
+import "secciones/TodosLosProductos.css";
+
 function TodosLosProductos() {
-  return <div>Todos los productos</div>;
+  const apiURL = apiProductos.APIurl;
+  return (
+    <div className="todosLosProductos">
+      <LlamadaAPI apiURL={apiURL} />
+    </div>
+  );
 }
 
 export default TodosLosProductos;
