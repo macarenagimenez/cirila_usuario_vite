@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { InformacionDeProducto } from "tipos/InformacionDeProducto";
 import { Grid } from "@mui/material";
 import CapaDeProducto from "componentes/CapaDeProducto";
+import { Link } from "react-router-dom";
 
 function ObtenerProductos(props) {
   const [productos, setProductos] = useState([]);

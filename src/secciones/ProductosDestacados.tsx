@@ -8,7 +8,12 @@ function ProductosDestacados() {
   return (
     <section>
       <div className="ContenedorProductosDestacados">
-        <LlamadaAPI apiURL={apiURL} />
+        <LlamadaAPI apiURL={apiURL} />{" "}
+        {/* <img
+          className="BurbujaDialogo"
+          src="imagenes/burbuja_destacados.png"
+          alt="Burbuja de dialogo"
+        /> */}
       </div>
     </section>
   );

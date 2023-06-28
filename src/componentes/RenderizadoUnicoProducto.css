@@ -1,0 +1,18 @@
+.contenedorInformacionProductoSeleccionado {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.imagenProductoSeleccionado img {
+  width: 90%;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.textoProductoSeleccionado {
+  background-color: white;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 20px;
+}
