@@ -1,18 +1,78 @@
 .contenedorInformacionProductoSeleccionado {
-  width: 90%;
+  width: 70%;
   margin: 0 auto;
 }
 
 .imagenProductoSeleccionado img {
-  width: 90%;
+  width: 100%;
   border-radius: 20px;
   margin: 20px;
 }
 
 .textoProductoSeleccionado {
   background-color: white;
-  width: 90%;
+  width: 100%;
   margin: 20px auto;
   padding: 20px;
   border-radius: 20px;
+}
+
+.linkVolverProductos {
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.linkVolverProductos:visited {
+  color: black;
+  color: #ebcfac;
+}
+
+.nombreProductoSeleccionado {
+  font-size: 45px;
+  font-weight: 400;
+  margin-bottom: 0px;
+  line-height: 60px;
+}
+.precioProductoSeleccionado {
+  font-weight: 400;
+  font-size: 25px;
+  margin: 5px auto;
+}
+
+.descripcionProductoSeleccionado,
+.textoEnviosMediosDePago {
+  font-size: 13px;
+}
+.mensajeSobreStock {
+  color: #ebcfac;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.textoEnviosMediosDePago span {
+  font-weight: 500;
+}
+.contador {
+  display: inline;
+  padding: 6px 1px;
+
+  border-radius: 20px;
+  font-size: 15px;
+}
+.botonContadorStock,
+.botonAgregarAlCarrito {
+  background-color: #ebcfac;
+  border-radius: 20px;
+  border: 0px;
+  font-family: Montserrat;
+  color: white;
+}
+.botonContadorStock {
+  font-size: 15px;
+}
+.botonAgregarAlCarrito {
+  padding: 8px 30px;
+}
+.numeroContadorStock {
+  margin: 0px 10px;
 }
