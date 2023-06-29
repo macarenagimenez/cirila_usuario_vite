@@ -5,6 +5,7 @@ type InformacionDeProducto = {
   precio: number;
   urlImagen: string;
   stock?: number;
+  descripcion?: string;
 };
 
 export type { InformacionDeProducto };

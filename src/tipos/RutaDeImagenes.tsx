@@ -51,6 +51,7 @@ let rutaParaPieDePagina: rutaDeImagen[] = [
 
 let rutaParaPresentacionPagina: rutaDeImagen[] = [
   { src: "imagenes/GifParaPaginaDeProductos.gif", alt: "Gif de productos" },
+  { src: "imagenes/GifComoComprar.gif", alt: "Gif de productos" },
 ];
 
 export {

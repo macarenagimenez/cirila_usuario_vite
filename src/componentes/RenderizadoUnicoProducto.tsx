@@ -17,13 +17,11 @@ function RenderizadoUnicoProducto(props) {
     </Grid>
   );
 
-  let nombre_precio = (
+  let nombre_precio_descripcion = (
     <div>
       <h2 className="nombreProductoSeleccionado">{producto.nombre}</h2>
       <h2 className="precioProductoSeleccionado">${producto.precio}</h2>
-      <p className="descripcionProductoSeleccionado">
-        Esta es la mejor mantita.
-      </p>
+      <p className="descripcionProductoSeleccionado">{producto.descripcion}</p>
     </div>
   );
 
@@ -82,7 +80,7 @@ function RenderizadoUnicoProducto(props) {
           <FontAwesomeIcon icon={faHandPointLeft} /> productos /{" "}
         </Link>
         <small> {producto.nombre} </small>
-        {nombre_precio}
+        {nombre_precio_descripcion}
         {modificar_carrito}
         <hr />
         <p className="textoEnviosMediosDePago">

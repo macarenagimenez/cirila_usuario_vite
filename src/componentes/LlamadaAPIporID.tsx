@@ -18,6 +18,7 @@ function LlamadaAPIporID(props) {
           nombre: data.nombre,
           precio: data.precio,
           stock: data.stock,
+          descripcion: data.descripcion,
         };
         setProducto(productoParaMostrar);
         console.log(producto);
