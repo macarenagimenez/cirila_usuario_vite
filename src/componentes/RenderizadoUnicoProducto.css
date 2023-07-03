@@ -67,6 +67,10 @@
   font-family: Montserrat;
   color: white;
 }
+.botonContadorStock,
+.botonAgregarAlCarrito:hover {
+  cursor: pointer;
+}
 .botonContadorStock {
   font-size: 15px;
 }

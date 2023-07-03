@@ -4,6 +4,7 @@ import CapaFija from "componentes/CapaFija";
 import Bienvenida from "paginas/Bienvenida";
 import PaginaDeProductos from "paginas/PaginaDeProductos";
 import ProductoSeleccionado from "paginas/ProductoSeleccionado";
+import Carrito from "paginas/Carrito";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route index element={<Bienvenida />} />
             <Route path="productos" element={<PaginaDeProductos />} />
             <Route path="producto" element={<ProductoSeleccionado />} />
+            <Route path="carritoDeCompras" element={<Carrito />} />
           </Route>
         </Routes>
       </BrowserRouter>

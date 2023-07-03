@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import "./BarraDeNavegacion.css";
 
 function BarraDeNavegacion() {
@@ -10,6 +13,11 @@ function BarraDeNavegacion() {
             <Link to="/" className="nombreDeMarca">
               Gaia Cirila
             </Link>
+          </li>{" "}
+          <li>
+            <Link to="/carritoDeCompras" className="estiloDeBarra">
+              <FontAwesomeIcon icon={faCartShopping} />
+            </Link>{" "}
           </li>
           <li>
             <Link to="/quienessomos" className="estiloDeBarra">
@@ -21,7 +29,6 @@ function BarraDeNavegacion() {
               Productos
             </Link>
           </li>
-
           <li>
             <Link to="/" className="estiloDeBarra">
               Inicio

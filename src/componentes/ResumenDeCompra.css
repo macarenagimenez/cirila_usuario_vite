@@ -1,0 +1,11 @@
+.resumenCompra {
+  border-radius: 20px;
+  margin: 0px 10px;
+  background: #fff;
+}
+
+.centrarTexto {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

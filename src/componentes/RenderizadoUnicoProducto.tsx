@@ -39,6 +39,7 @@ function RenderizadoUnicoProducto(props) {
     }
     setContadorDeStock(resultadoSuma);
   }
+  console.log(contadorDeStock);
 
   let mensajeSobreStock = (stock: number) => {
     if (stock === 0) {
