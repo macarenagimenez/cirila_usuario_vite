@@ -17,7 +17,16 @@ function ObtenerProductos(props) {
         data.map((producto): InformacionDeProducto => {
           const nuevoProducto = (producto) => {
             let { id, nombre, precio } = producto;
-            let urlImagen = producto.imagenes[0].url;
+            let urlImagen = () => {
+              if (
+                producto.imagenes[0].url !== undefined &&
+                producto.imagenes[0].url > 0
+              ) {
+                return producto.imagenes[0].url;
+              } else {
+                return " ";
+              }
+            };
             return {
               id,
               nombre,

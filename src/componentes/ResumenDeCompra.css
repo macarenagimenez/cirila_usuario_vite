@@ -1,11 +1,33 @@
-.resumenCompra {
+.resumenCompra,
+.productosAgregados {
   border-radius: 20px;
-  margin: 0px 10px;
+  margin: 30px 10px;
   background: #fff;
+  padding: 10px;
 }
 
 .centrarTexto {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+.textoDerecha {
+  text-align: right;
+}
+
+.textoIzquierda {
+  text-align: left;
+}
+.resumenCompra {
+  padding: 30px 30px;
+  text-align: center;
+}
+.resumenCompra h4 {
+  font-weight: 400;
+  font-size: 32px;
+}
+
+.contenedorResumenCompraConProductosAgregados {
+  width: 90%;
+  margin: 0 auto;
 }

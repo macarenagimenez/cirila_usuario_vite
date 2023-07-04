@@ -3,11 +3,11 @@ import "componentes/ResumenDeCompra.css";
 
 function ResumenDeCompra() {
   return (
-    <>
-      <Grid container spacing={2} margin={3}>
+    <div className="contenedorResumenCompraConProductosAgregados">
+      <Grid container spacing={2}>
         <Grid item xs={6}>
           {" "}
-          <div className="resumenCompra">
+          <div className="productosAgregados">
             {" "}
             <Grid container item spacing={1} className="centrarTexto">
               <Grid item xs={3}>
@@ -39,29 +39,41 @@ function ResumenDeCompra() {
         </Grid>
 
         <Grid item xs={6}>
-          <div className="resumenCompra">
+          <div className="resumenCompra ">
             RESUMEN DE COMPRA
             <hr />
             <Grid container item spacing={1}>
-              <Grid item xs={6}>
-                <span>Productos (3)</span>
+              <Grid item xs={6} className="textoIzquierda">
+                Productos (3)
               </Grid>
-              <Grid item xs={6}>
-                <span> $1111.11</span>
+              <Grid item xs={6} className="textoDerecha">
+                $1111.11
               </Grid>
             </Grid>
-            <Grid container item spacing={1}>
-              <Grid item xs={6}>
+            <Grid container item spacing={2}>
+              <Grid item xs={6} className="textoIzquierda">
                 <h4>TOTAL</h4>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={6} className="textoDerecha">
                 <h4>$1111.11</h4>
+              </Grid>
+            </Grid>
+            <Grid container item spacing={2}>
+              <Grid item xs={6} className="textoIzquierda">
+                <button className="botonAgregarAlCarrito">
+                  Seguir comprando
+                </button>{" "}
+              </Grid>
+              <Grid item xs={6} className="textoDerecha">
+                <button className="botonAgregarAlCarrito">
+                  Finalizar compra
+                </button>{" "}
               </Grid>
             </Grid>
           </div>
         </Grid>
       </Grid>
-    </>
+    </div>
   );
 }
 
