@@ -3,7 +3,6 @@ import { InformacionDeProducto } from "tipos/InformacionDeProducto";
 import RenderizadoUnicoProducto from "componentes/RenderizadoUnicoProducto";
 
 function LlamadaAPIporID(props) {
-  console.log(props);
   const [producto, setProducto] = useState<InformacionDeProducto>({});
 
   useEffect(() => {
@@ -21,7 +20,7 @@ function LlamadaAPIporID(props) {
           descripcion: data.descripcion,
         };
         setProducto(productoParaMostrar);
-        console.log(producto);
+
         return producto;
       })
       .catch((err) => {

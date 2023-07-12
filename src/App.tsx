@@ -5,10 +5,11 @@ import Bienvenida from "paginas/Bienvenida";
 import PaginaDeProductos from "paginas/PaginaDeProductos";
 import ProductoSeleccionado from "paginas/ProductoSeleccionado";
 import Carrito from "paginas/Carrito";
+import { CarritoProvider } from "contexts/CarritoContexto.jsx";
 
 function App() {
   return (
-    <>
+    <CarritoProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<CapaFija />}>
@@ -19,7 +20,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
+    </CarritoProvider>
   );
 }
 

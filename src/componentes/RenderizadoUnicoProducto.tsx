@@ -1,13 +1,16 @@
 import { Grid } from "@mui/material";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "componentes/RenderizadoUnicoProducto.css";
 import { InformacionDeProducto } from "tipos/InformacionDeProducto";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandPointLeft } from "@fortawesome/free-solid-svg-icons";
+import { CarritoContext } from "contexts/CarritoContexto";
 
 function RenderizadoUnicoProducto(props) {
   let producto: InformacionDeProducto = props.producto;
+  const { carrito, agregarAlCarrito } = useContext(CarritoContext);
+
   let [contadorDeStock, setContadorDeStock] = useState(0);
   let stock: number = producto.stock;
 
@@ -39,7 +42,6 @@ function RenderizadoUnicoProducto(props) {
     }
     setContadorDeStock(resultadoSuma);
   }
-  console.log(contadorDeStock);
 
   let mensajeSobreStock = (stock: number) => {
     if (stock === 0) {
@@ -67,7 +69,12 @@ function RenderizadoUnicoProducto(props) {
             +
           </button>{" "}
         </div>
-        <button className="botonAgregarAlCarrito">Agregar al carrito</button>{" "}
+        <button
+          className="botonAgregarAlCarrito"
+          onClick={() => agregarAlCarrito(producto, contadorDeStock)}
+        >
+          Agregar al carrito
+        </button>{" "}
       </div>
 
       <div className="mensajeSobreStock">{mensajeSobreStock(stock)}</div>
