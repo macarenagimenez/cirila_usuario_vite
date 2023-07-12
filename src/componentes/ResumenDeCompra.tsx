@@ -1,7 +1,12 @@
 import { Grid } from "@mui/material";
 import "componentes/ResumenDeCompra.css";
+import { CarritoContext } from "contexts/CarritoContexto";
+
+import { useContext } from "react";
 
 function ResumenDeCompra() {
+  const { carrito } = useContext(CarritoContext);
+
   return (
     <div className="contenedorResumenCompraConProductosAgregados">
       <Grid container spacing={2}>
@@ -20,7 +25,7 @@ function ResumenDeCompra() {
               </Grid>{" "}
               <Grid item xs={3}>
                 {" "}
-                Manta Roma
+                {carrito[0].nombre}
               </Grid>
               <Grid item xs={3}>
                 {" "}
