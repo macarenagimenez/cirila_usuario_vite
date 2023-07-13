@@ -14,6 +14,7 @@ export function CarritoProvider({ children }) {
       nombre: producto.nombre,
       precio: producto.precio,
       cantidad: cantidad,
+      urlImagen: producto.urlImagen,
     };
 
     const indiceProductoExistente = carrito.findIndex(
@@ -29,11 +30,25 @@ export function CarritoProvider({ children }) {
 
       setCarrito(nuevoCarrito);
     }
-    console.log(carrito);
+  };
+
+  const eliminarDelCarrito = (producto: InformacionDeProducto) => {
+    console.log("eliminar");
+    const indiceProductoExistente = carrito.findIndex(
+      (item) => item.id === producto.id
+    );
+    const nuevoCarrito: productosAgregados[] = structuredClone(carrito);
+
+    if (indiceProductoExistente >= 0) {
+      nuevoCarrito.splice(indiceProductoExistente, 1);
+      setCarrito(nuevoCarrito);
+    }
   };
 
   return (
-    <CarritoContext.Provider value={{ carrito, agregarAlCarrito }}>
+    <CarritoContext.Provider
+      value={{ carrito, agregarAlCarrito, eliminarDelCarrito }}
+    >
       {children}
     </CarritoContext.Provider>
   );

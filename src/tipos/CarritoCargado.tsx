@@ -3,6 +3,7 @@ type productosAgregados = {
   nombre: string;
   precio: number;
   cantidad: number;
+  urlImagen: string;
 };
 
 export type { productosAgregados };

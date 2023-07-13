@@ -9,10 +9,13 @@ import { CarritoContext } from "contexts/CarritoContexto";
 
 function RenderizadoUnicoProducto(props) {
   let producto: InformacionDeProducto = props.producto;
-  const { carrito, agregarAlCarrito } = useContext(CarritoContext);
+  const { carrito, agregarAlCarrito, eliminarDelCarrito } =
+    useContext(CarritoContext);
 
   let [contadorDeStock, setContadorDeStock] = useState(0);
   let stock: number = producto.stock;
+
+  let [mensajeCarrito, setMensajeCarrito] = useState("");
 
   let imagen = (
     <Grid item xs={6} className="imagenProductoSeleccionado">
@@ -42,6 +45,16 @@ function RenderizadoUnicoProducto(props) {
     }
     setContadorDeStock(resultadoSuma);
   }
+  function mensajeSobreCarrito() {
+    setMensajeCarrito("Ya agregaste esta hermosura al carrito 😍");
+  }
+  function miFuncion() {
+    if (stock === 0) {
+      return;
+    }
+    agregarAlCarrito(producto, contadorDeStock);
+    mensajeSobreCarrito();
+  }
 
   let mensajeSobreStock = (stock: number) => {
     if (stock === 0) {
@@ -69,15 +82,13 @@ function RenderizadoUnicoProducto(props) {
             +
           </button>{" "}
         </div>
-        <button
-          className="botonAgregarAlCarrito"
-          onClick={() => agregarAlCarrito(producto, contadorDeStock)}
-        >
+        <button className="botonAgregarAlCarrito" onClick={miFuncion}>
           Agregar al carrito
         </button>{" "}
       </div>
 
       <div className="mensajeSobreStock">{mensajeSobreStock(stock)}</div>
+      <div className="mensajeSobreStock">{mensajeCarrito}</div>
     </>
   );
 

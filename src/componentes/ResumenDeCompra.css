@@ -11,6 +11,9 @@
   display: flex;
   justify-content: center;
 }
+.centrarTexto img {
+  border-radius: 50%;
+}
 .textoDerecha {
   text-align: right;
 }
@@ -30,4 +33,7 @@
 .contenedorResumenCompraConProductosAgregados {
   width: 90%;
   margin: 0 auto;
+}
+.contenedorRenderizadoDeProducto {
+  margin-top: 10px;
 }
