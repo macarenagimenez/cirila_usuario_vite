@@ -61,6 +61,9 @@ function RenderizadoUnicoProducto(props: InformacionDeProducto) {
         >
           {mensajeBotonCarrito(producto)}
         </button>{" "}
+        <button className="botonAgregarAlCarrito">
+          <Link to="/carritoDeCompras">Ver carrito</Link>
+        </button>
       </div>
 
       <div className="mensajeSobreStock">
