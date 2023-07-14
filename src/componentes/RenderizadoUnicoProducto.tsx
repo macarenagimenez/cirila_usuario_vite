@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import "componentes/RenderizadoUnicoProducto.css";
 import { InformacionDeProducto } from "tipos/InformacionDeProducto";
 import { Link } from "react-router-dom";
@@ -7,15 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandPointLeft } from "@fortawesome/free-solid-svg-icons";
 import { CarritoContext } from "contexts/CarritoContexto";
 
-function RenderizadoUnicoProducto(props) {
+function RenderizadoUnicoProducto(props: InformacionDeProducto) {
   let producto: InformacionDeProducto = props.producto;
   const { carrito, agregarAlCarrito, eliminarDelCarrito } =
     useContext(CarritoContext);
-
-  let [contadorDeStock, setContadorDeStock] = useState(0);
-  let stock: number = producto.stock;
-
-  let [mensajeCarrito, setMensajeCarrito] = useState("");
 
   let imagen = (
     <Grid item xs={6} className="imagenProductoSeleccionado">
@@ -31,29 +26,22 @@ function RenderizadoUnicoProducto(props) {
     </div>
   );
 
-  function sumarStock(contador: number, max: number): void {
-    let resultadoSuma = contador + 1;
-    if (resultadoSuma > max) {
-      return;
+  function mensajeBotonCarrito(producto: InformacionDeProducto): string {
+    if (producto.stock >= 1) {
+      const productoAgregado = carrito.findIndex(
+        (item) => item.id === producto.id
+      );
+
+      if (productoAgregado === -1) {
+        return "Agregar al carrito";
+      } else {
+        return "Agregado al carrito";
+      }
+    } else if (producto.stock === 0) {
+      return "No hay stock";
+    } else {
+      return "Un minutito!";
     }
-    setContadorDeStock(resultadoSuma);
-  }
-  function restarStock(contador: number, min: number): void {
-    let resultadoSuma = contador - 1;
-    if (resultadoSuma < min) {
-      return;
-    }
-    setContadorDeStock(resultadoSuma);
-  }
-  function mensajeSobreCarrito() {
-    setMensajeCarrito("Ya agregaste esta hermosura al carrito 😍");
-  }
-  function miFuncion() {
-    if (stock === 0) {
-      return;
-    }
-    agregarAlCarrito(producto, contadorDeStock);
-    mensajeSobreCarrito();
   }
 
   let mensajeSobreStock = (stock: number) => {
@@ -67,28 +55,17 @@ function RenderizadoUnicoProducto(props) {
   let modificar_carrito = (
     <>
       <div>
-        <div className="contador">
-          <button
-            className="botonContadorStock"
-            onClick={() => restarStock(contadorDeStock, 0)}
-          >
-            -
-          </button>
-          <span className="numeroContadorStock">{contadorDeStock}</span>
-          <button
-            className="botonContadorStock"
-            onClick={() => sumarStock(contadorDeStock, stock)}
-          >
-            +
-          </button>{" "}
-        </div>
-        <button className="botonAgregarAlCarrito" onClick={miFuncion}>
-          Agregar al carrito
+        <button
+          className="botonAgregarAlCarrito"
+          onClick={() => agregarAlCarrito(producto, 1)}
+        >
+          {mensajeBotonCarrito(producto)}
         </button>{" "}
       </div>
 
-      <div className="mensajeSobreStock">{mensajeSobreStock(stock)}</div>
-      <div className="mensajeSobreStock">{mensajeCarrito}</div>
+      <div className="mensajeSobreStock">
+        {mensajeSobreStock(producto.stock)}
+      </div>
     </>
   );
 

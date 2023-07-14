@@ -8,32 +8,39 @@ export const CarritoContext = createContext();
 export function CarritoProvider({ children }) {
   const [carrito, setCarrito] = useState<productosAgregados[]>([]);
 
-  const agregarAlCarrito = (producto: InformacionDeProducto, cantidad) => {
-    let productoAgregado: productosAgregados = {
-      id: producto.id,
-      nombre: producto.nombre,
-      precio: producto.precio,
-      cantidad: cantidad,
-      urlImagen: producto.urlImagen,
-    };
-
-    const indiceProductoExistente = carrito.findIndex(
-      (item) => item.id === producto.id
-    );
-    const nuevoCarrito: productosAgregados[] = structuredClone(carrito);
-
-    if (indiceProductoExistente >= 0 && cantidad >= 1) {
-      nuevoCarrito[indiceProductoExistente].cantidad = cantidad;
-      setCarrito(nuevoCarrito);
+  const agregarAlCarrito = (
+    producto: InformacionDeProducto,
+    cantidad: number
+  ): void => {
+    if (producto.stock === 0) {
+      return;
     } else {
-      nuevoCarrito.push(productoAgregado);
+      let productoAgregado: productosAgregados = {
+        id: producto.id,
+        nombre: producto.nombre,
+        precio: producto.precio,
+        cantidad: cantidad,
+        urlImagen: producto.urlImagen,
+        stock: producto.stock,
+      };
 
-      setCarrito(nuevoCarrito);
+      const indiceProductoExistente = carrito.findIndex(
+        (item) => item.id === producto.id
+      );
+      const nuevoCarrito: productosAgregados[] = structuredClone(carrito);
+
+      if (indiceProductoExistente >= 0 && cantidad >= 1) {
+        nuevoCarrito[indiceProductoExistente].cantidad = cantidad;
+        setCarrito(nuevoCarrito);
+      } else {
+        nuevoCarrito.push(productoAgregado);
+
+        setCarrito(nuevoCarrito);
+      }
     }
   };
 
   const eliminarDelCarrito = (producto: InformacionDeProducto) => {
-    console.log("eliminar");
     const indiceProductoExistente = carrito.findIndex(
       (item) => item.id === producto.id
     );

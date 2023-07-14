@@ -1,16 +1,32 @@
 import { Grid } from "@mui/material";
 import "componentes/ResumenDeCompra.css";
 import { CarritoContext } from "contexts/CarritoContexto";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import type { productosAgregados } from "tipos/CarritoCargado";
 
 function ResumenDeCompra() {
-  const { carrito, agregarAlCarrito, eliminarDelCarrito } =
-    useContext(CarritoContext);
+  const { carrito, eliminarDelCarrito } = useContext(CarritoContext);
 
   let productosParaMostrarEnResumen: productosAgregados = carrito.map(
     (item: productosAgregados) => {
+      const [cantidadDeProductos, setCantidadDeProductos] = useState<number>(1);
+
+      function sumarStock(contador: number, max: number): void {
+        let resultadoSuma = contador + 1;
+        if (resultadoSuma > max) {
+          return;
+        }
+        setCantidadDeProductos(resultadoSuma);
+      }
+      function restarStock(contador: number, min: number): void {
+        let resultadoSuma = contador - 1;
+        if (resultadoSuma < min) {
+          return;
+        }
+        setCantidadDeProductos(resultadoSuma);
+      }
+
       return (
         <div className="contenedorRenderizadoDeProducto">
           {" "}
@@ -26,9 +42,21 @@ function ResumenDeCompra() {
             <Grid item xs={3}>
               {" "}
               <div className="contador">
-                <button className="botonContadorStock">-</button>
-                <span className="numeroContadorStock">1</span>
-                <button className="botonContadorStock">+</button>{" "}
+                <button
+                  className="botonContadorStock"
+                  onClick={() => restarStock(cantidadDeProductos, 1)}
+                >
+                  -
+                </button>
+                <span className="numeroContadorStock">
+                  {cantidadDeProductos}
+                </span>
+                <button
+                  className="botonContadorStock"
+                  onClick={() => sumarStock(cantidadDeProductos, item.stock)}
+                >
+                  +
+                </button>{" "}
               </div>
             </Grid>
             <Grid item xs={3}>
@@ -36,20 +64,26 @@ function ResumenDeCompra() {
               ${item.precio}
             </Grid>
             <Grid item xs={3}>
-              <button onClick={() => eliminarDelCarrito(item)}> borrar </button>
+              <button onClick={() => eliminarDelCarrito(item)}> 🗑 </button>
             </Grid>
           </Grid>{" "}
         </div>
       );
     }
   );
+  function inicioCarrito() {
+    if (carrito.length >= 1) {
+      return productosParaMostrarEnResumen;
+    } else {
+      return "Mi billetera y tu carrito están vacios  ㅠㅠ";
+    }
+  }
+
   return (
     <div className="contenedorResumenCompraConProductosAgregados">
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <div className="productosAgregados">
-            {productosParaMostrarEnResumen}
-          </div>{" "}
+          <div className="productosAgregados">{inicioCarrito()}</div>{" "}
         </Grid>
         <Grid item xs={6}>
           <div className="resumenCompra ">

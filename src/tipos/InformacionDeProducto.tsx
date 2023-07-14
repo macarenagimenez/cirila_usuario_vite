@@ -4,7 +4,7 @@ type InformacionDeProducto = {
   nombre: string;
   precio: number;
   urlImagen: string;
-  stock?: number;
+  stock: number;
   descripcion?: string;
 };
 
