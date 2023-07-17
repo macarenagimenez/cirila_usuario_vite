@@ -4,25 +4,18 @@ import { CarritoContext } from "contexts/CarritoContexto";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import type { productosAgregados } from "tipos/CarritoCargado";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function ResumenDeCompra() {
-  const { carrito, eliminarDelCarrito } = useContext(CarritoContext);
-  const [cantidadDeProductos, setCantidadDeProductos] = useState<number>(0);
-  function sumarStock(contador: number, max: number): void {
-    let resultadoSuma = contador + 1;
-    if (resultadoSuma > max) {
-      return;
-    }
-    setCantidadDeProductos(resultadoSuma);
-  }
-  function restarStock(contador: number, min: number): void {
-    let resultadoSuma = contador - 1;
-    if (resultadoSuma < min) {
-      return;
-    }
-    setCantidadDeProductos(resultadoSuma);
-  }
+  const { carrito, eliminarDelCarrito, sumarStock, restarStock } =
+    useContext(CarritoContext);
+  const [cantidadDeProductos, setCantidadDeProductos] = useState<number>(1);
 
+  // function totalPrecioProductosIguales(precio, cantidadDeProductosMismoID) {
+  //   return precio * cantidadDeProductosMismoID;
+  // }
   let productosParaMostrarEnResumen: productosAgregados = carrito.map(
     (item: productosAgregados) => {
       return (
@@ -33,35 +26,37 @@ function ResumenDeCompra() {
               {" "}
               <img src={item.urlImagen} alt={item.nombre} width={100} />
             </Grid>{" "}
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <Link to={"/producto?id=" + item.id}>{item.nombre}</Link>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               {" "}
               <div className="contador">
                 <button
                   className="botonContadorStock"
-                  onClick={() => restarStock(cantidadDeProductos, 1)}
+                  onClick={() => restarStock(item)}
                 >
                   -
                 </button>
-                <span className="numeroContadorStock">
-                  {cantidadDeProductos}
-                </span>
+                <span className="numeroContadorStock">{item.cantidad}</span>
                 <button
                   className="botonContadorStock"
-                  onClick={() => sumarStock(cantidadDeProductos, item.stock)}
+                  onClick={() => sumarStock(item)}
                 >
                   +
                 </button>{" "}
               </div>
             </Grid>
-            <Grid item xs={3}>
-              {" "}
-              ${item.precio}
+            <Grid item xs={2}>
+              {/* ${totalPrecioProductosIguales(item.precio, cantidadDeProductos)} */}
             </Grid>
-            <Grid item xs={3}>
-              <button onClick={() => eliminarDelCarrito(item)}> 🗑 </button>
+            <Grid item xs={2}>
+              <button
+                onClick={() => eliminarDelCarrito(item)}
+                className="botonAgregarAlCarrito"
+              >
+                <FontAwesomeIcon icon={faTrash} />
+              </button>
             </Grid>
           </Grid>{" "}
         </div>
@@ -86,7 +81,7 @@ function ResumenDeCompra() {
   };
   return (
     <div className="contenedorResumenCompraConProductosAgregados">
-      <Grid container spacing={2}>
+      <Grid container spacing={3}>
         <Grid item xs={6}>
           <div className="productosAgregados">
             {mostrarProductosAgregados()}
