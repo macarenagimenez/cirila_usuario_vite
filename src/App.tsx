@@ -6,6 +6,7 @@ import PaginaDeProductos from "paginas/PaginaDeProductos";
 import ProductoSeleccionado from "paginas/ProductoSeleccionado";
 import Carrito from "paginas/Carrito";
 import { CarritoProvider } from "contexts/CarritoContexto.jsx";
+import CargaDeDatos from "paginas/CargaDeDatos";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="productos" element={<PaginaDeProductos />} />
             <Route path="producto" element={<ProductoSeleccionado />} />
             <Route path="carritoDeCompras" element={<Carrito />} />
+            <Route path="cargaDeDatos" element={<CargaDeDatos />} />
           </Route>
         </Routes>
       </BrowserRouter>

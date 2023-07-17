@@ -7,7 +7,8 @@ import type { productosAgregados } from "tipos/CarritoCargado";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-
+import AnimacionParaPresentacionPagina from "componentes/AnimacionParaPresentacionPagina";
+import { rutaParaPresentacionPagina } from "tipos/RutaDeImagenes";
 function ResumenDeCompra() {
   const { carrito, eliminarDelCarrito, sumarStock, restarStock } =
     useContext(CarritoContext);
@@ -65,17 +66,66 @@ function ResumenDeCompra() {
   let mostrarProductosAgregados = () => {
     if (carrito.length === 0) {
       return (
-        <>
+        <div className="contenedorCarritoVacio">
           <p>Tu carrito y mi billetera están vacios 🤣.</p>
           <Link to="/productos">
             <button className="botonAgregarAlCarrito">
               Vamos a chusmear que comprar 😉
             </button>{" "}
           </Link>
-        </>
+        </div>
       );
     } else {
-      return productosParaMostrarEnResumen;
+      return (
+        <>
+          <Grid container spacing={1}>
+            <Grid item xs={6}>
+              <div className="productosAgregados">
+                {productosParaMostrarEnResumen}
+              </div>{" "}
+            </Grid>
+
+            <Grid item xs={6}>
+              <div className="resumenCompra ">
+                RESUMEN DE COMPRA
+                <hr />
+                <Grid container item spacing={1}>
+                  <Grid item xs={6} className="textoIzquierda">
+                    Productos({contadorDeProductos()})
+                  </Grid>
+                  <Grid item xs={6} className="textoDerecha">
+                    ${totalDeLaCompra()}
+                  </Grid>
+                </Grid>
+                <Grid container item spacing={2}>
+                  <Grid item xs={6} className="textoIzquierda">
+                    <h4>TOTAL</h4>
+                  </Grid>
+                  <Grid item xs={6} className="textoDerecha">
+                    <h4> ${totalDeLaCompra()}</h4>
+                  </Grid>
+                </Grid>
+                <Grid container item spacing={2}>
+                  <Grid item xs={6} className="textoIzquierda">
+                    <Link to="/productos">
+                      <button className="botonAgregarAlCarrito">
+                        Seguir comprando
+                      </button>{" "}
+                    </Link>
+                  </Grid>
+                  <Grid item xs={6} className="textoDerecha">
+                    <Link to="/cargaDeDatos">
+                      <button className="botonAgregarAlCarrito">
+                        Finalizar compra
+                      </button>{" "}
+                    </Link>
+                  </Grid>
+                </Grid>
+              </div>
+            </Grid>
+          </Grid>{" "}
+        </>
+      );
     }
   };
 
@@ -96,52 +146,17 @@ function ResumenDeCompra() {
     return <span>{contador}</span>;
   }
   return (
-    <div className="contenedorResumenCompraConProductosAgregados">
-      <Grid container spacing={3}>
-        <Grid item xs={6}>
-          <div className="productosAgregados">
-            {mostrarProductosAgregados()}
-          </div>{" "}
-        </Grid>
-
-        <Grid item xs={6}>
-          <div className="resumenCompra ">
-            RESUMEN DE COMPRA
-            <hr />
-            <Grid container item spacing={1}>
-              <Grid item xs={6} className="textoIzquierda">
-                Productos({contadorDeProductos()})
-              </Grid>
-              <Grid item xs={6} className="textoDerecha">
-                ${totalDeLaCompra()}
-              </Grid>
-            </Grid>
-            <Grid container item spacing={2}>
-              <Grid item xs={6} className="textoIzquierda">
-                <h4>TOTAL</h4>
-              </Grid>
-              <Grid item xs={6} className="textoDerecha">
-                <h4> ${totalDeLaCompra()}</h4>
-              </Grid>
-            </Grid>
-            <Grid container item spacing={2}>
-              <Grid item xs={6} className="textoIzquierda">
-                <Link to="/productos">
-                  <button className="botonAgregarAlCarrito">
-                    Seguir comprando
-                  </button>{" "}
-                </Link>
-              </Grid>
-              <Grid item xs={6} className="textoDerecha">
-                <button className="botonAgregarAlCarrito">
-                  Finalizar compra
-                </button>{" "}
-              </Grid>
-            </Grid>
-          </div>
-        </Grid>
-      </Grid>
-    </div>
+    <>
+      {" "}
+      <AnimacionParaPresentacionPagina
+        informacionParaPresentacion={rutaParaPresentacionPagina[1]}
+      />
+      <div className="contenedorResumenCompraConProductosAgregados">
+        {/* desde aca */}
+        {mostrarProductosAgregados()}
+        {/* hasta aca */}
+      </div>
+    </>
   );
 }
 
