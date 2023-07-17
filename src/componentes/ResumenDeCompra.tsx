@@ -68,13 +68,28 @@ function ResumenDeCompra() {
       );
     }
   );
-
+  let mostrarProductosAgregados = () => {
+    if (carrito.length === 0) {
+      return (
+        <>
+          <p>Tu carrito y mi billetera están vacios 🤣.</p>
+          <Link to="/productos">
+            <button className="botonAgregarAlCarrito">
+              Vamos a chusmear que comprar 😉
+            </button>{" "}
+          </Link>
+        </>
+      );
+    } else {
+      return productosParaMostrarEnResumen;
+    }
+  };
   return (
     <div className="contenedorResumenCompraConProductosAgregados">
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <div className="productosAgregados">
-            {productosParaMostrarEnResumen}
+            {mostrarProductosAgregados()}
           </div>{" "}
         </Grid>
 
