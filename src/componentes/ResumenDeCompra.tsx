@@ -34,8 +34,7 @@ function ResumenDeCompra() {
               <img src={item.urlImagen} alt={item.nombre} width={100} />
             </Grid>{" "}
             <Grid item xs={3}>
-              {" "}
-              {item.nombre}
+              <Link to={"/producto?id=" + item.id}>{item.nombre}</Link>
             </Grid>
             <Grid item xs={3}>
               {" "}
