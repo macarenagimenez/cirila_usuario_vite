@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import "componentes/ResumenDeCompra.css";
 import { CarritoContext } from "contexts/CarritoContexto";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import type { productosAgregados } from "tipos/CarritoCargado";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,11 +11,10 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 function ResumenDeCompra() {
   const { carrito, eliminarDelCarrito, sumarStock, restarStock } =
     useContext(CarritoContext);
-  const [cantidadDeProductos, setCantidadDeProductos] = useState<number>(1);
 
-  // function totalPrecioProductosIguales(precio, cantidadDeProductosMismoID) {
-  //   return precio * cantidadDeProductosMismoID;
-  // }
+  function totalPrecioProductosIguales(producto: productosAgregados) {
+    return producto.precio * producto.cantidad;
+  }
   let productosParaMostrarEnResumen: productosAgregados = carrito.map(
     (item: productosAgregados) => {
       return (
@@ -29,7 +28,7 @@ function ResumenDeCompra() {
             <Grid item xs={2}>
               <Link to={"/producto?id=" + item.id}>{item.nombre}</Link>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={3}>
               {" "}
               <div className="contador">
                 <button
@@ -48,7 +47,7 @@ function ResumenDeCompra() {
               </div>
             </Grid>
             <Grid item xs={2}>
-              {/* ${totalPrecioProductosIguales(item.precio, cantidadDeProductos)} */}
+              ${totalPrecioProductosIguales(item)}
             </Grid>
             <Grid item xs={2}>
               <button
@@ -79,6 +78,23 @@ function ResumenDeCompra() {
       return productosParaMostrarEnResumen;
     }
   };
+
+  function contadorDeProductos() {
+    let contador = 0;
+    for (let i = 0; i < carrito.length; i++) {
+      contador += carrito[i].cantidad;
+    }
+
+    return <span>{contador}</span>;
+  }
+  function totalDeLaCompra() {
+    let contador = 0;
+    for (let i = 0; i < carrito.length; i++) {
+      contador += carrito[i].precio * carrito[i].cantidad;
+    }
+
+    return <span>{contador}</span>;
+  }
   return (
     <div className="contenedorResumenCompraConProductosAgregados">
       <Grid container spacing={3}>
@@ -94,10 +110,10 @@ function ResumenDeCompra() {
             <hr />
             <Grid container item spacing={1}>
               <Grid item xs={6} className="textoIzquierda">
-                Productos (3)
+                Productos({contadorDeProductos()})
               </Grid>
               <Grid item xs={6} className="textoDerecha">
-                $1111.11
+                ${totalDeLaCompra()}
               </Grid>
             </Grid>
             <Grid container item spacing={2}>
@@ -105,7 +121,7 @@ function ResumenDeCompra() {
                 <h4>TOTAL</h4>
               </Grid>
               <Grid item xs={6} className="textoDerecha">
-                <h4>$1111.11</h4>
+                <h4> ${totalDeLaCompra()}</h4>
               </Grid>
             </Grid>
             <Grid container item spacing={2}>
