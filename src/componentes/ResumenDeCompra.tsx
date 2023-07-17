@@ -7,26 +7,24 @@ import type { productosAgregados } from "tipos/CarritoCargado";
 
 function ResumenDeCompra() {
   const { carrito, eliminarDelCarrito } = useContext(CarritoContext);
+  const [cantidadDeProductos, setCantidadDeProductos] = useState<number>(0);
+  function sumarStock(contador: number, max: number): void {
+    let resultadoSuma = contador + 1;
+    if (resultadoSuma > max) {
+      return;
+    }
+    setCantidadDeProductos(resultadoSuma);
+  }
+  function restarStock(contador: number, min: number): void {
+    let resultadoSuma = contador - 1;
+    if (resultadoSuma < min) {
+      return;
+    }
+    setCantidadDeProductos(resultadoSuma);
+  }
 
   let productosParaMostrarEnResumen: productosAgregados = carrito.map(
     (item: productosAgregados) => {
-      const [cantidadDeProductos, setCantidadDeProductos] = useState<number>(1);
-
-      function sumarStock(contador: number, max: number): void {
-        let resultadoSuma = contador + 1;
-        if (resultadoSuma > max) {
-          return;
-        }
-        setCantidadDeProductos(resultadoSuma);
-      }
-      function restarStock(contador: number, min: number): void {
-        let resultadoSuma = contador - 1;
-        if (resultadoSuma < min) {
-          return;
-        }
-        setCantidadDeProductos(resultadoSuma);
-      }
-
       return (
         <div className="contenedorRenderizadoDeProducto">
           {" "}
@@ -71,20 +69,16 @@ function ResumenDeCompra() {
       );
     }
   );
-  function inicioCarrito() {
-    if (carrito.length >= 1) {
-      return productosParaMostrarEnResumen;
-    } else {
-      return "Mi billetera y tu carrito están vacios  ㅠㅠ";
-    }
-  }
 
   return (
     <div className="contenedorResumenCompraConProductosAgregados">
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <div className="productosAgregados">{inicioCarrito()}</div>{" "}
+          <div className="productosAgregados">
+            {productosParaMostrarEnResumen}
+          </div>{" "}
         </Grid>
+
         <Grid item xs={6}>
           <div className="resumenCompra ">
             RESUMEN DE COMPRA
