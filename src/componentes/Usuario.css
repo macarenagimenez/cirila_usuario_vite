@@ -1,0 +1,21 @@
+.cargaDeDatosUsuario {
+  background-color: white;
+  margin: 20px auto;
+  padding: 20px 10px;
+  text-align: center;
+  border-radius: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.detallesCompra {
+  background-color: white;
+  margin: 20px auto;
+  padding: 20px 10px;
+  text-align: center;
+  border-radius: 20px;
+}
+.textAlignRight {
+  text-align: right;
+}
