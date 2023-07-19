@@ -1,0 +1,19 @@
+.contenedorCargaDeDatos {
+  width: 80%;
+  margin: 50px auto;
+}
+.textoIzquierda {
+  text-align: right;
+}
+.botonFinalizarCompra {
+  color: black;
+  border-radius: 30px;
+  padding: 20px 60px;
+  font-size: 15px;
+  margin: 15px auto;
+  display: flex;
+  align-items: center;
+}
+.contenedorBotonesFinalizarCompra {
+  margin: 30px;
+}

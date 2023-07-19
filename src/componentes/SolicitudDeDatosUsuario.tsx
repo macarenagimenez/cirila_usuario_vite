@@ -1,47 +1,36 @@
-import { Box, TextField } from "@mui/material";
-import MenuItem from "@mui/material/MenuItem";
 import Usuario from "componentes/Usuario";
-import "componentes/cargaDeDatos.css";
+import "componentes/Usuario.css";
 import { Grid } from "@mui/material";
-
+import { Link } from "react-router-dom";
+import "componentes/SolicitudDeDatosUsuario.css";
 export default function SolicitudDeDatosUsuario() {
-  let formasDepago = ["Transferencia", "tarjeta", "efectivo", "conamor"];
   return (
     <div className="contenedorCargaDeDatos">
       <Grid container spacing={2}>
-        <Grid item xs={6}>
+        <Usuario />{" "}
+      </Grid>{" "}
+      <div className="contenedorBotonesFinalizarCompra">
+        <Grid container spacing={2}>
           {" "}
-          <div className="cargaDeDatosUsuario">
-            <Usuario />{" "}
-          </div>
+          <Grid item xs={3}></Grid>
+          <Grid item xs={3} className="textoIzquierda">
+            <Link to="/carritoDeCompras">
+              <button className="botonBasico ">Volver al carrito</button>{" "}
+            </Link>
+          </Grid>
+          <Grid item xs={3}>
+            <Link to="/">
+              <button className="botonBasico">Cancelar compra</button>{" "}
+            </Link>
+          </Grid>
+          <Grid item xs={3}></Grid>
         </Grid>
-        <div className="detallesCompra">
-          <Grid item xs={6}>
-            <Box
-              component="form"
-              sx={{
-                "& .MuiTextField-root": { m: 1, width: "25ch" },
-              }}
-              noValidate
-              autoComplete="off"
-            >
-              <TextField
-                id="outlined-select-currency"
-                disabled
-                select
-                label="Formas de pago"
-                defaultValue="Transferencia"
-              >
-                {formasDepago.map((option) => (
-                  <MenuItem key={option} value={option}>
-                    {option}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Box>
-          </Grid>{" "}
-        </div>
-      </Grid>
+        <Link to="/cargaDeDatos">
+          <button className="botonBasico botonFinalizarCompra">
+            FINALIZAR COMPRA
+          </button>{" "}
+        </Link>{" "}
+      </div>
     </div>
   );
 }

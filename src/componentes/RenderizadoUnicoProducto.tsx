@@ -56,12 +56,12 @@ function RenderizadoUnicoProducto(props: InformacionDeProducto) {
     <>
       <div>
         <button
-          className="botonAgregarAlCarrito"
+          className="botonBasico"
           onClick={() => agregarAlCarrito(producto, 1)}
         >
           {mensajeBotonCarrito(producto)}
         </button>{" "}
-        <button className="botonAgregarAlCarrito">
+        <button className="botonBasico">
           <Link to="/carritoDeCompras">Ver carrito</Link>
         </button>
       </div>

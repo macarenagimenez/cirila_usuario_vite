@@ -60,7 +60,7 @@
   font-size: 15px;
 }
 .botonContadorStock,
-.botonAgregarAlCarrito {
+.botonBasico {
   background-color: #ebcfac;
   border-radius: 20px;
   border: 0px;
@@ -68,13 +68,13 @@
   color: white;
 }
 .botonContadorStock,
-.botonAgregarAlCarrito:hover {
+.botonBasico:hover {
   cursor: pointer;
 }
 .botonContadorStock {
   font-size: 15px;
 }
-.botonAgregarAlCarrito {
+.botonBasico {
   padding: 8px 30px;
 }
 .numeroContadorStock {

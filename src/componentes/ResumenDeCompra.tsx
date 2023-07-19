@@ -53,7 +53,7 @@ function ResumenDeCompra() {
             <Grid item xs={2}>
               <button
                 onClick={() => eliminarDelCarrito(item)}
-                className="botonAgregarAlCarrito"
+                className="botonBasico"
               >
                 <FontAwesomeIcon icon={faTrash} />
               </button>
@@ -69,7 +69,7 @@ function ResumenDeCompra() {
         <div className="contenedorCarritoVacio">
           <p>Tu carrito y mi billetera están vacios 🤣.</p>
           <Link to="/productos">
-            <button className="botonAgregarAlCarrito">
+            <button className="botonBasico">
               Vamos a chusmear que comprar 😉
             </button>{" "}
           </Link>
@@ -108,16 +108,12 @@ function ResumenDeCompra() {
                 <Grid container item spacing={2}>
                   <Grid item xs={6} className="textoIzquierda">
                     <Link to="/productos">
-                      <button className="botonAgregarAlCarrito">
-                        Seguir comprando
-                      </button>{" "}
+                      <button className="botonBasico">Seguir comprando</button>{" "}
                     </Link>
                   </Grid>
                   <Grid item xs={6} className="textoDerecha">
                     <Link to="/cargaDeDatos">
-                      <button className="botonAgregarAlCarrito">
-                        Finalizar compra
-                      </button>{" "}
+                      <button className="botonBasico">Continuar compra</button>{" "}
                     </Link>
                   </Grid>
                 </Grid>
