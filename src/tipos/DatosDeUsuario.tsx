@@ -2,9 +2,12 @@ type DatosUsuario = {
   NombreCompleto: string;
   Provincia: string;
   Localidad: string;
-  CP: number;
+  CP: string;
   Correo: string;
-  Celular: number;
+  Celular: string;
+  FormaPago: string;
+  FormaEnvio: string;
+  FormaContacto: string;
 };
 
 export type { DatosUsuario };

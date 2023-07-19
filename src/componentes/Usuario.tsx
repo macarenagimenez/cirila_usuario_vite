@@ -1,17 +1,13 @@
 import { Box, TextField, Grid } from "@mui/material";
+import { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
+import { UsuarioContext } from "contexts/UsuarioContexto";
 
+import { useContext } from "react";
 import { DatosUsuario } from "tipos/DatosDeUsuario";
 
 export default function Usuario() {
-  const informacionRequerida: string[] = [
-    "Nombre y apellido",
-    "Provincia",
-    "Localidad",
-    "CP",
-    "E-mail",
-    "Celular",
-  ];
+  const { usuario, setUsuario, handleUsuario } = useContext(UsuarioContext);
 
   let formasDepago = [
     { pago: "Transferencia 15% OFF", disabled: null },
@@ -28,19 +24,6 @@ export default function Usuario() {
     { medio: "Por telepatía 🧘🏻‍♀️", disabled: true },
   ];
 
-  function mostrarInformacionRequerida() {
-    let content = [];
-    for (let i = 0; i < informacionRequerida.length; i++) {
-      content.push(
-        <TextField
-          id="outlined-basic"
-          label={informacionRequerida[i]}
-          variant="outlined"
-        />
-      );
-    }
-    return content;
-  }
   function definirFormaDePago() {
     let content = [];
     for (let i = 0; i < formasDepago.length; i++) {
@@ -131,7 +114,67 @@ export default function Usuario() {
             {" "}
             <p>La parte aburrida 😅</p>
             <hr />
-            {mostrarInformacionRequerida()}
+            <TextField
+              id="outlined-basic"
+              label="Nombre y apellido"
+              variant="outlined"
+              onChange={(e) => handleUsuario(e)}
+            />{" "}
+            <TextField
+              id="outlined-basic"
+              label="Provincia"
+              variant="outlined"
+              onChange={(e) => {
+                setUsuario({
+                  ...Usuario,
+                  Provincia: e.target.value,
+                });
+              }}
+            />{" "}
+            <TextField
+              id="outlined-basic"
+              label="Localidad"
+              variant="outlined"
+              onChange={(e) => {
+                setUsuario({
+                  ...Usuario,
+                  Localidad: e.target.value,
+                });
+              }}
+            />{" "}
+            <TextField
+              id="outlined-basic"
+              label="Código Postal"
+              variant="outlined"
+              onChange={(e) => {
+                setUsuario({
+                  ...Usuario,
+                  CP: e.target.value,
+                });
+              }}
+            />{" "}
+            <TextField
+              id="outlined-basic"
+              label="Correo electrónico"
+              variant="outlined"
+              onChange={(e) => {
+                setUsuario({
+                  ...Usuario,
+                  Correo: e.target.value,
+                });
+              }}
+            />{" "}
+            <TextField
+              id="outlined-basic"
+              label="Celular"
+              variant="outlined"
+              onChange={(e) => {
+                setUsuario({
+                  ...Usuario,
+                  Celular: e.target.value,
+                });
+              }}
+            />{" "}
           </Box>
         </div>
       </Grid>
@@ -161,6 +204,13 @@ export default function Usuario() {
           </Box>
         </div>
       </Grid>
+      <p>
+        {usuario.NombreCompleto}
+        {usuario.Provincia}
+        {usuario.Localidad}
+        {usuario.CP}
+        {usuario.Correo} {usuario.Celular}
+      </p>
     </>
   );
 }

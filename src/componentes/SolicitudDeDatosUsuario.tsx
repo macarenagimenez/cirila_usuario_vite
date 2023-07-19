@@ -3,7 +3,9 @@ import "componentes/Usuario.css";
 import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import "componentes/SolicitudDeDatosUsuario.css";
+
 export default function SolicitudDeDatosUsuario() {
+  // TODO estilizar componentes MUI
   return (
     <div className="contenedorCargaDeDatos">
       <Grid container spacing={2}>
@@ -27,7 +29,7 @@ export default function SolicitudDeDatosUsuario() {
         </Grid>
         <Link to="/cargaDeDatos">
           <button className="botonBasico botonFinalizarCompra">
-            FINALIZAR COMPRA
+            CONTINUAR COMPRA
           </button>{" "}
         </Link>{" "}
       </div>
