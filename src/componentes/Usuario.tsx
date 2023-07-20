@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { DatosUsuario } from "tipos/DatosDeUsuario";
 
 export default function Usuario() {
-  const { usuario, setUsuario, handleUsuario } = useContext(UsuarioContext);
+  const { usuario, actualizarUsuario } = useContext(UsuarioContext);
 
   let formasDepago = [
     { pago: "Transferencia 15% OFF", disabled: null },
@@ -44,6 +44,9 @@ export default function Usuario() {
           select
           label="¿Como te gustaría pagar?"
           defaultValue={""}
+          onChange={(e) => {
+            actualizarUsuario("FormaPago", e.target.value);
+          }}
         >
           {content}
         </TextField>
@@ -66,6 +69,9 @@ export default function Usuario() {
           select
           label="¿Envio a sucursal o domicilio?"
           defaultValue={""}
+          onChange={(e) => {
+            actualizarUsuario("FormaEnvio", e.target.value);
+          }}
         >
           {content}
         </TextField>
@@ -78,7 +84,7 @@ export default function Usuario() {
       content.push(
         <MenuItem
           key={mediosDeContacto[i].medio}
-          value={mediosDeContacto[i]}
+          value={mediosDeContacto[i].medio}
           disabled={mediosDeContacto[i].disabled}
         >
           {mediosDeContacto[i].medio}
@@ -92,6 +98,9 @@ export default function Usuario() {
           select
           label="¿Como te gustaría contactar?"
           defaultValue={""}
+          onChange={(e) => {
+            actualizarUsuario("FormaContacto", e.target.value);
+          }}
         >
           {content}
         </TextField>
@@ -118,17 +127,16 @@ export default function Usuario() {
               id="outlined-basic"
               label="Nombre y apellido"
               variant="outlined"
-              onChange={(e) => handleUsuario(e)}
+              onChange={(e) => {
+                actualizarUsuario("NombreCompleto", e.target.value);
+              }}
             />{" "}
             <TextField
               id="outlined-basic"
               label="Provincia"
               variant="outlined"
               onChange={(e) => {
-                setUsuario({
-                  ...Usuario,
-                  Provincia: e.target.value,
-                });
+                actualizarUsuario("Provincia", e.target.value);
               }}
             />{" "}
             <TextField
@@ -136,10 +144,7 @@ export default function Usuario() {
               label="Localidad"
               variant="outlined"
               onChange={(e) => {
-                setUsuario({
-                  ...Usuario,
-                  Localidad: e.target.value,
-                });
+                actualizarUsuario("Localidad", e.target.value);
               }}
             />{" "}
             <TextField
@@ -147,10 +152,7 @@ export default function Usuario() {
               label="Código Postal"
               variant="outlined"
               onChange={(e) => {
-                setUsuario({
-                  ...Usuario,
-                  CP: e.target.value,
-                });
+                actualizarUsuario("Correo", e.target.value);
               }}
             />{" "}
             <TextField
@@ -158,10 +160,7 @@ export default function Usuario() {
               label="Correo electrónico"
               variant="outlined"
               onChange={(e) => {
-                setUsuario({
-                  ...Usuario,
-                  Correo: e.target.value,
-                });
+                actualizarUsuario("Correo", e.target.value);
               }}
             />{" "}
             <TextField
@@ -169,10 +168,7 @@ export default function Usuario() {
               label="Celular"
               variant="outlined"
               onChange={(e) => {
-                setUsuario({
-                  ...Usuario,
-                  Celular: e.target.value,
-                });
+                actualizarUsuario("Celular", e.target.value);
               }}
             />{" "}
           </Box>
@@ -204,13 +200,13 @@ export default function Usuario() {
           </Box>
         </div>
       </Grid>
-      <p>
-        {usuario.NombreCompleto}
-        {usuario.Provincia}
-        {usuario.Localidad}
-        {usuario.CP}
-        {usuario.Correo} {usuario.Celular}
-      </p>
+      Nombre: {usuario.NombreCompleto}
+      Provincia: {usuario.Provincia}
+      Localidad: {usuario.Localidad}
+      CP: {usuario.CP}
+      Correo: {usuario.Correo}Celular: {usuario.Celular} forma de pago:{" "}
+      {usuario.FormaPago} envio: {usuario.FormaEnvio} forma de contacto:
+      {usuario.FormaContacto}
     </>
   );
 }
