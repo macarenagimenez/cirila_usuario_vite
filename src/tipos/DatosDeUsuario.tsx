@@ -2,7 +2,7 @@ type DatosUsuario = {
   NombreCompleto: string;
   Provincia: string;
   Localidad: string;
-  CP: string;
+  CodigoPostal: string;
   Correo: string;
   Celular: string;
   FormaPago: string;

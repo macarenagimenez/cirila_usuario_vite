@@ -27,7 +27,7 @@ export default function SolicitudDeDatosUsuario() {
           </Grid>
           <Grid item xs={3}></Grid>
         </Grid>
-        <Link to="/cargaDeDatos">
+        <Link to="/resumenOrdenDeCompra">
           <button className="botonBasico botonFinalizarCompra">
             CONTINUAR COMPRA
           </button>{" "}

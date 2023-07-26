@@ -8,6 +8,7 @@ import Carrito from "paginas/Carrito";
 import { CarritoProvider } from "contexts/CarritoContexto.jsx";
 import CargaDeDatos from "paginas/CargaDeDatos";
 import { UsuarioProvider } from "contexts/UsuarioContexto";
+import FinalOrdenDeCompra from "paginas/FinalOrdenDeCompra";
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
               <Route path="producto" element={<ProductoSeleccionado />} />
               <Route path="carritoDeCompras" element={<Carrito />} />
               <Route path="cargaDeDatos" element={<CargaDeDatos />} />
+              <Route
+                path="resumenOrdenDeCompra"
+                element={<FinalOrdenDeCompra />}
+              />
             </Route>
           </Routes>
         </BrowserRouter>

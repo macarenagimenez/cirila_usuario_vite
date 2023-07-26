@@ -7,7 +7,8 @@ import { useContext } from "react";
 import { DatosUsuario } from "tipos/DatosDeUsuario";
 
 export default function Usuario() {
-  const { usuario, actualizarUsuario } = useContext(UsuarioContext);
+  const { usuario, actualizarUsuario } =
+    useContext<DatosUsuario>(UsuarioContext);
 
   let formasDepago = [
     { pago: "Transferencia 15% OFF", disabled: null },
@@ -40,6 +41,7 @@ export default function Usuario() {
     return (
       <>
         <TextField
+          required
           id="outlined-select-currency"
           select
           label="¿Como te gustaría pagar?"
@@ -65,6 +67,7 @@ export default function Usuario() {
     return (
       <>
         <TextField
+          required
           id="outlined-select-currency"
           select
           label="¿Envio a sucursal o domicilio?"
@@ -94,6 +97,7 @@ export default function Usuario() {
     return (
       <>
         <TextField
+          required
           id="outlined-select-currency"
           select
           label="¿Como te gustaría contactar?"
@@ -124,6 +128,7 @@ export default function Usuario() {
             <p>La parte aburrida 😅</p>
             <hr />
             <TextField
+              required
               id="outlined-basic"
               label="Nombre y apellido"
               variant="outlined"
@@ -132,6 +137,7 @@ export default function Usuario() {
               }}
             />{" "}
             <TextField
+              required
               id="outlined-basic"
               label="Provincia"
               variant="outlined"
@@ -140,6 +146,7 @@ export default function Usuario() {
               }}
             />{" "}
             <TextField
+              required
               id="outlined-basic"
               label="Localidad"
               variant="outlined"
@@ -148,14 +155,16 @@ export default function Usuario() {
               }}
             />{" "}
             <TextField
+              required
               id="outlined-basic"
               label="Código Postal"
               variant="outlined"
               onChange={(e) => {
-                actualizarUsuario("Correo", e.target.value);
+                actualizarUsuario("CodigoPostal", e.target.value);
               }}
             />{" "}
             <TextField
+              required
               id="outlined-basic"
               label="Correo electrónico"
               variant="outlined"
@@ -164,6 +173,7 @@ export default function Usuario() {
               }}
             />{" "}
             <TextField
+              required
               id="outlined-basic"
               label="Celular"
               variant="outlined"
@@ -203,7 +213,7 @@ export default function Usuario() {
       Nombre: {usuario.NombreCompleto}
       Provincia: {usuario.Provincia}
       Localidad: {usuario.Localidad}
-      CP: {usuario.CP}
+      CP: {usuario.CodigoPostal}
       Correo: {usuario.Correo}Celular: {usuario.Celular} forma de pago:{" "}
       {usuario.FormaPago} envio: {usuario.FormaEnvio} forma de contacto:
       {usuario.FormaContacto}

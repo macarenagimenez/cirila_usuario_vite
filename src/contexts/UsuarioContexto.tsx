@@ -6,17 +6,17 @@ export const UsuarioContext = createContext();
 
 export function UsuarioProvider({ children }) {
   const [usuario, setUsuario] = useState<DatosUsuario>({
-    NombreCompleto: " Macarena",
-    Provincia: " San Luis ",
+    NombreCompleto: "",
+    Provincia: "",
     Localidad: " ",
-    CP: " ",
+    CodigoPostal: " ",
     Correo: " ",
     Celular: " ",
-    FormaPago: "efectivo",
+    FormaPago: "",
     FormaEnvio: "",
     FormaContacto: "",
   });
-  function actualizarUsuario(datoActualizado, valor) {
+  function actualizarUsuario(datoActualizado: string, valor: string) {
     setUsuario((prevState: DatosUsuario) => ({
       ...prevState,
       [datoActualizado]: valor,

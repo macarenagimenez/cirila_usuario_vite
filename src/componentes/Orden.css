@@ -1,0 +1,28 @@
+.contenedorOrdenFinal {
+  background-color: white;
+  margin: 20px auto;
+  padding: 20px 30px;
+
+  border-radius: 20px;
+}
+.textAlignCenter {
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.contenedorDatosContacto {
+  padding: 10px 15px;
+  line-height: 30px;
+}
+.contenedorProductosOrdenFinal {
+  text-align: center;
+}
+.contenedorTotalDeLaCompra {
+  text-align: end;
+  font-size: 25px;
+}
+.contenedorPaginaOrden {
+  width: 555px;
+  margin: 0 auto;
+}
