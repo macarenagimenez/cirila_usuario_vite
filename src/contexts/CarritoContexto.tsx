@@ -85,6 +85,10 @@ export function CarritoProvider({ children }) {
     }
   };
 
+  const cancelarCompra = () => {
+    setCarrito([]);
+  };
+
   return (
     <CarritoContext.Provider
       value={{
@@ -93,6 +97,7 @@ export function CarritoProvider({ children }) {
         eliminarDelCarrito,
         sumarStock,
         restarStock,
+        cancelarCompra,
       }}
     >
       {children}

@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 export default function Orden() {
   const { usuario } = useContext<DatosUsuario>(UsuarioContext);
-  const { carrito } = useContext(CarritoContext);
+  const { carrito, cancelarCompra } = useContext(CarritoContext);
   function totalDeLaCompra() {
     let contador = 0;
     for (let i = 0; i < carrito.length; i++) {
@@ -46,28 +46,30 @@ export default function Orden() {
       );
     }
   );
+
   return (
     <div className="contenedorPaginaOrden">
       <div className="contenedorOrdenFinal">
         <span className="textAlignCenter"> OK! Este es tu pedido:</span>
-        <p className="botonBasico"> Datos de contacto</p>
+        <p className="titulosSeccion"> Datos de contacto</p>
         <div className="contenedorDatosContacto">
-          Nombre y Apellido: {usuario.NombreCompleto}
+          <strong>Nombre y Apellido:</strong> {usuario.NombreCompleto}
           <br />
-          Provincia: {usuario.Provincia} <br />
-          Localidad: {usuario.Localidad} <br /> CP: {usuario.CodigoPostal}
+          <strong>Provincia:</strong> {usuario.Provincia} <br />
+          <strong> Localidad:</strong> {usuario.Localidad} <br />{" "}
+          <strong>CP:</strong> {usuario.CodigoPostal}
           <br />
-          E-mail: {usuario.Correo}
+          <strong>E-mail:</strong> {usuario.Correo}
           <br />
-          Celular: {usuario.Celular}
+          <strong>Celular:</strong> {usuario.Celular}
           <br />
-          Forma de pago: {usuario.FormaPago}
+          <strong>Forma de pago:</strong> {usuario.FormaPago}
           <br />
-          Envío: {usuario.FormaEnvio}
+          <strong>Envío:</strong> {usuario.FormaEnvio}
           <br />
-          Medio de contacto: {usuario.FormaContacto}
+          <strong>Medio de contacto:</strong> {usuario.FormaContacto}
         </div>
-        <p className="botonBasico">
+        <p className="titulosSeccion">
           {" "}
           <Grid container spacing={2} className="contenedorProductosOrdenFinal">
             <Grid item xs={4}>
@@ -83,10 +85,14 @@ export default function Orden() {
         </p>
         {productosParaMostrarEnOrden} <hr />
         <div>
-          <p className="contenedorTotalDeLaCompra">
+          <span className="contenedorTotalDeLaCompra">
             {" "}
-            TOTAL ${totalDeLaCompra()}
-          </p>
+            TOTAL: ${totalDeLaCompra()}
+          </span>{" "}
+          <hr />
+          <small>
+            Recordá que el envío se calcula una vez que finalices tu compra 📦.{" "}
+          </small>
         </div>{" "}
       </div>{" "}
       <Grid container spacing={2}>
@@ -102,12 +108,17 @@ export default function Orden() {
         </Grid>
         <Grid item xs={4}>
           <Link to="/">
-            <button className="botonBasico">Cancelar compra</button>
+            <button className="botonBasico" onClick={() => cancelarCompra()}>
+              Cancelar compra
+            </button>
           </Link>
         </Grid>
       </Grid>
-      <Link to="/resumenOrdenDeCompra">
-        <button className="botonBasico botonFinalizarCompra">
+      <Link to="/despedida">
+        <button
+          className="botonBasico botonFinalizarCompra"
+          onClick={() => cancelarCompra()}
+        >
           FINALIZAR COMPRA
         </button>{" "}
       </Link>{" "}

@@ -2,16 +2,16 @@ import Usuario from "componentes/Usuario";
 import { createContext, useState } from "react";
 import type { DatosUsuario } from "tipos/DatosDeUsuario";
 
-export const UsuarioContext = createContext();
+export const UsuarioContext = createContext<DatosUsuario | null>(null);
 
 export function UsuarioProvider({ children }) {
   const [usuario, setUsuario] = useState<DatosUsuario>({
     NombreCompleto: "",
     Provincia: "",
-    Localidad: " ",
-    CodigoPostal: " ",
-    Correo: " ",
-    Celular: " ",
+    Localidad: "",
+    CodigoPostal: "",
+    Correo: "",
+    Celular: "",
     FormaPago: "",
     FormaEnvio: "",
     FormaContacto: "",

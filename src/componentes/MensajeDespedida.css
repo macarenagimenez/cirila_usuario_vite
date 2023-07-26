@@ -1,0 +1,12 @@
+.mensajeDespedida {
+  width: 555px;
+  background-color: white;
+  margin: 100px auto;
+  padding: 20px 30px;
+  border-radius: 20px;
+}
+.botonVolver {
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+}

@@ -3,8 +3,11 @@ import "componentes/Usuario.css";
 import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import "componentes/SolicitudDeDatosUsuario.css";
+import { useContext } from "react";
+import { CarritoContext } from "contexts/CarritoContexto";
 
 export default function SolicitudDeDatosUsuario() {
+  const { cancelarCompra } = useContext(CarritoContext);
   // TODO estilizar componentes MUI
   return (
     <div className="contenedorCargaDeDatos">
@@ -22,7 +25,9 @@ export default function SolicitudDeDatosUsuario() {
           </Grid>
           <Grid item xs={3}>
             <Link to="/">
-              <button className="botonBasico">Cancelar compra</button>{" "}
+              <button className="botonBasico" onClick={() => cancelarCompra()}>
+                Cancelar compra
+              </button>{" "}
             </Link>
           </Grid>
           <Grid item xs={3}></Grid>

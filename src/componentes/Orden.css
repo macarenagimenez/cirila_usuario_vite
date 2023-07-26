@@ -2,7 +2,6 @@
   background-color: white;
   margin: 20px auto;
   padding: 20px 30px;
-
   border-radius: 20px;
 }
 .textAlignCenter {
@@ -19,10 +18,19 @@
   text-align: center;
 }
 .contenedorTotalDeLaCompra {
-  text-align: end;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 30px;
+  margin: 20px 0px 20px 200px;
   font-size: 25px;
 }
 .contenedorPaginaOrden {
   width: 555px;
   margin: 0 auto;
+}
+
+.titulosSeccion {
+  border: 3px solid #f4cfc7;
+  padding: 8px 30px;
+  border-radius: 20px;
 }

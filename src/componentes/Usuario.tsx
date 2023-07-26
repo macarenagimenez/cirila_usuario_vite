@@ -7,8 +7,7 @@ import { useContext } from "react";
 import { DatosUsuario } from "tipos/DatosDeUsuario";
 
 export default function Usuario() {
-  const { usuario, actualizarUsuario } =
-    useContext<DatosUsuario>(UsuarioContext);
+  const { usuario, actualizarUsuario } = useContext(UsuarioContext);
 
   let formasDepago = [
     { pago: "Transferencia 15% OFF", disabled: null },
@@ -45,7 +44,7 @@ export default function Usuario() {
           id="outlined-select-currency"
           select
           label="¿Como te gustaría pagar?"
-          defaultValue={""}
+          defaultValue={usuario.FormaPago}
           onChange={(e) => {
             actualizarUsuario("FormaPago", e.target.value);
           }}
@@ -71,7 +70,7 @@ export default function Usuario() {
           id="outlined-select-currency"
           select
           label="¿Envio a sucursal o domicilio?"
-          defaultValue={""}
+          defaultValue={usuario.FormaEnvio}
           onChange={(e) => {
             actualizarUsuario("FormaEnvio", e.target.value);
           }}
@@ -101,7 +100,7 @@ export default function Usuario() {
           id="outlined-select-currency"
           select
           label="¿Como te gustaría contactar?"
-          defaultValue={""}
+          defaultValue={usuario.FormaContacto}
           onChange={(e) => {
             actualizarUsuario("FormaContacto", e.target.value);
           }}
@@ -132,6 +131,7 @@ export default function Usuario() {
               id="outlined-basic"
               label="Nombre y apellido"
               variant="outlined"
+              defaultValue={usuario.NombreCompleto}
               onChange={(e) => {
                 actualizarUsuario("NombreCompleto", e.target.value);
               }}
@@ -141,6 +141,7 @@ export default function Usuario() {
               id="outlined-basic"
               label="Provincia"
               variant="outlined"
+              defaultValue={usuario.Provincia}
               onChange={(e) => {
                 actualizarUsuario("Provincia", e.target.value);
               }}
@@ -150,6 +151,7 @@ export default function Usuario() {
               id="outlined-basic"
               label="Localidad"
               variant="outlined"
+              defaultValue={usuario.Localidad}
               onChange={(e) => {
                 actualizarUsuario("Localidad", e.target.value);
               }}
@@ -159,6 +161,7 @@ export default function Usuario() {
               id="outlined-basic"
               label="Código Postal"
               variant="outlined"
+              defaultValue={usuario.CodigoPostal}
               onChange={(e) => {
                 actualizarUsuario("CodigoPostal", e.target.value);
               }}
@@ -168,6 +171,7 @@ export default function Usuario() {
               id="outlined-basic"
               label="Correo electrónico"
               variant="outlined"
+              defaultValue={usuario.Correo}
               onChange={(e) => {
                 actualizarUsuario("Correo", e.target.value);
               }}
@@ -177,6 +181,7 @@ export default function Usuario() {
               id="outlined-basic"
               label="Celular"
               variant="outlined"
+              defaultValue={usuario.Celular}
               onChange={(e) => {
                 actualizarUsuario("Celular", e.target.value);
               }}
@@ -210,13 +215,6 @@ export default function Usuario() {
           </Box>
         </div>
       </Grid>
-      Nombre: {usuario.NombreCompleto}
-      Provincia: {usuario.Provincia}
-      Localidad: {usuario.Localidad}
-      CP: {usuario.CodigoPostal}
-      Correo: {usuario.Correo}Celular: {usuario.Celular} forma de pago:{" "}
-      {usuario.FormaPago} envio: {usuario.FormaEnvio} forma de contacto:
-      {usuario.FormaContacto}
     </>
   );
 }
