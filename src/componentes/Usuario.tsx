@@ -186,6 +186,16 @@ export default function Usuario() {
                 actualizarUsuario("Celular", e.target.value);
               }}
             />{" "}
+            <TextField
+              id="outlined-multiline-static"
+              label="¿Quisieras agregar algun mensaje?"
+              multiline
+              rows={4}
+              defaultValue={usuario.MensajeOpcional}
+              onChange={(e) => {
+                actualizarUsuario("MensajeOpcional", e.target.value);
+              }}
+            />
           </Box>
         </div>
       </Grid>

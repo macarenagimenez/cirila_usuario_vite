@@ -11,7 +11,7 @@ function RenderizadoUnicoProducto(props: InformacionDeProducto) {
   let producto: InformacionDeProducto = props.producto;
   const { carrito, agregarAlCarrito, eliminarDelCarrito } =
     useContext(CarritoContext);
-
+  //TODO Agregar mas imagenes al producto
   let imagen = (
     <Grid item xs={6} className="imagenProductoSeleccionado">
       <img src={producto.urlImagen} alt={producto.nombre} />
@@ -85,10 +85,9 @@ function RenderizadoUnicoProducto(props: InformacionDeProducto) {
         <p className="textoEnviosMediosDePago">
           {" "}
           <span>Medios de Pago: </span> Aceptamos todas las tarjetas y tenés 20%
-          OFF abonando con transferencia/efectivo.{" "}
+          OFF abonando con transferencia/efectivo. <hr />
+          <span> Envios: </span>Continuá con tu compra y te cotizamos el envío.{" "}
         </p>
-        <hr />
-        <span> Envios: </span>Continuá con tu compra y te cotizamos el envío.
       </div>
     </Grid>
   );

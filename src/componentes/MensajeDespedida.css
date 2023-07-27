@@ -4,6 +4,7 @@
   margin: 100px auto;
   padding: 20px 30px;
   border-radius: 20px;
+  text-align: center;
 }
 .botonVolver {
   display: flex;

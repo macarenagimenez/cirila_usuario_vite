@@ -8,6 +8,7 @@ type DatosUsuario = {
   FormaPago: string;
   FormaEnvio: string;
   FormaContacto: string;
+  MensajeOpcional: string;
 };
 
 export type { DatosUsuario };

@@ -15,6 +15,7 @@ export function UsuarioProvider({ children }) {
     FormaPago: "",
     FormaEnvio: "",
     FormaContacto: "",
+    MensajeOpcional: "",
   });
   function actualizarUsuario(datoActualizado: string, valor: string) {
     setUsuario((prevState: DatosUsuario) => ({

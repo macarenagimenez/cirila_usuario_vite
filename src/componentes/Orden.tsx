@@ -68,6 +68,8 @@ export default function Orden() {
           <strong>Envío:</strong> {usuario.FormaEnvio}
           <br />
           <strong>Medio de contacto:</strong> {usuario.FormaContacto}
+          <br />
+          <strong>Mensajito:</strong> {usuario.MensajeOpcional}
         </div>
         <p className="titulosSeccion">
           {" "}

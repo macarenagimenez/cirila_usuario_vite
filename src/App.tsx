@@ -13,6 +13,7 @@ import FinalOrdenDeCompra from "paginas/FinalOrdenDeCompra";
 import CompraFinalizada from "paginas/CompraFinalizada";
 
 function App() {
+  //TODO refactorizar
   return (
     <CarritoProvider>
       <UsuarioProvider>
