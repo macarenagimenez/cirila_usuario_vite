@@ -25,6 +25,11 @@ function ResumenDeCompra() {
             <Grid item xs={3}>
               {" "}
               <img src={item.urlImagen} alt={item.nombre} width={100} />
+              {item.stock <= 2 ? (
+                <small className="stockBajo">Ultimas 2!</small>
+              ) : (
+                ""
+              )}
             </Grid>{" "}
             <Grid item xs={2}>
               <Link to={"/producto?id=" + item.id}>{item.nombre}</Link>

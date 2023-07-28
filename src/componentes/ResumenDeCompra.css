@@ -36,6 +36,7 @@
 }
 .contenedorRenderizadoDeProducto {
   margin-top: 10px;
+  position: relative;
 }
 
 a {
@@ -51,4 +52,13 @@ a {
   margin: 20px auto;
   padding: 50px;
   border-radius: 30px;
+}
+.stockBajo {
+  background-color: #f4cfc7;
+  padding: 2px 8px;
+  font-size: 12px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 70px;
+  left: 70px;
 }
