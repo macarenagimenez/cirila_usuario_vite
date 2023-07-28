@@ -6,7 +6,15 @@ import type { productosAgregados } from "tipos/CarritoCargado";
 export const CarritoContext = createContext();
 
 export function CarritoProvider({ children }) {
-  const [carrito, setCarrito] = useState<productosAgregados[]>([]);
+  const carritoEstadoInicial =
+    JSON.parse(window.localStorage.getItem("carrito")) || [];
+
+  const [carrito, setCarrito] =
+    useState<productosAgregados[]>(carritoEstadoInicial);
+
+  const updateLocalStorage = (estado) => {
+    window.localStorage.setItem("carrito", JSON.stringify(estado));
+  };
 
   const agregarAlCarrito = (
     producto: InformacionDeProducto,
@@ -32,10 +40,12 @@ export function CarritoProvider({ children }) {
       if (indiceProductoExistente >= 0 && cantidad >= 1) {
         nuevoCarrito[indiceProductoExistente].cantidad = cantidad;
         setCarrito(nuevoCarrito);
+        updateLocalStorage(nuevoCarrito);
       } else {
         nuevoCarrito.push(productoAgregado);
 
         setCarrito(nuevoCarrito);
+        updateLocalStorage(nuevoCarrito);
       }
     }
   };
@@ -49,6 +59,7 @@ export function CarritoProvider({ children }) {
     if (indiceProductoExistente >= 0) {
       nuevoCarrito.splice(indiceProductoExistente, 1);
       setCarrito(nuevoCarrito);
+      updateLocalStorage(nuevoCarrito);
     }
   };
 
@@ -66,6 +77,7 @@ export function CarritoProvider({ children }) {
     if (indiceProductoExistente >= 0) {
       nuevoCarrito[indiceProductoExistente].cantidad = resultadoSuma;
       setCarrito(nuevoCarrito);
+      updateLocalStorage(nuevoCarrito);
     }
   };
   const restarStock = (producto: productosAgregados): void => {
@@ -82,11 +94,13 @@ export function CarritoProvider({ children }) {
     if (indiceProductoExistente >= 0) {
       nuevoCarrito[indiceProductoExistente].cantidad = resultadoResta;
       setCarrito(nuevoCarrito);
+      updateLocalStorage(nuevoCarrito);
     }
   };
 
   const cancelarCompra = () => {
     setCarrito([]);
+    updateLocalStorage([]);
   };
 
   return (

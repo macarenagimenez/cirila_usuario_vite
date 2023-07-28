@@ -11,4 +11,17 @@ type DatosUsuario = {
   MensajeOpcional: string;
 };
 
+let datosUsuarioVacio: DatosUsuario = {
+  NombreCompleto: "",
+  Provincia: "",
+  Localidad: "",
+  CodigoPostal: "",
+  Correo: "",
+  Celular: "",
+  FormaPago: "",
+  FormaEnvio: "",
+  FormaContacto: "",
+  MensajeOpcional: "",
+};
+export { datosUsuarioVacio };
 export type { DatosUsuario };
