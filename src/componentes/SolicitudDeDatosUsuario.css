@@ -3,7 +3,7 @@
   margin: 50px auto;
 }
 .textoIzquierda {
-  text-align: left;
+  text-align: end;
 }
 .botonFinalizarCompra {
   color: black;

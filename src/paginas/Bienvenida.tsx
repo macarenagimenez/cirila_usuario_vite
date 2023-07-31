@@ -5,10 +5,15 @@ import ProductosDestacados from "secciones/ProductosDestacados";
 import "componentes/MensajeBienvenida.css";
 import ImagenConTexto from "componentes/ImagenConTexto";
 import { rutaParaImagenesConTexto } from "tipos/RutaDeImagenes";
-
+import AnimacionParaPresentacionPagina from "componentes/AnimacionParaPresentacionPagina";
+import { rutaParaPresentacionPagina } from "tipos/RutaDeImagenes";
 function Bienvenida() {
   return (
     <div>
+      {" "}
+      <AnimacionParaPresentacionPagina
+        informacionParaPresentacion={rutaParaPresentacionPagina[1]}
+      />
       <Encabezado />
       <MensajeBienvenida texto={TextoParaMarketing[1].texto} />
       <ProductosDestacados />

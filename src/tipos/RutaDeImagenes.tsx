@@ -25,9 +25,9 @@ let rutaParaEncabezado: rutaDeImagen[] = [
 
 let rutaParaImagenesConTexto: rutaDeImagen[] = [
   {
-    src: "imagenes/SomosElMejorRegalo.jpg",
+    src: "imagenes/kitRegalo.jpg",
     alt: "SomosElMejorRegalo",
-    texto: "SOMOS EL MEJOR REGALO",
+    texto: "Somos el mejor regalo.",
   },
 ];
 

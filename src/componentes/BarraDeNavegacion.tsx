@@ -36,11 +36,11 @@ function BarraDeNavegacion() {
               </Link>{" "}
             </div>
           </li>
-          <li>
+          {/* <li>
             <Link to="/quienessomos" className="estiloDeBarra">
               ¿Quienes somos?
             </Link>{" "}
-          </li>
+          </li> */}
           <li>
             <Link to="/productos" className="estiloDeBarra">
               Productos

@@ -9,7 +9,7 @@ import { CarritoProvider } from "contexts/CarritoContexto.jsx";
 import CargaDeDatos from "paginas/CargaDeDatos";
 import { UsuarioProvider } from "contexts/UsuarioContexto";
 import FinalOrdenDeCompra from "paginas/FinalOrdenDeCompra";
-
+import QuienesSomos from "paginas/QuienesSomos";
 import CompraFinalizada from "paginas/CompraFinalizada";
 import ScrollToTop from "hooks/scrollToTop";
 
@@ -25,6 +25,7 @@ function App() {
             <Route path="/" element={<CapaFija />}>
               <Route index element={<Bienvenida />} />
               <Route path="productos" element={<PaginaDeProductos />} />
+              <Route path="quienesSomos" element={<QuienesSomos />} />
               <Route path="producto" element={<ProductoSeleccionado />} />
               <Route path="carritoDeCompras" element={<Carrito />} />
               <Route path="cargaDeDatos" element={<CargaDeDatos />} />

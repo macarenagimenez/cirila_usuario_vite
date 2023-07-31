@@ -19,9 +19,11 @@ export default function SolicitudDeDatosUsuario() {
           {" "}
           <Grid item xs={3}></Grid>
           <Grid item xs={3} className="textoIzquierda">
-            <Link to="/carritoDeCompras">
-              <button className="botonBasico ">Volver al carrito</button>{" "}
-            </Link>
+            <div>
+              <Link to="/carritoDeCompras">
+                <button className="botonBasico">Volver al carrito</button>{" "}
+              </Link>
+            </div>
           </Grid>
           <Grid item xs={3}>
             <Link to="/">

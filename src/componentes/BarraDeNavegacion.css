@@ -42,6 +42,10 @@ li {
   position: relative;
 }
 .cantidadDeProductosBarraNavegacion {
+  background-color: #f4cfc7;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 10px;
   font-size: 12px;
   position: absolute;
   top: 0px;
