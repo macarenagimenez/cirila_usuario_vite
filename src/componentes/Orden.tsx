@@ -25,12 +25,7 @@ export default function Orden() {
       return (
         <div className="contenedorRenderizadoDeProducto">
           {" "}
-          <Grid
-            container
-            item
-            spacing={1}
-            className="contenedorProductosOrdenFinal"
-          >
+          <Grid container spacing={1} className="contenedorProductosOrdenFinal">
             <Grid item xs={4}>
               {item.nombre}
             </Grid>
@@ -85,11 +80,12 @@ export default function Orden() {
             </Grid>
           </Grid>
         </p>
-        {productosParaMostrarEnOrden} <hr />
+        {productosParaMostrarEnOrden}
+        <hr />
         <div>
           <span className="contenedorTotalDeLaCompra">
             {" "}
-            TOTAL: ${totalDeLaCompra()}
+            <p> TOTAL: ${totalDeLaCompra()}</p>
           </span>{" "}
           <hr />
           <small>

@@ -11,6 +11,7 @@ import { UsuarioProvider } from "contexts/UsuarioContexto";
 import FinalOrdenDeCompra from "paginas/FinalOrdenDeCompra";
 
 import CompraFinalizada from "paginas/CompraFinalizada";
+import ScrollToTop from "hooks/scrollToTop";
 
 function App() {
   //TODO refactorizar
@@ -18,6 +19,8 @@ function App() {
     <CarritoProvider>
       <UsuarioProvider>
         <BrowserRouter>
+          {" "}
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<CapaFija />}>
               <Route index element={<Bienvenida />} />

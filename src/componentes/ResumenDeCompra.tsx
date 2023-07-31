@@ -19,14 +19,14 @@ function ResumenDeCompra() {
   let productosParaMostrarEnResumen: productosAgregados = carrito.map(
     (item: productosAgregados) => {
       return (
-        <div className="contenedorRenderizadoDeProducto">
+        <div className="contenedorRenderizadoDeProducto ">
           {" "}
           <Grid container item spacing={1} className="centrarTexto">
             <Grid item xs={3}>
               {" "}
               <img src={item.urlImagen} alt={item.nombre} width={100} />
-              {item.stock <= 2 ? (
-                <small className="stockBajo">Ultimas 2!</small>
+              {item.stock <= 1 ? (
+                <small className="stockBajo">El último!</small>
               ) : (
                 ""
               )}
