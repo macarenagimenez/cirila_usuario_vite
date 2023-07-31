@@ -3,7 +3,6 @@ import { apiDestacados } from "tipos/APIs";
 
 function ProductosDestacados() {
   const apiURL = apiDestacados.APIurl;
-  console.log(apiURL);
 
   return (
     <section>

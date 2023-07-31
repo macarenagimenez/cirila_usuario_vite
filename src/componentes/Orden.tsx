@@ -7,10 +7,12 @@ import { productosAgregados } from "tipos/CarritoCargado";
 import "componentes/Orden.css";
 import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
+import carritoService from "service/carritoService";
 
 export default function Orden() {
   const { usuario } = useContext<DatosUsuario>(UsuarioContext);
   const { carrito, cancelarCompra } = useContext(CarritoContext);
+
   function totalDeLaCompra() {
     let contador = 0;
     for (let i = 0; i < carrito.length; i++) {
@@ -41,6 +43,11 @@ export default function Orden() {
       );
     }
   );
+
+  function finalizarCompra() {
+    carritoService(carrito, usuario);
+    cancelarCompra();
+  }
 
   return (
     <div className="contenedorPaginaOrden">
@@ -115,7 +122,7 @@ export default function Orden() {
       <Link to="/despedida">
         <button
           className="botonBasico botonFinalizarCompra"
-          onClick={() => cancelarCompra()}
+          onClick={() => finalizarCompra()}
         >
           FINALIZAR COMPRA
         </button>{" "}

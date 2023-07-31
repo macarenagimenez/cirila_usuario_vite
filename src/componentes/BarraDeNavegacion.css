@@ -38,3 +38,12 @@ li {
 .estiloDeBarra:hover {
   color: #174642 !important;
 }
+.carritoDeComprasBarraNavegacion {
+  position: relative;
+}
+.cantidadDeProductosBarraNavegacion {
+  font-size: 12px;
+  position: absolute;
+  top: 0px;
+  left: 28px;
+}
