@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { UsuarioContext } from "contexts/UsuarioContexto";
 import { useContext } from "react";
 export default function MensajeDespedida() {
-  const { usuario } = useContext<DatosUsuario>(UsuarioContext);
+  const { usuario } = useContext(UsuarioContext);
   //TODO estilizar mensaje despedida, mas gracioso
   return (
     <div className="mensajeDespedida">

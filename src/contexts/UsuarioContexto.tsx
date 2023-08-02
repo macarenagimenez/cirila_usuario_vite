@@ -1,29 +1,47 @@
-import Usuario from "componentes/Usuario";
 import { createContext, useState } from "react";
 import type { DatosUsuario } from "tipos/DatosDeUsuario";
 import { datosUsuarioVacio } from "tipos/DatosDeUsuario";
 
-export const UsuarioContext = createContext<DatosUsuario>(datosUsuarioVacio);
+interface UsuarioContextState {
+  usuario: DatosUsuario;
+  setUsuario: (value: React.SetStateAction<DatosUsuario>) => void;
+  actualizarUsuario: (datoActualizado: string, valor: string) => void;
+}
 
-export function UsuarioProvider({ children }) {
-  let usuarioEstadoInicial: DatosUsuario = datosUsuarioVacio;
-  if (window.localStorage.getItem("usuario") == null) {
-    window.localStorage.setItem("usuario", JSON.stringify(datosUsuarioVacio));
-  } else {
-    usuarioEstadoInicial = JSON.parse(window.localStorage.getItem("usuario"));
-  }
+const usuarioContextStateInicial: UsuarioContextState = {
+  usuario: datosUsuarioVacio,
+  setUsuario: () => void 0,
+  actualizarUsuario: () => void 0,
+};
 
-  const [usuario, setUsuario] = useState<DatosUsuario>(usuarioEstadoInicial);
+export const UsuarioContext = createContext<UsuarioContextState>(
+  usuarioContextStateInicial
+);
+
+export function UsuarioProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element {
+  const usuarioEstadoInicial = (): DatosUsuario => {
+    const usuarioAlmacenado = window.localStorage.getItem("usuario");
+    if (usuarioAlmacenado) {
+      return JSON.parse(usuarioAlmacenado);
+    } else {
+      return datosUsuarioVacio;
+    }
+  };
+
+  const [usuario, setUsuario] = useState<DatosUsuario>(usuarioEstadoInicial());
 
   const updateLocalStorage = (estado: DatosUsuario) => {
     window.localStorage.setItem("usuario", JSON.stringify(estado));
   };
 
   function actualizarUsuario(datoActualizado: string, valor: string) {
-    let nuevoValorUsuario = structuredClone(usuario);
+    let nuevoValorUsuario: DatosUsuario = structuredClone(usuario);
     nuevoValorUsuario[datoActualizado] = valor;
     setUsuario(nuevoValorUsuario);
-
     updateLocalStorage(nuevoValorUsuario);
   }
 

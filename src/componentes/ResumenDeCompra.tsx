@@ -16,7 +16,7 @@ function ResumenDeCompra() {
   function totalPrecioProductosIguales(producto: productosAgregados) {
     return producto.precio * producto.cantidad;
   }
-  let productosParaMostrarEnResumen: productosAgregados = carrito.map(
+  let productosParaMostrarEnResumen: JSX.Element[] = carrito.map(
     (item: productosAgregados) => {
       return (
         <div className="contenedorRenderizadoDeProducto ">

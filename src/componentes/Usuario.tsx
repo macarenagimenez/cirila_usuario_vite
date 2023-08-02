@@ -1,17 +1,16 @@
 import { Box, TextField, Grid } from "@mui/material";
-import { useState } from "react";
+
 import MenuItem from "@mui/material/MenuItem";
 import { UsuarioContext } from "contexts/UsuarioContexto";
 
 import { useContext } from "react";
-import { DatosUsuario } from "tipos/DatosDeUsuario";
 
 export default function Usuario() {
   const { usuario, actualizarUsuario } = useContext(UsuarioContext);
 
   let formasDepago = [
-    { pago: "Transferencia 15% OFF", disabled: null },
-    { pago: "Tarjeta de crédito", disabled: null },
+    { pago: "Transferencia 15% OFF", disabled: undefined },
+    { pago: "Tarjeta de crédito", disabled: undefined },
 
     { pago: "Con amor 🤣", disabled: true },
   ];
@@ -19,8 +18,8 @@ export default function Usuario() {
   let formasDeEnvio: string[] = ["A domicilio", "Retiro en sucursal"];
 
   let mediosDeContacto = [
-    { medio: "Por WhatsApp", disabled: null },
-    { medio: "Por correo electrónico", disabled: null },
+    { medio: "Por WhatsApp", disabled: undefined },
+    { medio: "Por correo electrónico", disabled: undefined },
     { medio: "Por telepatía 🧘🏻‍♀️", disabled: true },
   ];
 

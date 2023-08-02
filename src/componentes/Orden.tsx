@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { UsuarioContext } from "contexts/UsuarioContexto";
 import { CarritoContext } from "contexts/CarritoContexto";
 
-import { DatosUsuario } from "tipos/DatosDeUsuario";
 import { productosAgregados } from "tipos/CarritoCargado";
 import "componentes/Orden.css";
 import { Grid } from "@mui/material";
@@ -10,7 +9,7 @@ import { Link } from "react-router-dom";
 import carritoService from "service/carritoService";
 
 export default function Orden() {
-  const { usuario } = useContext<DatosUsuario>(UsuarioContext);
+  const { usuario } = useContext(UsuarioContext);
   const { carrito, cancelarCompra } = useContext(CarritoContext);
 
   function totalDeLaCompra() {
@@ -22,27 +21,25 @@ export default function Orden() {
     return <span>{contador}</span>;
   }
 
-  let productosParaMostrarEnOrden: productosAgregados = carrito.map(
-    (item: productosAgregados) => {
-      return (
-        <div className="contenedorRenderizadoDeProducto">
-          {" "}
-          <Grid container spacing={1} className="contenedorProductosOrdenFinal">
-            <Grid item xs={4}>
-              {item.nombre}
-            </Grid>
-            <Grid item xs={4}>
-              {" "}
-              {item.cantidad}
-            </Grid>
-            <Grid item xs={4}>
-              ${item.precio}
-            </Grid>
-          </Grid>{" "}
-        </div>
-      );
-    }
-  );
+  let productosParaMostrarEnOrden = carrito.map((item: productosAgregados) => {
+    return (
+      <div className="contenedorRenderizadoDeProducto">
+        {" "}
+        <Grid container spacing={1} className="contenedorProductosOrdenFinal">
+          <Grid item xs={4}>
+            {item.nombre}
+          </Grid>
+          <Grid item xs={4}>
+            {" "}
+            {item.cantidad}
+          </Grid>
+          <Grid item xs={4}>
+            ${item.precio}
+          </Grid>
+        </Grid>{" "}
+      </div>
+    );
+  });
 
   function finalizarCompra() {
     carritoService(carrito, usuario);

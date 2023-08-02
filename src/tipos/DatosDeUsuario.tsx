@@ -9,6 +9,7 @@ type DatosUsuario = {
   FormaEnvio: string;
   FormaContacto: string;
   MensajeOpcional: string;
+  [index: string]: string;
 };
 
 let datosUsuarioVacio: DatosUsuario = {
