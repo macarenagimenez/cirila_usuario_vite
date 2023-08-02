@@ -7,10 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandPointLeft } from "@fortawesome/free-solid-svg-icons";
 import { CarritoContext } from "contexts/CarritoContexto";
 
-function RenderizadoUnicoProducto(props: InformacionDeProducto) {
-  let producto: InformacionDeProducto = props.producto;
-  const { carrito, agregarAlCarrito, eliminarDelCarrito } =
-    useContext(CarritoContext);
+function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
+  let producto = props.producto;
+
+  const { carrito, agregarAlCarrito } = useContext(CarritoContext);
   //TODO Agregar mas imagenes al producto
   let imagen = (
     <Grid item xs={6} className="imagenProductoSeleccionado">
@@ -85,7 +85,10 @@ function RenderizadoUnicoProducto(props: InformacionDeProducto) {
         <p className="textoEnviosMediosDePago">
           {" "}
           <span>Medios de Pago: </span> Aceptamos todas las tarjetas y tenés 20%
-          OFF abonando con transferencia/efectivo. <hr />
+          OFF abonando con transferencia/efectivo.{" "}
+        </p>{" "}
+        <hr />
+        <p className="textoEnviosMediosDePago">
           <span> Envios: </span>Continuá con tu compra y te cotizamos el envío.{" "}
         </p>
       </div>

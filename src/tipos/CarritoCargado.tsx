@@ -7,4 +7,7 @@ type productosAgregados = {
   stock: number;
 };
 
+let conjuntoProductosAgregados: productosAgregados[] = [];
+
+export { conjuntoProductosAgregados };
 export type { productosAgregados };

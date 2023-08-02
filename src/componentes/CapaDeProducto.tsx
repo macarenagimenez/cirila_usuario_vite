@@ -1,7 +1,8 @@
 import "componentes/CapaDeProducto.css";
 import { Link } from "react-router-dom";
+import { InformacionDeProducto } from "tipos/InformacionDeProducto";
 
-function CapaDeProducto(props) {
+function CapaDeProducto(props: { informacionProducto: InformacionDeProducto }) {
   const productoUrl = "/producto?id=" + props.informacionProducto.id;
 
   return (

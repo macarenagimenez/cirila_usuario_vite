@@ -3,16 +3,46 @@ import { createContext, useState } from "react";
 import { InformacionDeProducto } from "tipos/InformacionDeProducto";
 import type { productosAgregados } from "tipos/CarritoCargado";
 
-export const CarritoContext = createContext();
+interface CarritoContextState {
+  carrito: productosAgregados[];
+  agregarAlCarrito: (producto: InformacionDeProducto, cantidad: number) => void;
+  eliminarDelCarrito: (producto: InformacionDeProducto) => void;
+  sumarStock: (producto: productosAgregados) => void;
+  restarStock: (producto: productosAgregados) => void;
+  cancelarCompra: () => void;
+}
 
-export function CarritoProvider({ children }) {
-  const carritoEstadoInicial =
-    JSON.parse(window.localStorage.getItem("carrito")) || [];
+const carritoContextStateInitial: CarritoContextState = {
+  carrito: [],
+  agregarAlCarrito: () => void 0,
+  eliminarDelCarrito: () => void 0,
+  sumarStock: () => void 0,
+  restarStock: () => void 0,
+  cancelarCompra: () => void 0,
+};
+export const CarritoContext = createContext<CarritoContextState>(
+  carritoContextStateInitial
+);
 
-  const [carrito, setCarrito] =
-    useState<productosAgregados[]>(carritoEstadoInicial);
+export function CarritoProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element {
+  const carritoEstadoInicial = (): productosAgregados[] => {
+    const carritoAlmacenado = window.localStorage.getItem("carrito");
+    if (carritoAlmacenado) {
+      return JSON.parse(carritoAlmacenado);
+    } else {
+      return [];
+    }
+  };
 
-  const updateLocalStorage = (estado) => {
+  const [carrito, setCarrito] = useState<productosAgregados[]>(
+    carritoEstadoInicial()
+  );
+
+  const updateLocalStorage = (estado: productosAgregados[]) => {
     window.localStorage.setItem("carrito", JSON.stringify(estado));
   };
 
@@ -98,7 +128,7 @@ export function CarritoProvider({ children }) {
     }
   };
 
-  const cancelarCompra = () => {
+  const cancelarCompra = (): void => {
     setCarrito([]);
     updateLocalStorage([]);
   };

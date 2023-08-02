@@ -3,12 +3,14 @@ import type { rutaDeImagen } from "tipos/RutaDeImagenes";
 import "componentes/PieDePagina.css";
 
 function PieDePagina() {
-  const informacionDeImagenesParaPieDePagina = (rutaParaPieDePagina) => {
+  const informacionDeImagenesParaPieDePagina = (
+    rutaParaPieDePagina: rutaDeImagen[]
+  ) => {
     let contenido: JSX.Element[] = [];
 
-    rutaParaPieDePagina.map((imagen: rutaDeImagen) => {
+    rutaParaPieDePagina.map((imagen: rutaDeImagen, index: number) => {
       contenido.push(
-        <div className="textoConIconos">
+        <div className="textoConIconos" key={index}>
           <img src={imagen.src} alt={imagen.alt} width="200px" height="200px" />
           <p>{imagen.texto}</p>
         </div>
@@ -23,10 +25,10 @@ function PieDePagina() {
         {informacionDeImagenesParaPieDePagina(rutaParaPieDePagina)}
       </div>
       <div className="contacto">
-        <text>
+        <span>
           COMUNICATE CON NOSOTRAS <hr />
           hola@gaiacirila.com.ar | +54 9 2657-307339
-        </text>
+        </span>
       </div>
     </section>
   );

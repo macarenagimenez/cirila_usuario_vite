@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CarritoContext } from "contexts/CarritoContexto";
+import { conjuntoProductosAgregados } from "tipos/CarritoCargado";
+import type { productosAgregados } from "tipos/CarritoCargado";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import "./BarraDeNavegacion.css";
 
 function BarraDeNavegacion() {
-  const { carrito } = useContext(CarritoContext);
+  let { carrito } = useContext(CarritoContext);
 
   function contadorDeProductos() {
     let contador = 0;

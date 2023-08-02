@@ -3,20 +3,37 @@ import { useState, useEffect } from "react";
 import { InformacionDeProducto } from "tipos/InformacionDeProducto";
 import { Grid } from "@mui/material";
 import CapaDeProducto from "componentes/CapaDeProducto";
-import { Link } from "react-router-dom";
 
-function ObtenerProductos(props) {
-  const [productos, setProductos] = useState([]);
-
+function ObtenerProductos(props: { apiURL: string }) {
+  const [productos, setProductos] = useState<InformacionDeProducto[]>([]);
+  type productoEntrante = {
+    id: string;
+    nombre: string;
+    descripcion: string;
+    precio: number;
+    imagenes: [
+      {
+        orden: number;
+        url: string;
+        alt: string;
+      }
+    ];
+    destacado: true;
+    categorias: null;
+    stock: number;
+    fechaCreacion: string;
+    ultimaFechaActualizacion: string;
+  };
   useEffect(() => {
     fetch(props.apiURL)
       .then((response) => response.json())
       .then((data) => {
         let productosDestacados: InformacionDeProducto[] = [];
 
-        data.map((producto): InformacionDeProducto => {
-          const nuevoProducto = (producto) => {
-            let { id, nombre, precio } = producto;
+        data.map((producto: productoEntrante): void => {
+          const nuevoProducto = (producto: productoEntrante) => {
+            let { id, nombre, precio, stock } = producto;
+
             let urlImagen = producto.imagenes[0]
               ? producto.imagenes[0].url
               : " ";
@@ -25,6 +42,7 @@ function ObtenerProductos(props) {
               nombre,
               precio,
               urlImagen,
+              stock,
             };
           };
           productosDestacados.push(nuevoProducto(producto));
@@ -36,7 +54,7 @@ function ObtenerProductos(props) {
       });
   }, []);
 
-  function mostrarProductosDestacados(productos) {
+  function mostrarProductosDestacados(productos: InformacionDeProducto[]) {
     let contenidoParaRenderizar = [];
     for (let i = 0; i < productos.length; i++) {
       let InformaciónParaMostrar = productos[i];

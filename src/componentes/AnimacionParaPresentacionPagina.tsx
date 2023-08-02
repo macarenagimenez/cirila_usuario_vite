@@ -1,6 +1,8 @@
 import type { rutaDeImagen } from "tipos/RutaDeImagenes";
 import "componentes/AnimacionParaPresentacionPagina.css";
-function AnimacionParaPresentacionPagina(props) {
+function AnimacionParaPresentacionPagina(props: {
+  informacionParaPresentacion: rutaDeImagen;
+}) {
   let informacion: rutaDeImagen = props.informacionParaPresentacion;
   return (
     <>

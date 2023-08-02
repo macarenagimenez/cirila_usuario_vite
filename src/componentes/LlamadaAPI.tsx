@@ -1,7 +1,7 @@
 import ObtenerProductos from "componentes/RenderizadoDeProductos";
 import "secciones/ProductoDestacado.css";
 
-function LlamadaAPI(props) {
+function LlamadaAPI(props: { apiURL: string }) {
   return (
     <section>
       <div className="ContenedorProductosDestacados">

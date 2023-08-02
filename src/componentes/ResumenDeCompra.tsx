@@ -95,7 +95,7 @@ function ResumenDeCompra() {
                 RESUMEN DE COMPRA
                 <hr />
                 <Grid container item spacing={1}>
-                  <Grid item xs={6} className="textoIzquierda">
+                  <Grid item xs={6} className="textoIzquierdaResumen">
                     Productos({contadorDeProductos()})
                   </Grid>
                   <Grid item xs={6} className="textoDerecha">
@@ -103,7 +103,7 @@ function ResumenDeCompra() {
                   </Grid>
                 </Grid>
                 <Grid container item spacing={2}>
-                  <Grid item xs={6} className="textoIzquierda">
+                  <Grid item xs={6} className="textoIzquierdaResumen">
                     <h4>TOTAL</h4>
                   </Grid>
                   <Grid item xs={6} className="textoDerecha">
@@ -116,7 +116,7 @@ function ResumenDeCompra() {
                       <button className="botonBasico">Seguir comprando</button>{" "}
                     </Link>
                   </Grid>
-                  <Grid item xs={6} className="textoDerecha">
+                  <Grid item xs={6} className="textoIzquierdaResumen">
                     <Link to="/cargaDeDatos">
                       <button className="botonBasico">Continuar compra</button>{" "}
                     </Link>
