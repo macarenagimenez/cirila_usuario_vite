@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useContext } from "react";
 import "componentes/RenderizadoUnicoProducto.css";
 import { InformacionDeProducto } from "tipos/InformacionDeProducto";
@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandPointLeft } from "@fortawesome/free-solid-svg-icons";
 import { CarritoContext } from "contexts/CarritoContexto";
-
+import "componentes/responsive.css";
 function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
   let producto = props.producto;
 
   const { carrito, agregarAlCarrito } = useContext(CarritoContext);
   //TODO Agregar mas imagenes al producto
   let imagen = (
-    <Grid item xs={6} className="imagenProductoSeleccionado">
+    <Grid item xs={6} sm={6} md={6} className="imagenProductoSeleccionado">
       <img src={producto.urlImagen} alt={producto.nombre} />
     </Grid>
   );
@@ -53,54 +53,63 @@ function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
   };
 
   let modificar_carrito = (
-    <>
-      <div>
-        <button
-          className="botonBasico"
-          onClick={() => agregarAlCarrito(producto, 1)}
-        >
-          {mensajeBotonCarrito(producto)}
-        </button>{" "}
-        <button className="botonBasico">
-          <Link to="/carritoDeCompras">Ver carrito</Link>
-        </button>
-      </div>
-
+    <div className="contenedorBotonesCarritoyTexto">
+      <button
+        className="botonBasico"
+        onClick={() => agregarAlCarrito(producto, 1)}
+      >
+        {mensajeBotonCarrito(producto)}
+      </button>{" "}
+      <button className="botonBasico">
+        <Link to="/carritoDeCompras">Ver carrito</Link>
+      </button>
       <div className="mensajeSobreStock">
         {mensajeSobreStock(producto.stock)}
       </div>
-    </>
+    </div>
   );
 
   let texto = (
-    <Grid item xs={6}>
+    <Grid item xs={6} sm={6} md={6}>
       <div className="textoProductoSeleccionado">
-        <Link to="/productos" className="linkVolverProductos">
-          <FontAwesomeIcon icon={faHandPointLeft} /> productos /{" "}
-        </Link>
-        <small> {producto.nombre} </small>
+        <div className="contenedorVolverProductos">
+          <Link to="/productos" className="linkVolverProductos">
+            <FontAwesomeIcon icon={faHandPointLeft} /> productos /{" "}
+          </Link>
+          <small> {producto.nombre} </small>
+        </div>
         {nombre_precio_descripcion}
         {modificar_carrito}
-        <hr />
-        <p className="textoEnviosMediosDePago">
-          {" "}
-          <span>Medios de Pago: </span> Aceptamos todas las tarjetas y tenés 20%
-          OFF abonando con transferencia/efectivo.{" "}
-        </p>{" "}
-        <hr />
-        <p className="textoEnviosMediosDePago">
-          <span> Envios: </span>Continuá con tu compra y te cotizamos el envío.{" "}
-        </p>
+
+        <div className="contenedorEnviosMediosdepago">
+          <hr />
+          <p className="textoEnviosMediosDePago">
+            {" "}
+            <span>Medios de Pago: </span> Aceptamos todas las tarjetas y tenés
+            20% OFF abonando con transferencia/efectivo.{" "}
+          </p>{" "}
+          <hr />
+          <p className="textoEnviosMediosDePago">
+            <span> Envios: </span>Continuá con tu compra y te cotizamos el
+            envío.{" "}
+          </p>
+        </div>
       </div>
     </Grid>
   );
 
   return (
     <div className="contenedorInformacionProductoSeleccionado">
-      <Grid container spacing={4}>
-        {imagen}
-        {texto}
-      </Grid>
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+        >
+          {imagen}
+          {texto}
+        </Grid>
+      </Box>
     </div>
   );
 }

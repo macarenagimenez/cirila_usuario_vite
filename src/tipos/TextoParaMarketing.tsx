@@ -8,7 +8,7 @@ let TextoParaMarketing: Textos[] = [
     texto: "Pequeñas colecciones, hechas a mano.",
   },
   {
-    texto: "¡Mis fav!",
+    texto: "¡Los más elegidos!",
   },
 ];
 

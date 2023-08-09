@@ -1,0 +1,54 @@
+@media only screen and (max-width: 900px) {
+  .contenedorColumnasDestacados {
+    justify-content: center;
+  }
+  .imgDeLogo {
+    margin-top: 20px;
+  }
+  .base {
+    font-size: 14px;
+    font-weight: 400;
+
+    padding: 5px 15px 6px 15px;
+    border-radius: 30px;
+  }
+  .Encabezado {
+    margin: 30px auto 0px;
+  }
+
+  .imagenProductoSeleccionado img {
+    margin: 15px 0px 10px 0px !important;
+  }
+
+  .textoProductoSeleccionado {
+    margin: 0px 0px 10px 0px !important;
+  }
+
+  .textoProductoSeleccionado {
+    padding: 5px;
+  }
+
+  .botonBasico {
+    margin-top: 10px;
+  }
+  .responsive_NombreProductoOrdendecompra {
+    display: flex;
+    justify-content: center;
+    padding: 3px;
+  }
+
+  .stockBajo {
+    font-size: 20px !important;
+    bottom: 70px !important;
+    left: 12px !important;
+  }
+  .responsive_botonCentrado {
+    text-align: center !important;
+  }
+  .contenedorOrdenFinal {
+    border-radius: 0px !important;
+  }
+  .mensajeDespedida {
+    width: 250px !important;
+  }
+}
