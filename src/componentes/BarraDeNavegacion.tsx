@@ -42,7 +42,10 @@ function BarraDeNavegacion() {
 
   return (
     <>
-      <AppBar position="sticky">
+      <AppBar
+        position="sticky"
+        sx={{ backgroundColor: "white", boxShadow: "none" }}
+      >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
