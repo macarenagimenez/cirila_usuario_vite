@@ -1,6 +1,6 @@
 import Usuario from "componentes/Usuario";
 import "componentes/Usuario.css";
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import "componentes/SolicitudDeDatosUsuario.css";
 import { useContext } from "react";
@@ -11,29 +11,46 @@ export default function SolicitudDeDatosUsuario() {
   // TODO estilizar componentes MUI
   return (
     <div className="contenedorCargaDeDatos">
-      <Grid container spacing={2}>
-        <Usuario />{" "}
-      </Grid>{" "}
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 6, sm: 8, md: 12 }}
+        >
+          <Usuario />{" "}
+        </Grid>{" "}
+      </Box>
       <div className="contenedorBotonesFinalizarCompra">
-        <Grid container spacing={2}>
-          {" "}
-          <Grid item xs={3}></Grid>
-          <Grid item xs={3} className="textoIzquierda">
-            <div>
-              <Link to="/carritoDeCompras">
-                <button className="botonBasico">Volver al carrito</button>{" "}
+        <div>
+          <Grid
+            container
+            spacing={{ xs: 2, md: 3 }}
+            columns={{ xs: 6, sm: 8, md: 12 }}
+          >
+            {" "}
+            <Grid
+              item
+              xs={6}
+              className="textoIzquierda responsive_botonCentrado"
+            >
+              <div>
+                <Link to="/carritoDeCompras">
+                  <button className="botonBasico">Volver al carrito</button>{" "}
+                </Link>
+              </div>
+            </Grid>
+            <Grid item xs={6} className="responsive_botonCentrado">
+              <Link to="/">
+                <button
+                  className="botonBasico"
+                  onClick={() => cancelarCompra()}
+                >
+                  Cancelar compra
+                </button>{" "}
               </Link>
-            </div>
+            </Grid>
           </Grid>
-          <Grid item xs={3}>
-            <Link to="/">
-              <button className="botonBasico" onClick={() => cancelarCompra()}>
-                Cancelar compra
-              </button>{" "}
-            </Link>
-          </Grid>
-          <Grid item xs={3}></Grid>
-        </Grid>
+        </div>
         <Link to="/resumenOrdenDeCompra">
           <button className="botonBasico botonFinalizarCompra">
             CONTINUAR COMPRA

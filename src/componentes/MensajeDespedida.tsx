@@ -2,6 +2,7 @@ import "componentes/MensajeDespedida.css";
 import { Link } from "react-router-dom";
 import { UsuarioContext } from "contexts/UsuarioContexto";
 import { useContext } from "react";
+import "componentes/responsive.css";
 export default function MensajeDespedida() {
   const { usuario } = useContext(UsuarioContext);
   //TODO estilizar mensaje despedida, mas gracioso
