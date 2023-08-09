@@ -165,7 +165,7 @@ function BarraDeNavegacion() {
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
+              <Tooltip title="Tu carrito acá 😙">
                 <IconButton sx={{ p: 0 }}>
                   {" "}
                   <div className="carritoDeComprasBarraNavegacion">
