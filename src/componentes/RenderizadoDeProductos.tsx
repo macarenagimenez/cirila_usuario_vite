@@ -1,9 +1,9 @@
 //devuelve un array de productos y devolverlos renderizados en grilla
 import { useState, useEffect } from "react";
 import { InformacionDeProducto } from "tipos/InformacionDeProducto";
-import { Grid } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import CapaDeProducto from "componentes/CapaDeProducto";
-
+import "componentes/responsive.css"
 function ObtenerProductos(props: { apiURL: string }) {
   const [productos, setProductos] = useState<InformacionDeProducto[]>([]);
   type productoEntrante = {
@@ -61,7 +61,7 @@ function ObtenerProductos(props: { apiURL: string }) {
 
       contenidoParaRenderizar.push(
         <>
-          <Grid item xs={3}>
+          <Grid item xs={4} sm={3} md={3} >
             <CapaDeProducto
               informacionProducto={InformaciónParaMostrar}
               key={i}
@@ -71,9 +71,11 @@ function ObtenerProductos(props: { apiURL: string }) {
       );
     }
     return (
-      <Grid container spacing={3}>
+     <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} className="contenedorColumnasDestacados">
         {contenidoParaRenderizar}
       </Grid>
+      </Box>
     );
   }
   return mostrarProductosDestacados(productos);

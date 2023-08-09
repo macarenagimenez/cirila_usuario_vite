@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useContext } from "react";
 import "componentes/RenderizadoUnicoProducto.css";
 import { InformacionDeProducto } from "tipos/InformacionDeProducto";
@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandPointLeft } from "@fortawesome/free-solid-svg-icons";
 import { CarritoContext } from "contexts/CarritoContexto";
-
+import "componentes/responsive.css"
 function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
   let producto = props.producto;
 
   const { carrito, agregarAlCarrito } = useContext(CarritoContext);
   //TODO Agregar mas imagenes al producto
   let imagen = (
-    <Grid item xs={6} className="imagenProductoSeleccionado">
+    <Grid item xs={6} sm={6} md={6} className="imagenProductoSeleccionado">
       <img src={producto.urlImagen} alt={producto.nombre} />
     </Grid>
   );
@@ -73,7 +73,7 @@ function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
   );
 
   let texto = (
-    <Grid item xs={6}>
+    <Grid item xs={6} sm={6} md={6}>
       <div className="textoProductoSeleccionado">
         <Link to="/productos" className="linkVolverProductos">
           <FontAwesomeIcon icon={faHandPointLeft} /> productos /{" "}
@@ -97,10 +97,12 @@ function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
 
   return (
     <div className="contenedorInformacionProductoSeleccionado">
-      <Grid container spacing={4}>
+      <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         {imagen}
         {texto}
       </Grid>
+      </Box>
     </div>
   );
 }

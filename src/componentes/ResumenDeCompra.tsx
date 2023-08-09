@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import "componentes/ResumenDeCompra.css";
 import { CarritoContext } from "contexts/CarritoContexto";
 import { useContext } from "react";
@@ -20,9 +20,9 @@ function ResumenDeCompra() {
     (item: productosAgregados) => {
       return (
         <div className="contenedorRenderizadoDeProducto ">
-          {" "}
-          <Grid container item spacing={1} className="centrarTexto">
-            <Grid item xs={3}>
+          {" "}<Box sx={{ flexGrow: 1 }}>
+          <Grid container  spacing={{ xs: 1, md: 3 }} columns={{ xs: 12, sm: 8, md: 12 }} className="centrarTexto">
+            <Grid item xs={2} sm={3} md={3}>
               {" "}
               <img src={item.urlImagen} alt={item.nombre} width={100} />
               {item.stock <= 1 ? (
@@ -31,10 +31,10 @@ function ResumenDeCompra() {
                 ""
               )}
             </Grid>{" "}
-            <Grid item xs={2}>
+            <Grid item xs={2} sm={3} md={3}>
               <Link to={"/producto?id=" + item.id}>{item.nombre}</Link>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2} sm={3} md={3}>
               {" "}
               <div className="contador">
                 <button
@@ -52,10 +52,10 @@ function ResumenDeCompra() {
                 </button>{" "}
               </div>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2} sm={3} md={3}>
               ${totalPrecioProductosIguales(item)}
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2} sm={3} md={3}>
               <button
                 onClick={() => eliminarDelCarrito(item)}
                 className="botonBasico"
@@ -63,7 +63,7 @@ function ResumenDeCompra() {
                 <FontAwesomeIcon icon={faTrash} />
               </button>
             </Grid>
-          </Grid>{" "}
+          </Grid>{" "}</Box>
         </div>
       );
     }
@@ -82,15 +82,15 @@ function ResumenDeCompra() {
       );
     } else {
       return (
-        <>
-          <Grid container spacing={1}>
-            <Grid item xs={6}>
+        <><Box sx={{ flexGrow: 1 }}>
+          <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            <Grid item xs={6} sm={6} md={6}>
               <div className="productosAgregados">
                 {productosParaMostrarEnResumen}
               </div>{" "}
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={6} sm={6} md={6}>
               <div className="resumenCompra ">
                 RESUMEN DE COMPRA
                 <hr />
@@ -124,7 +124,7 @@ function ResumenDeCompra() {
                 </Grid>
               </div>
             </Grid>
-          </Grid>{" "}
+          </Grid>{" "}</Box>
         </>
       );
     }
