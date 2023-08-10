@@ -30,7 +30,7 @@ function PieDePagina() {
         <p>
           <a
             className="contacto_hover"
-            onClick={(e) => {
+            onClick={() => {
               window.location.href = "mailto:hola@gaiacirila.com.ar";
             }}
           >
