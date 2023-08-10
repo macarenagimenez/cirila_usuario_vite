@@ -8,6 +8,7 @@ import { rutaParaImagenesConTexto } from "tipos/RutaDeImagenes";
 import AnimacionParaPresentacionPagina from "componentes/AnimacionParaPresentacionPagina";
 import { rutaParaPresentacionPagina } from "tipos/RutaDeImagenes";
 import { Box } from "@mui/material";
+import { Link } from "react-router-dom";
 function Bienvenida() {
   return (
     <div>
@@ -20,12 +21,10 @@ function Bienvenida() {
       <Encabezado />
       <MensajeBienvenida texto={TextoParaMarketing[1].texto} />
       <ProductosDestacados />
-      <span>
-        <a href="/productos">
-          {" "}
-          <MensajeBienvenida texto={TextoParaMarketing[2].texto} />
-        </a>
-      </span>
+      <Link to="/productos">
+        {" "}
+        <MensajeBienvenida texto={TextoParaMarketing[2].texto} />
+      </Link>
       <ImagenConTexto informacionParaImagen={rutaParaImagenesConTexto[0]} />
     </div>
   );
