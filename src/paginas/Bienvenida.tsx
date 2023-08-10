@@ -7,16 +7,25 @@ import ImagenConTexto from "componentes/ImagenConTexto";
 import { rutaParaImagenesConTexto } from "tipos/RutaDeImagenes";
 import AnimacionParaPresentacionPagina from "componentes/AnimacionParaPresentacionPagina";
 import { rutaParaPresentacionPagina } from "tipos/RutaDeImagenes";
+import { Box } from "@mui/material";
 function Bienvenida() {
   return (
     <div>
       {" "}
-      <AnimacionParaPresentacionPagina
-        informacionParaPresentacion={rutaParaPresentacionPagina[1]}
-      />
+      <Box sx={{ display: { xs: "none", md: "flex" } }}>
+        <AnimacionParaPresentacionPagina
+          informacionParaPresentacion={rutaParaPresentacionPagina[1]}
+        />
+      </Box>
       <Encabezado />
       <MensajeBienvenida texto={TextoParaMarketing[1].texto} />
       <ProductosDestacados />
+      <span>
+        <a href="/productos">
+          {" "}
+          <MensajeBienvenida texto={TextoParaMarketing[2].texto} />
+        </a>
+      </span>
       <ImagenConTexto informacionParaImagen={rutaParaImagenesConTexto[0]} />
     </div>
   );

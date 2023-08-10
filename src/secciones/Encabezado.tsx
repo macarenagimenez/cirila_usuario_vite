@@ -10,7 +10,7 @@ function Encabezado() {
     let content = [];
     for (let i = 0; i < arr.length; i++) {
       content.push(
-        <Grid item xs={12 / arr.length}>
+        <Grid item xs={4} sm={4} md={4}>
           <img src={arr[i].src} alt={arr[i].alt} className={arr[i].className} />{" "}
         </Grid>
       );
@@ -26,11 +26,49 @@ function Encabezado() {
       <Box
         sx={{
           flexGrow: 1,
+          display: { xs: "none", md: "flex" },
         }}
       >
-        <Grid container spacing={1}>
+        <Grid container spacing={{ xs: 2, md: 3 }}>
           {srcImagen(rutaParaEncabezado)}
         </Grid>
+      </Box>
+      <Box
+        sx={{
+          flexGrow: 1,
+          display: {
+            xs: "flex",
+            md: "none",
+          },
+        }}
+      >
+        <Grid container spacing={{ xs: 2, md: 3 }}>
+          {" "}
+          <Grid item xs={6}>
+            <img
+              src="imagenes/LogoCirila.png"
+              alt="logoCirila"
+              width={"100%"}
+              style={{ marginTop: "15px" }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <img
+              src="imagenes/GifParaEncabezado.gif"
+              alt="gif"
+              width={"100%"}
+              style={{ borderRadius: "10px" }}
+            />
+          </Grid>
+        </Grid>
+      </Box>
+      <Box sx={{ display: { xs: "flex", md: "none" } }}>
+        <img
+          src="imagenes/comoComprar_responsive.gif"
+          alt="Como Comprar"
+          width={"80%"}
+          className="comoComprar_responsive"
+        />
       </Box>
     </div>
   );

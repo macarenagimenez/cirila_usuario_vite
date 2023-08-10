@@ -3,7 +3,7 @@ import { DatosUsuario } from "tipos/DatosDeUsuario";
 import type { crearCarritoRequest } from "tipos/crearCarritoRequest";
 
 const apiURL =
-  "https://vjsoza9y8e.execute-api.us-east-1.amazonaws.com/prod/v1.0/carritos";
+  "https://mpi4ne060b.execute-api.us-east-1.amazonaws.com/prod/v1.0/carritos";
 
 function carritoService(carrito: productosAgregados[], usuario: DatosUsuario) {
   //TODO

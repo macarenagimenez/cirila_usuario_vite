@@ -51,7 +51,7 @@ function ResumenDeCompra() {
                   {item.nombre}
                 </Link>
               </Grid>
-              <Grid item xs={3} sm={3} md={2}>
+              <Grid item xs={4} sm={3} md={2}>
                 {" "}
                 <div className="contador">
                   <button
@@ -72,10 +72,10 @@ function ResumenDeCompra() {
               <Grid item xs={3} sm={3} md={2}>
                 ${totalPrecioProductosIguales(item)}
               </Grid>
-              <Grid item xs={3} sm={3} md={2}>
+              <Grid item xs={2} sm={3} md={2}>
                 <button
                   onClick={() => eliminarDelCarrito(item)}
-                  className="botonBasico"
+                  className="botonBasico botonEliminarDeResumen_responsive"
                 >
                   <FontAwesomeIcon icon={faTrash} />
                 </button>

@@ -28,16 +28,16 @@
 }
 
 .nombreProductoSeleccionado {
-  font-size: 45px;
+  font-size: 30px;
   font-weight: 400;
   margin-bottom: 0px;
-  line-height: 60px;
+
   padding-left: 20px;
 }
 .precioProductoSeleccionado {
   font-weight: 400;
   font-size: 25px;
-  margin: 5px auto;
+  margin: 10px auto;
   padding-left: 20px;
 }
 

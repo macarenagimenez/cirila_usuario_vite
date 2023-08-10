@@ -10,6 +10,9 @@ let TextoParaMarketing: Textos[] = [
   {
     texto: "¡Los más elegidos!",
   },
+  {
+    texto: "Click para ver todos 😄",
+  },
 ];
 
 export { TextoParaMarketing };
