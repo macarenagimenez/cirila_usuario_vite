@@ -51,4 +51,14 @@
   .mensajeDespedida {
     width: 250px !important;
   }
+  .contacto_hover {
+    letter-spacing: 0px;
+  }
+  .NombreDelProducto {
+    padding: 5px;
+    text-align: center;
+  }
+  .botonEliminarDeResumen_responsive {
+    padding: 10px 12px !important;
+  }
 }

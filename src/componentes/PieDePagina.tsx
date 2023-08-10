@@ -1,6 +1,7 @@
 import { rutaParaPieDePagina } from "tipos/RutaDeImagenes";
 import type { rutaDeImagen } from "tipos/RutaDeImagenes";
 import "componentes/PieDePagina.css";
+import "componentes/responsive.css";
 
 function PieDePagina() {
   const informacionDeImagenesParaPieDePagina = (
@@ -25,10 +26,39 @@ function PieDePagina() {
         {informacionDeImagenesParaPieDePagina(rutaParaPieDePagina)}
       </div>
       <div className="contacto">
-        <span>
-          COMUNICATE CON NOSOTRAS <hr />
-          hola@gaiacirila.com.ar | +54 9 2657-307339
-        </span>
+        <p>COMUNICATE CON NOSOTRAS </p> <hr />
+        <p>
+          <a
+            className="contacto_hover"
+            onClick={(e) => {
+              window.location.href = "mailto:hola@gaiacirila.com.ar";
+            }}
+          >
+            {" "}
+            hola@gaiacirila.com.ar{" "}
+          </a>{" "}
+        </p>
+        <p>
+          <a
+            href="https://wa.me/542657307339"
+            target="_blank"
+            rel="noreferrer"
+            className="contacto_hover"
+          >
+            {" "}
+            +54 2657-307339
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://www.instagram.com/gaia.cirila/"
+            target="_blank"
+            rel="noreferrer"
+            className="contacto_hover"
+          >
+            @gaia.cirila
+          </a>
+        </p>
       </div>
     </section>
   );
