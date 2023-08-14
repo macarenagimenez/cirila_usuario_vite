@@ -13,6 +13,9 @@ export default function MensajeDespedida() {
         <br />
         <br /> 🛒 ¡En menos de 24hs, yo (Macu) me estaré contactando con vos
         para completar tu compraaaa!
+        <br />
+        <br />
+        <small>📫 No olvides de chequear la bandeja de spam. </small>
       </p>
       <Link to="/">
         <button className="botonBasico botonVolver">
