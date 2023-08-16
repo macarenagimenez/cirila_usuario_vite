@@ -26,7 +26,7 @@ function ResumenDeCompra() {
             <Grid
               container
               spacing={{ xs: 1, md: 1 }}
-              columns={{ xs: 12, sm: 8, md: 12 }}
+              columns={{ xs: 12, sm: 12, md: 12 }}
               className="centrarTexto"
             >
               <Grid item xs={12} sm={12} md={3}>
@@ -51,7 +51,7 @@ function ResumenDeCompra() {
                   {item.nombre}
                 </Link>
               </Grid>
-              <Grid item xs={4} sm={3} md={2}>
+              <Grid item xs={4} sm={4} md={2}>
                 {" "}
                 <div className="contador">
                   <button
@@ -72,7 +72,7 @@ function ResumenDeCompra() {
               <Grid item xs={3} sm={3} md={2}>
                 ${totalPrecioProductosIguales(item)}
               </Grid>
-              <Grid item xs={2} sm={3} md={2}>
+              <Grid item xs={2} sm={2} md={2}>
                 <button
                   onClick={() => eliminarDelCarrito(item)}
                   className="botonBasico botonEliminarDeResumen_responsive"
@@ -143,7 +143,7 @@ function ResumenDeCompra() {
                     >
                       <Link to="/productos">
                         <button className="botonBasico ">
-                          Seguir comprando
+                          Ver más productos
                         </button>{" "}
                       </Link>
                     </Grid>
