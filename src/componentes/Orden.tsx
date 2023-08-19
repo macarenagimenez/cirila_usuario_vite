@@ -18,8 +18,20 @@ export default function Orden() {
     for (let i = 0; i < carrito.length; i++) {
       contador += carrito[i].precio * carrito[i].cantidad;
     }
-
-    return <span>{contador}</span>;
+    if (usuario.FormaPago === "Transferencia 20% OFF") {
+      let descuento = contador * 0.8;
+      return (
+        <>
+          Total:{" "}
+          <span style={{ textDecoration: "line-through", color: "grey" }}>
+            ${contador}
+          </span>
+          <div> Total -20% off: ${descuento} </div>{" "}
+        </>
+      );
+    } else {
+      return <span>${contador}</span>;
+    }
   }
 
   let productosParaMostrarEnOrden = carrito.map((item: productosAgregados) => {
@@ -69,8 +81,7 @@ export default function Orden() {
               <br />
               <strong>Celular:</strong> {usuario.Celular}
               <br />
-              <strong>Forma de pago:</strong> {usuario.FormaPago}
-              <br />
+              <strong>Forma de pago:</strong> {usuario.FormaPago} <br />
               <strong>Envío:</strong> {usuario.FormaEnvio}
               <br />
               <strong>Medio de contacto:</strong> {usuario.FormaContacto}
@@ -98,14 +109,15 @@ export default function Orden() {
             {productosParaMostrarEnOrden}
             <hr />
             <div>
-              <span className="contenedorTotalDeLaCompra">
+              <div className="contenedorTotalDeLaCompra">
                 {" "}
-                <p> TOTAL: ${totalDeLaCompra()}</p>
-              </span>{" "}
+                <div style={{ textAlign: "end" }}>{totalDeLaCompra()}</div>
+              </div>{" "}
               <hr />
               <small>
-                Recordá que el envío se calcula una vez que finalices tu compra
-                📦.{" "}
+                📦 + envío a confirmar ($1700 a $2300 dependiendo la localidad)
+                . <br />
+                🛒 Compras mayores a $25.000: ENVIO GRATIS
               </small>
             </div>{" "}
           </div>{" "}
