@@ -9,8 +9,8 @@ export default function Usuario() {
   const { usuario, actualizarUsuario } = useContext(UsuarioContext);
 
   let formasDepago = [
-    { pago: "Transferencia 15% OFF", disabled: undefined },
-    { pago: "Tarjeta de crédito", disabled: undefined },
+    { pago: "Transferencia 20% OFF", disabled: undefined },
+    { pago: "Tarjeta de crédito (3ctas/s/int)", disabled: undefined },
 
     { pago: "Con amor 🤣", disabled: true },
   ];

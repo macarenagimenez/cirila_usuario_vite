@@ -18,10 +18,8 @@
   text-align: center;
 }
 .contenedorTotalDeLaCompra {
-  display: flex;
-  justify-content: flex-end;
   padding: 10px 30px;
-  margin: 20px 0px 20px 200px;
+  margin: 20px 0px 20px 0px;
   font-size: 25px;
 }
 .contenedorPaginaOrden {
