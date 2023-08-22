@@ -30,7 +30,7 @@ export default function Orden() {
         </>
       );
     } else {
-      return <span>${contador}</span>;
+      return <span> Total: ${contador}</span>;
     }
   }
 

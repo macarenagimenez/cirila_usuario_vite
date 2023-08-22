@@ -54,7 +54,7 @@ function Encabezado() {
           </Grid>
           <Grid item xs={6}>
             <img
-              src="imagenes/GifParaEncabezado.gif"
+              src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/GifParaEncabezado.gif"
               alt="gif"
               width={"100%"}
               style={{ borderRadius: "10px" }}
@@ -64,7 +64,7 @@ function Encabezado() {
       </Box>
       <Box sx={{ display: { xs: "flex", md: "none" } }}>
         <img
-          src="imagenes/comoComprar_responsive.gif"
+          src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/comoComprar_responsive.gif"
           alt="Como Comprar"
           width={"80%"}
           className="comoComprar_responsive"

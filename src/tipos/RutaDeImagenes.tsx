@@ -7,17 +7,17 @@ type rutaDeImagen = {
 
 let rutaParaEncabezado: rutaDeImagen[] = [
   {
-    src: "imagenes/LogoCirila.png",
+    src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/LogoCirila.png",
     alt: "LogoGaiaCirila",
     className: "imgDeLogo",
   },
   {
-    src: "imagenes/GifParaEncabezado.gif",
+    src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/GifParaEncabezado.gif",
     alt: "GifEncabezado",
     className: "imgDeRelleno",
   },
   {
-    src: "imagenes/GifParaEncabezado2.gif",
+    src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/GifParaEncabezado2.gif",
     alt: "GifEncabezado",
     className: "imgDeRelleno",
   },
@@ -25,7 +25,7 @@ let rutaParaEncabezado: rutaDeImagen[] = [
 
 let rutaParaImagenesConTexto: rutaDeImagen[] = [
   {
-    src: "imagenes/kitRegalo.jpg",
+    src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/kitRegalo.jpg",
     alt: "SomosElMejorRegalo",
     texto: "Somos el mejor regalo.",
   },
@@ -33,25 +33,31 @@ let rutaParaImagenesConTexto: rutaDeImagen[] = [
 
 let rutaParaPieDePagina: rutaDeImagen[] = [
   {
-    src: "imagenes/envios.png",
+    src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/envios.png",
     alt: "Envios a todo el país",
     texto: "Hacemos envios a todo el país",
   },
   {
-    src: "imagenes/comprasegura.png",
+    src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/comprasegura.png",
     alt: "Compra segura",
     texto: "¡Tu compra segura acá!",
   },
   {
-    src: "imagenes/247.png",
+    src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/247.png",
     alt: "Atencion al cliente",
     texto: "Estamos del otro lado 24/7 :)",
   },
 ];
 
 let rutaParaPresentacionPagina: rutaDeImagen[] = [
-  { src: "imagenes/GifParaPaginaDeProductos.gif", alt: "Gif de productos" },
-  { src: "imagenes/GifComoComprar.gif", alt: "Gif de productos" },
+  {
+    src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/GifParaPaginaDeProductos.gif",
+    alt: "Gif de productos",
+  },
+  {
+    src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/GifComoComprar.gif",
+    alt: "Gif de productos",
+  },
 ];
 
 export {
