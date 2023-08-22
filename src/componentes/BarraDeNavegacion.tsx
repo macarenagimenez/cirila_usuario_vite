@@ -62,7 +62,10 @@ function BarraDeNavegacion() {
                 textDecoration: "none",
               }}
             >
-              <img src="imagenes/LogoCirila.png" style={{ maxWidth: "10%" }} />{" "}
+              <img
+                src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/LogoCirila.png"
+                style={{ maxWidth: "10%" }}
+              />{" "}
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>

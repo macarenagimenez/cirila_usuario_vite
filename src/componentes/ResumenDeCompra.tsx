@@ -133,6 +133,19 @@ function ResumenDeCompra() {
                       <h4> ${totalDeLaCompra()}</h4>
                     </Grid>
                   </Grid>
+                  <hr />
+                  <p className="textoEnviosMediosDePago">
+                    <span> Envios: </span>
+                    Entre $1700 a $2300{" "}
+                    <small>(Dependiendo la localidad).</small>
+                    <br />
+                    <span>Rio Cuarto, CBA: </span>$700{" "}
+                    <small>
+                      (Envío a domicilio los días sábados desde las 15hs).
+                    </small>{" "}
+                    <br />
+                    <span>Compras mayores a $25.000: ENVIO GRATIS</span>
+                  </p>
                   <Grid container item spacing={2}>
                     <Grid
                       item

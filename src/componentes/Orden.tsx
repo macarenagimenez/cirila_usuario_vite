@@ -30,7 +30,7 @@ export default function Orden() {
         </>
       );
     } else {
-      return <span>${contador}</span>;
+      return <span> Total: ${contador}</span>;
     }
   }
 
@@ -115,9 +115,17 @@ export default function Orden() {
               </div>{" "}
               <hr />
               <small>
-                📦 + envío a confirmar ($1700 a $2300 dependiendo la localidad)
-                . <br />
-                🛒 Compras mayores a $25.000: ENVIO GRATIS
+                <p className="textoEnviosMediosDePago">
+                  <span> Envios: </span>
+                  Entre $1700 a $2300 <small>(Dependiendo la localidad).</small>
+                  <br />
+                  <span>Rio Cuarto, CBA: </span>$700{" "}
+                  <small>
+                    (Envío a domicilio los días sábados desde las 15hs).
+                  </small>{" "}
+                  <br />
+                  <span>Compras mayores a $25.000: ENVIO GRATIS</span>
+                </p>
               </small>
             </div>{" "}
           </div>{" "}
