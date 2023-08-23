@@ -26,25 +26,25 @@ let rutaParaEncabezado: rutaDeImagen[] = [
 let rutaParaImagenesConTexto: rutaDeImagen[] = [
   {
     src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/kitRegalo.jpg",
-    alt: "SomosElMejorRegalo",
-    texto: "Somos el mejor regalo.",
+    alt: "Somos el regalo más original",
+    texto: "Somos el regalo más original",
   },
 ];
 
 let rutaParaPieDePagina: rutaDeImagen[] = [
   {
     src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/envios.png",
-    alt: "Envios a todo el país",
+    alt: "envios, envio internacional",
     texto: "Hacemos envios a todo el país",
   },
   {
     src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/comprasegura.png",
-    alt: "Compra segura",
+    alt: "compra online",
     texto: "¡Tu compra segura acá!",
   },
   {
     src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/247.png",
-    alt: "Atencion al cliente",
+    alt: "servicio de atención al cliente",
     texto: "Estamos del otro lado 24/7 :)",
   },
 ];
@@ -52,11 +52,11 @@ let rutaParaPieDePagina: rutaDeImagen[] = [
 let rutaParaPresentacionPagina: rutaDeImagen[] = [
   {
     src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/GifParaPaginaDeProductos.gif",
-    alt: "Gif de productos",
+    alt: "regalos para el dia de la madre",
   },
   {
     src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/GifComoComprar.gif",
-    alt: "Gif de productos",
+    alt: "regalos para el dia de la madre",
   },
 ];
 
