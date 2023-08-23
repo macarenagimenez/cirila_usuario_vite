@@ -26,7 +26,7 @@ function PieDePagina() {
         {informacionDeImagenesParaPieDePagina(rutaParaPieDePagina)}
       </div>
       <div className="contacto">
-        <p>COMUNICATE CON NOSOTRAS </p> <hr />
+        <p>CONTÁCTATE CON NOSOTRAS </p> <hr />
         <p>
           <a
             className="contacto_hover"

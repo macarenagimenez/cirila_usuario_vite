@@ -5,13 +5,13 @@ type Textos = {
 
 let TextoParaMarketing: Textos[] = [
   {
-    texto: "Pequeñas colecciones, hechas a mano.",
+    texto: "¡La tienda deco home mas chula!",
   },
   {
-    texto: "¡Los más elegidos!",
+    texto: "¡Tu nueva deco chula!",
   },
   {
-    texto: "Click para ver todos 😄",
+    texto: "Click para ver todos los productos 😄",
   },
 ];
 
