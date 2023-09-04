@@ -32,7 +32,7 @@ function ResumenDeCompra() {
               <Grid item xs={12} sm={12} md={3}>
                 {" "}
                 <img
-                  src={item.urlImagen}
+                  src={item.urlImagen[0].url}
                   alt={item.nombre}
                   width={"100%"}
                   className=""
