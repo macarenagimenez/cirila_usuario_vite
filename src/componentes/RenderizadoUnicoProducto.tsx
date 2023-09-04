@@ -7,16 +7,44 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandPointLeft } from "@fortawesome/free-solid-svg-icons";
 import { CarritoContext } from "contexts/CarritoContexto";
 import "componentes/responsive.css";
+
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
+
 function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
   let producto = props.producto;
+  console.log(producto);
 
   const { carrito, agregarAlCarrito } = useContext(CarritoContext);
-  //TODO Agregar mas imagenes al producto
-  let imagen = (
-    <Grid item xs={6} sm={6} md={6} className="imagenProductoSeleccionado">
-      <img src={producto.urlImagen} alt={producto.nombre} />
-    </Grid>
-  );
+
+  let imagen = () => {
+    let imagenesParaRenderizar = () => {
+      let imagenes = [];
+      for (let i = 0; i < producto.urlImagen.length; i++) {
+        console.log(producto.urlImagen[i]);
+        console.log(producto.urlImagen[i].url);
+        imagenes.push(
+          <div>
+            <img
+              src={producto.urlImagen[i].url}
+              alt={producto.urlImagen[i].alt}
+              className="imagenProductoSeleccionado"
+              key={producto.nombre}
+            />
+          </div>
+        );
+      }
+      return imagenes;
+    };
+    return (
+      <Grid item xs={6} sm={6} md={6}>
+        {" "}
+        <div className="imagenProductoSeleccionado">
+          <Carousel showArrows={true}>{imagenesParaRenderizar()}</Carousel>{" "}
+        </div>
+      </Grid>
+    );
+  };
 
   let nombre_precio_descripcion = (
     <div>
@@ -111,7 +139,7 @@ function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {imagen}
+          {imagen()}
           {texto}
         </Grid>
       </Box>

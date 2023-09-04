@@ -7,7 +7,8 @@ function LlamadaAPIporID(props: { apiUrl: string }) {
     id: "",
     nombre: "",
     precio: 0,
-    urlImagen: "",
+    urlImagen: [],
+
     stock: 0,
     descripcion: "",
   };
@@ -23,7 +24,8 @@ function LlamadaAPIporID(props: { apiUrl: string }) {
       .then((data) => {
         let productoParaMostrar: InformacionDeProducto = {
           id: data.id,
-          urlImagen: data.imagenes[0].url,
+          urlImagen: data.imagenes,
+
           nombre: data.nombre,
           precio: data.precio,
           stock: data.stock,
