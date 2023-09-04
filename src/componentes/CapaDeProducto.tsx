@@ -10,7 +10,7 @@ function CapaDeProducto(props: { informacionProducto: InformacionDeProducto }) {
       <Link className="botonParaVerProducto" to={productoUrl}>
         <div className="MuestraDeProducto">
           <img
-            src={props.informacionProducto.urlImagen}
+            src={props.informacionProducto.urlImagen[0].url}
             alt={props.informacionProducto.nombre}
             className="ImagenDelProducto"
           />

@@ -14,4 +14,4 @@ type InformacionDeProducto = {
   descripcion?: string;
 };
 
-export type { InformacionDeProducto };
+export type { InformacionDeProducto, informacionDeImagenes };
