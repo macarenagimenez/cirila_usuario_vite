@@ -1,9 +1,10 @@
+import { informacionDeImagenes } from "./InformacionDeProducto";
 type productosAgregados = {
   id: string;
   nombre: string;
   precio: number;
   cantidad: number;
-  urlImagen: string;
+  urlImagen: informacionDeImagenes[];
   stock: number;
 };
 

@@ -32,18 +32,14 @@ function ObtenerProductos(props: { apiURL: string }) {
 
         data.map((producto: productoEntrante): void => {
           const nuevoProducto = (producto: productoEntrante) => {
-            let { id, nombre, precio, stock } = producto;
-
-            let urlImagen = producto.imagenes[0]
-              ? producto.imagenes[0].url
-              : " ";
-            return {
-              id,
-              nombre,
-              precio,
-              urlImagen,
-              stock,
+            let content: InformacionDeProducto = {
+              id: producto.id,
+              nombre: producto.nombre,
+              precio: producto.precio,
+              urlImagen: producto.imagenes,
+              stock: producto.stock,
             };
+            return content;
           };
           productosDestacados.push(nuevoProducto(producto));
           setProductos(productosDestacados);
