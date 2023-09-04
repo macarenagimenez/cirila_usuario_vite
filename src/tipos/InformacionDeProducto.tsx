@@ -1,9 +1,15 @@
 // alberga informacion
+type informacionDeImagenes = {
+  url: string;
+  alt: string;
+};
+
 type InformacionDeProducto = {
   id: string;
   nombre: string;
   precio: number;
-  urlImagen: string;
+  urlImagen: informacionDeImagenes[];
+
   stock: number;
   descripcion?: string;
 };
