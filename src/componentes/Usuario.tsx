@@ -15,7 +15,7 @@ export default function Usuario() {
     { pago: "Con amor 🤣", disabled: true },
   ];
 
-  let formasDeEnvio: string[] = ["A domicilio", "Retiro en sucursal"];
+  let formasDeEnvio: string[] = ["A domicilio", "Envio a sucursal (correo arg)"];
 
   let mediosDeContacto = [
     { medio: "Por WhatsApp", disabled: undefined },
