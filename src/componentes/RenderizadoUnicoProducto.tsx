@@ -118,10 +118,12 @@ function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
           </p>{" "}
           <hr />
           <p className="textoEnviosMediosDePago">
-            <span> Envios: </span>
-            Entre $1700 a $2300 <small>(Dependiendo la localidad).</small>
+            <span>Punto de retiro:</span> Río IV, Centro. GRATIS <br />
+            <span> Envíos a todo el país: </span>
+            Entre $1350 a $2300{" "}
+            <small>(Dependiendo la localidad/sucursal).</small>
             <br />
-            <span>Rio Cuarto, CBA: </span>$700{" "}
+            <span>Envíos dentro de Rio Cuarto, CBA: </span>$700{" "}
             <small>(Envío a domicilio los días sábados desde las 15hs).</small>{" "}
             <br />
             <span>Compras mayores a $25.000: ENVIO GRATIS</span>
