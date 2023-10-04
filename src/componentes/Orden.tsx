@@ -19,7 +19,7 @@ export default function Orden() {
       contador += carrito[i].precio * carrito[i].cantidad;
     }
     if (usuario.FormaPago === "Transferencia 20% OFF") {
-      let descuento = contador * 0.8;
+      let descuento = (contador * 0.8).toFixed(2);
       return (
         <>
           Total:{" "}
