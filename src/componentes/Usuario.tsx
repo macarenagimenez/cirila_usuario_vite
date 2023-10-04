@@ -15,7 +15,11 @@ export default function Usuario() {
     { pago: "Con amor 🤣", disabled: true },
   ];
 
-  let formasDeEnvio: string[] = ["A domicilio", "Envio a sucursal (correo arg)"];
+  let formasDeEnvio: string[] = [
+    "A domicilio",
+    "Envio a sucursal (correo arg)",
+    "GRATIS: Punto de retiro (Rio IV, centro)",
+  ];
 
   let mediosDeContacto = [
     { medio: "Por WhatsApp", disabled: undefined },
@@ -68,7 +72,7 @@ export default function Usuario() {
           required
           id="outlined-select-currency"
           select
-          label="¿Envio a sucursal o domicilio?"
+          label="¿Retiro (Rio IV - Centro) o envío?"
           defaultValue={usuario.FormaEnvio}
           onChange={(e) => {
             actualizarUsuario("FormaEnvio", e.target.value);
