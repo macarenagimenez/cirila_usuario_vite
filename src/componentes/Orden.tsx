@@ -18,15 +18,15 @@ export default function Orden() {
     for (let i = 0; i < carrito.length; i++) {
       contador += carrito[i].precio * carrito[i].cantidad;
     }
-    if (usuario.FormaPago === "Transferencia 20% OFF") {
-      let descuento = (contador * 0.8).toFixed(2);
+    if (usuario.FormaPago === "Transferencia 15% OFF") {
+      let descuento = (contador * 0.85).toFixed(2);
       return (
         <>
           Total:{" "}
           <span style={{ textDecoration: "line-through", color: "grey" }}>
             ${contador}
           </span>
-          <div> Total -20% off: ${descuento} </div>{" "}
+          <div> Total -15% off: ${descuento} </div>{" "}
         </>
       );
     } else {

@@ -114,7 +114,7 @@ function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
           <p className="textoEnviosMediosDePago">
             {" "}
             <span>Medios de Pago: </span> Aceptamos todas las tarjetas y tenés
-            20% OFF abonando con transferencia/efectivo.{" "}
+            15% OFF abonando con transferencia/efectivo.{" "}
           </p>{" "}
           <hr />
           <p className="textoEnviosMediosDePago">
