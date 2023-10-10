@@ -25,7 +25,13 @@ function ObtenerProductos(props: { apiURL: string }) {
     ultimaFechaActualizacion: string;
   };
   useEffect(() => {
-    fetch(props.apiURL)
+    fetch(props.apiURL, {
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key":  "tQY0btQz1u4ueo0hBDDLD1fg83uKFyg2925uF0UX",
+
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         let productosDestacados: InformacionDeProducto[] = [];

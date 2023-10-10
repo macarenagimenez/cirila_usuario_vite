@@ -17,7 +17,13 @@ function LlamadaAPIporID(props: { apiUrl: string }) {
   const api = props.apiUrl;
 
   useEffect(() => {
-    fetch(api)
+    fetch(api, {
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key":  "tQY0btQz1u4ueo0hBDDLD1fg83uKFyg2925uF0UX",
+
+      },
+    })
       .then((response) => {
         return response.json();
       })
