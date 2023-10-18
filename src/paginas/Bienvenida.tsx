@@ -16,9 +16,12 @@ function Bienvenida() {
         {" "}
         <MensajeBienvenida texto={TextoParaMarketing[2].texto} />
       </Link>
-      <img width="100%" src="\imagenes\footer.png"></img>
       <img
-        src="\imagenes\3 cuotas sin interes.png"
+        width="100%"
+        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/footer-653033405b416.webp"
+      ></img>
+      <img
+        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/banner-cuotas-sin-interes-65303347c80a4.webp"
         className="imagenHeaderunica"
       ></img>
     </div>
