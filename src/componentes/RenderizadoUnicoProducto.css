@@ -21,7 +21,7 @@
 
 .linkVolverProductos:visited {
   color: black;
-  color: #ebcfac;
+  color: #efc000;
 }
 
 .nombreProductoSeleccionado {
@@ -41,9 +41,10 @@
 .descripcionProductoSeleccionado,
 .textoEnviosMediosDePago {
   font-size: 13px;
+  line-height: 18px;
 }
 .mensajeSobreStock {
-  color: #ebcfac;
+  color: #efc000;
   font-size: 14px;
   font-weight: 500;
 }
@@ -60,11 +61,10 @@
 }
 .botonContadorStock,
 .botonBasico {
-  background-color: #ebcfac;
+  background-color: #ced8cd;
   border-radius: 20px;
   border: 0px;
   font-family: Montserrat;
-  color: white;
 }
 .botonContadorStock,
 .botonBasico:hover {
@@ -92,4 +92,27 @@
 }
 .descripcionProductoSeleccionado {
   padding-left: 20px;
+}
+
+.carousel .thumb.selected,
+.carousel .thumb:hover {
+  border: 2px solid #efc000 !important;
+}
+
+.carousel .carousel-status {
+  text-shadow: none !important;
+}
+
+.carousel .thumbs-wrapper {
+  margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+}
+.thumb.selected {
+  width: auto;
+}
+
+.carousel .control-dots .dot {
+  box-shadow: none !important;
+  background-color: #ced8cd !important;
 }

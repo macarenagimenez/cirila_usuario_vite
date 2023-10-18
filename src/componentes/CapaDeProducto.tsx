@@ -4,7 +4,13 @@ import { InformacionDeProducto } from "tipos/InformacionDeProducto";
 import "componentes/responsive.css";
 function CapaDeProducto(props: { informacionProducto: InformacionDeProducto }) {
   const productoUrl = "/producto?id=" + props.informacionProducto.id;
-
+  let mensajeSobreStock = (stock: number) => {
+    if (stock === 0) {
+      return <p className="BotonSinStock">Sin stock 🙁</p>;
+    } else {
+      return <p className="BotonAgregarAlCarrito"> ¡Lo quiero 😍! </p>;
+    }
+  };
   return (
     <>
       <Link className="botonParaVerProducto" to={productoUrl}>
@@ -21,7 +27,7 @@ function CapaDeProducto(props: { informacionProducto: InformacionDeProducto }) {
           <p className="PrecioDelProducto">
             ${props.informacionProducto.precio}
           </p>
-          <p className="BotonAgregarAlCarrito">¡Lo quiero 😍!</p>
+          {mensajeSobreStock(props.informacionProducto.stock)}
         </div>
       </Link>
     </>

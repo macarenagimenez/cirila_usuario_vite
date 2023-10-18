@@ -1,6 +1,4 @@
 import LlamadaAPIporID from "componentes/LlamadaAPIporID";
-import AnimacionParaPresentacionPagina from "componentes/AnimacionParaPresentacionPagina";
-import { rutaParaPresentacionPagina } from "tipos/RutaDeImagenes";
 
 function ProductoSeleccionado() {
   let parametros = new URLSearchParams(window.location.search);
@@ -11,9 +9,14 @@ function ProductoSeleccionado() {
 
   return (
     <>
-      <AnimacionParaPresentacionPagina
-        informacionParaPresentacion={rutaParaPresentacionPagina[1]}
-      />
+      <img
+        src="imagenes\encabezado para seleccionar producto.png"
+        width="100%"
+      ></img>
+      <img
+        src="\imagenes\3 cuotas sin interes.png"
+        className="imagenHeaderunica"
+      ></img>
       <LlamadaAPIporID apiUrl={apiURL} />
     </>
   );

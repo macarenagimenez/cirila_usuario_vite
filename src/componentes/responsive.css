@@ -12,13 +12,10 @@
     padding: 5px 15px 6px 15px;
     border-radius: 30px;
   }
-  .Encabezado {
-    margin: 30px auto 0px;
-  }
-
+  /* 
   .imagenProductoSeleccionado img {
     margin: 15px 0px 10px 0px !important;
-  }
+  } */
 
   .textoProductoSeleccionado {
     margin: 0px 0px 10px 0px !important;
@@ -65,5 +62,8 @@
     padding: 10px 30px !important;
     margin: 10px 0px 10px 0px !important;
     font-size: 20px !important;
+  }
+  .carousel .thumbs-wrapper {
+    margin: 5px !important;
   }
 }

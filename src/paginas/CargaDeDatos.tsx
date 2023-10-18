@@ -1,12 +1,16 @@
 import SolicitudDeDatosUsuario from "componentes/SolicitudDeDatosUsuario";
-import AnimacionParaPresentacionPagina from "componentes/AnimacionParaPresentacionPagina";
-import { rutaParaPresentacionPagina } from "tipos/RutaDeImagenes";
+
 export default function CargaDeDatos() {
   return (
     <>
-      <AnimacionParaPresentacionPagina
-        informacionParaPresentacion={rutaParaPresentacionPagina[1]}
-      />
+      <img
+        width={"100%"}
+        src="public\imagenes\encabezado para orden de compra.png"
+      ></img>
+      <img
+        src="\imagenes\3 cuotas sin interes.png"
+        className="imagenHeaderunica"
+      ></img>
       <SolicitudDeDatosUsuario />
     </>
   );
