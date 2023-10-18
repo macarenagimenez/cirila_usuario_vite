@@ -10,11 +10,11 @@ function ProductoSeleccionado() {
   return (
     <>
       <img
-        src="imagenes\encabezado para seleccionar producto.png"
+        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/encabezado-para-seleccionar-producto-6530333fec196.webp"
         width="100%"
       ></img>
       <img
-        src="\imagenes\3 cuotas sin interes.png"
+        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/banner-cuotas-sin-interes-65303347c80a4.webp"
         className="imagenHeaderunica"
       ></img>
       <LlamadaAPIporID apiUrl={apiURL} />

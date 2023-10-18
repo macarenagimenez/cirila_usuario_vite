@@ -211,10 +211,10 @@ function ResumenDeCompra() {
       {" "}
       <img
         width="100%"
-        src="imagenes\encabezado para resumen de compra.png"
+        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/encabezado-para-resumen-de-compra-6530334e93470.webp"
       ></img>
       <img
-        src="\imagenes\3 cuotas sin interes.png"
+        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/banner-cuotas-sin-interes-65303347c80a4.webp"
         className="imagenHeaderunica"
       ></img>
       <div className="contenedorResumenCompraConProductosAgregados">
