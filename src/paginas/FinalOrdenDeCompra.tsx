@@ -1,12 +1,12 @@
-import AnimacionParaPresentacionPagina from "componentes/AnimacionParaPresentacionPagina";
-import { rutaParaPresentacionPagina } from "tipos/RutaDeImagenes";
 import Orden from "componentes/Orden";
 export default function FinalOrdenDeCompra() {
   return (
     <>
-      <AnimacionParaPresentacionPagina
-        informacionParaPresentacion={rutaParaPresentacionPagina[1]}
-      />
+      <img src="imagenes\encabezado para orden final.png" width="100%"></img>
+      <img
+        src="\imagenes\3 cuotas sin interes.png"
+        className="imagenHeaderunica"
+      ></img>
       <Orden />
     </>
   );

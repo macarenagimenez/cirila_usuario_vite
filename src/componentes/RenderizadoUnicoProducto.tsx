@@ -13,7 +13,6 @@ import { Carousel } from "react-responsive-carousel";
 
 function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
   let producto = props.producto;
-  console.log(producto);
 
   const { carrito, agregarAlCarrito } = useContext(CarritoContext);
 
@@ -21,16 +20,13 @@ function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
     let imagenesParaRenderizar = () => {
       let imagenes = [];
       for (let i = 0; i < producto.urlImagen.length; i++) {
-        console.log(producto.urlImagen[i]);
-        console.log(producto.urlImagen[i].url);
         imagenes.push(
           <div>
             <img
               src={producto.urlImagen[i].url}
               alt={producto.urlImagen[i].alt}
-              className="imagenProductoSeleccionado"
               key={producto.nombre}
-            />
+            />{" "}
           </div>
         );
       }
@@ -38,7 +34,6 @@ function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
     };
     return (
       <Grid item xs={6} sm={6} md={6}>
-        {" "}
         <div className="imagenProductoSeleccionado">
           <Carousel showArrows={true}>{imagenesParaRenderizar()}</Carousel>{" "}
         </div>
@@ -50,6 +45,7 @@ function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
     <div>
       <h2 className="nombreProductoSeleccionado">{producto.nombre}</h2>
       <h2 className="precioProductoSeleccionado">${producto.precio}</h2>
+
       <p className="descripcionProductoSeleccionado">{producto.descripcion}</p>
     </div>
   );
@@ -118,12 +114,10 @@ function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
           </p>{" "}
           <hr />
           <p className="textoEnviosMediosDePago">
-            <span>Punto de retiro:</span> Río IV, Centro. GRATIS <br />
             <span> Envíos a todo el país: </span>
-            Entre $1350 a $2300{" "}
-            <small>(Dependiendo la localidad/sucursal).</small>
+            desde $1350! <small>(Dependiendo la localidad/sucursal).</small>
             <br />
-            <span>Envíos dentro de Rio Cuarto, CBA: </span>$700{" "}
+            <span>Envíos dentro de Rio Cuarto, CBA: </span>$300{" "}
             <small>(Envío a domicilio los días sábados desde las 15hs).</small>{" "}
             <br />
             <span>Compras mayores a $25.000: ENVIO GRATIS</span>

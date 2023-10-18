@@ -1,6 +1,6 @@
 .mensajeDespedida {
   width: 555px;
-  background-color: white;
+  border: 3px solid #efc000;
   margin: 100px auto;
   padding: 20px 30px;
   border-radius: 20px;

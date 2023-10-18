@@ -7,8 +7,7 @@ import type { productosAgregados } from "tipos/CarritoCargado";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import AnimacionParaPresentacionPagina from "componentes/AnimacionParaPresentacionPagina";
-import { rutaParaPresentacionPagina } from "tipos/RutaDeImagenes";
+
 import "componentes/responsive.css";
 function ResumenDeCompra() {
   const { carrito, eliminarDelCarrito, sumarStock, restarStock } =
@@ -134,19 +133,26 @@ function ResumenDeCompra() {
                     </Grid>
                   </Grid>
                   <hr />
-                  <p className="textoEnviosMediosDePago">
-                    <span>Punto de retiro:</span> Río IV, Centro. GRATIS <br />
-                    <span> Envíos a todo el país: </span>
-                    Entre $1350 a $2300{" "}
-                    <small>(Dependiendo la localidad/sucursal).</small>
-                    <br />
-                    <span>Envíos dentro de Rio Cuarto, CBA: </span>$700{" "}
-                    <small>
-                      (Envío a domicilio los días sábados desde las 15hs).
-                    </small>{" "}
-                    <br />
-                    <span>Compras mayores a $25.000: ENVIO GRATIS</span>
-                  </p>
+                  <div className="contenedorEnviosMediosdepago">
+                    <p className="textoEnviosMediosDePago">
+                      {" "}
+                      <span>Medios de Pago: </span> Aceptamos todas las tarjetas
+                      y tenés 15% OFF abonando con transferencia/efectivo.{" "}
+                    </p>{" "}
+                    <hr />
+                    <p className="textoEnviosMediosDePago">
+                      <span> Envíos a todo el país: </span>
+                      desde $1350!{" "}
+                      <small>(Dependiendo la localidad/sucursal).</small>
+                      <br />
+                      <span>Envíos dentro de Rio Cuarto, CBA: </span>$300{" "}
+                      <small>
+                        (Envío a domicilio los días sábados desde las 15hs).
+                      </small>{" "}
+                      <br />
+                      <span>Compras mayores a $25.000: ENVIO GRATIS</span>
+                    </p>
+                  </div>
                   <Grid container item spacing={2}>
                     <Grid
                       item
@@ -203,9 +209,14 @@ function ResumenDeCompra() {
   return (
     <>
       {" "}
-      <AnimacionParaPresentacionPagina
-        informacionParaPresentacion={rutaParaPresentacionPagina[1]}
-      />
+      <img
+        width="100%"
+        src="imagenes\encabezado para resumen de compra.png"
+      ></img>
+      <img
+        src="\imagenes\3 cuotas sin interes.png"
+        className="imagenHeaderunica"
+      ></img>
       <div className="contenedorResumenCompraConProductosAgregados">
         {/* desde aca */}
         {mostrarProductosAgregados()}
