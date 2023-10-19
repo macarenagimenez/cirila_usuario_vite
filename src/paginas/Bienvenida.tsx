@@ -3,29 +3,27 @@ import MensajeBienvenida from "componentes/MensajeBienvenida";
 import { TextoParaMarketing } from "tipos/TextoParaMarketing";
 import ProductosDestacados from "secciones/ProductosDestacados";
 import "componentes/MensajeBienvenida.css";
-import ImagenConTexto from "componentes/ImagenConTexto";
-import { rutaParaImagenesConTexto } from "tipos/RutaDeImagenes";
-import AnimacionParaPresentacionPagina from "componentes/AnimacionParaPresentacionPagina";
-import { rutaParaPresentacionPagina } from "tipos/RutaDeImagenes";
-import { Box } from "@mui/material";
+
 import { Link } from "react-router-dom";
 function Bienvenida() {
   return (
     <div>
       {" "}
-      <Box sx={{ display: { xs: "none", md: "flex" } }}>
-        <AnimacionParaPresentacionPagina
-          informacionParaPresentacion={rutaParaPresentacionPagina[1]}
-        />
-      </Box>
       <Encabezado />
-      <MensajeBienvenida texto={TextoParaMarketing[1].texto} />
+      <MensajeBienvenida texto={TextoParaMarketing[1].texto} />{" "}
       <ProductosDestacados />
       <Link to="/productos">
         {" "}
         <MensajeBienvenida texto={TextoParaMarketing[2].texto} />
       </Link>
-      <ImagenConTexto informacionParaImagen={rutaParaImagenesConTexto[0]} />
+      <img
+        width="100%"
+        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/footer-653033405b416.webp"
+      ></img>
+      <img
+        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/banner-cuotas-sin-interes-65303347c80a4.webp"
+        className="imagenHeaderunica"
+      ></img>
     </div>
   );
 }

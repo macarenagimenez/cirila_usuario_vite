@@ -1,5 +1,4 @@
 .MuestraDeProducto {
-  background-color: white;
   margin: 0 auto 20px;
   display: flex;
   flex-direction: column;
@@ -23,19 +22,24 @@
 }
 
 .PrecioDelProducto {
-  font-size: 12px;
+  color: #efc000;
+  font-size: 15px;
   margin: 6px auto;
 }
 
-.BotonAgregarAlCarrito {
-  border: 2px solid #f4cfc7;
-  background-color: #f4cfc7;
-  padding: 4px 50px;
+.BotonAgregarAlCarrito,
+.BotonSinStock {
+  padding: 5px 50px;
   font-size: 11px;
-  border-radius: 20px;
+  border-radius: 0px 20px 20px 20px;
   margin: 0 auto 20px;
 }
-
+.BotonAgregarAlCarrito {
+  background-color: #ced8cd;
+}
+.BotonSinStock {
+  background-color: #f4cfc7;
+}
 .botonParaVerProducto {
   text-decoration: none;
 }

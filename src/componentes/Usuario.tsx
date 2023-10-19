@@ -18,7 +18,6 @@ export default function Usuario() {
   let formasDeEnvio: string[] = [
     "A domicilio",
     "Envio a sucursal (correo arg)",
-    "GRATIS: Punto de retiro (Rio IV, centro)",
   ];
 
   let mediosDeContacto = [
@@ -72,7 +71,7 @@ export default function Usuario() {
           required
           id="outlined-select-currency"
           select
-          label="¿Retiro (Rio IV - Centro) o envío?"
+          label="¿Envío a domicilio o sucursal Correo Arg.?"
           defaultValue={usuario.FormaEnvio}
           onChange={(e) => {
             actualizarUsuario("FormaEnvio", e.target.value);

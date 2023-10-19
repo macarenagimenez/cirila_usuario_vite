@@ -8,10 +8,13 @@ let TextoParaMarketing: Textos[] = [
     texto: "3 cuotas sin interés con todas las tarjetas!",
   },
   {
-    texto: "15% de descuento con transferencia!",
+    texto: "productos destacados",
   },
   {
-    texto: "CLICK PARA VER TODOS LOS PRODUCTOS 😄",
+    texto: "ver todos los productos",
+  },
+  {
+    texto: "chusmeá todos los productos 👇🏻",
   },
 ];
 

@@ -1,12 +1,15 @@
-import AnimacionParaPresentacionPagina from "componentes/AnimacionParaPresentacionPagina";
-import { rutaParaPresentacionPagina } from "tipos/RutaDeImagenes";
 import Orden from "componentes/Orden";
 export default function FinalOrdenDeCompra() {
   return (
     <>
-      <AnimacionParaPresentacionPagina
-        informacionParaPresentacion={rutaParaPresentacionPagina[1]}
-      />
+      <img
+        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/encabezado-para-orden-final-6530334b9ad15.webp"
+        width="100%"
+      ></img>
+      <img
+        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/banner-cuotas-sin-interes-65303347c80a4.webp"
+        className="imagenHeaderunica"
+      ></img>
       <Orden />
     </>
   );

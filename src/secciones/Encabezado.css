@@ -1,9 +1,6 @@
 .Encabezado {
-  background-color: #f5f0ea;
   font-family: "Katibeh", cursive;
   color: #174642;
-  max-width: 90%;
-  margin: 50px auto;
 }
 .textoEncabezado {
   font-size: 30px;
@@ -21,4 +18,11 @@
   margin: 0 auto;
   margin-top: 30px;
   border-radius: 30px;
+}
+
+.headerWithImage {
+  width: 100%;
+}
+.imagenHeaderunica {
+  width: 100%;
 }

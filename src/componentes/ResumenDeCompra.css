@@ -48,13 +48,14 @@ a {
   width: 60%;
   max-width: 720px;
   text-align: center;
+  border: 3px solid #efc000;
   background-color: white;
   margin: 20px auto;
-  padding: 50px;
+  padding: 30px;
   border-radius: 30px;
 }
 .stockBajo {
-  background-color: #f4cfc7;
+  background-color: #efc000;
   padding: 2px 8px;
   font-size: 12px;
   border-radius: 10px;
