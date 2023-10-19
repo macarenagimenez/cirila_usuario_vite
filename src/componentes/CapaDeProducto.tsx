@@ -11,13 +11,20 @@ function CapaDeProducto(props: { informacionProducto: InformacionDeProducto }) {
       return <p className="BotonAgregarAlCarrito"> ¡Lo quiero 😍! </p>;
     }
   };
+  let urlImagen = ""
+  let altImagen = ""
+  if(props.informacionProducto?.urlImagen.length > 0) {
+    urlImagen = props.informacionProducto.urlImagen[0].url
+    altImagen = props.informacionProducto.urlImagen[0].alt
+  }
+
   return (
     <>
       <Link className="botonParaVerProducto" to={productoUrl}>
         <div className="MuestraDeProducto">
           <img
-            src={props.informacionProducto.urlImagen[0].url}
-            alt={props.informacionProducto.nombre}
+            src={urlImagen}
+            alt={altImagen}
             className="ImagenDelProducto"
           />
 

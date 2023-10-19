@@ -1,13 +1,11 @@
-import LlamadaAPI from "componentes/LlamadaAPI";
-import { apiDestacados } from "tipos/APIs";
+import ObtenerProductos from "componentes/RenderizadoDeProductos";
+import { TipoProductos } from "tipos/TipoProductos";
 
 function ProductosDestacados() {
-  const apiURL = apiDestacados.APIurl;
-
   return (
     <section>
       <div className="ContenedorProductosDestacados">
-        <LlamadaAPI apiURL={apiURL} />{" "}
+        <ObtenerProductos tipoProductos={TipoProductos.DESTACADOS} />{" "}
       </div>
     </section>
   );
