@@ -1,28 +1,34 @@
 import { productosAgregados } from "tipos/CarritoCargado";
 import { DatosUsuario } from "tipos/DatosDeUsuario";
 import type { crearCarritoRequest } from "tipos/crearCarritoRequest";
+  
 
-const apiURL =
-  "https://mpi4ne060b.execute-api.us-east-1.amazonaws.com/prod/v1.0/carritos";
+export default class CarritoService {
 
-function carritoService(carrito: productosAgregados[], usuario: DatosUsuario) {
-  //TODO
-  const carritoCargado: crearCarritoRequest = {
-    productos: carrito,
-    datosUsuario: usuario,
-  };
-  console.log(carritoCargado);
-  fetch(apiURL, {
-    method: "POST",
-    mode: "cors",
-    cache: "no-cache",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(carritoCargado),
-  }).catch((err) => {
-    console.log(err);
-  });
+  static readonly baseUrl= import.meta.env.VITE_HOST_CARRITOS as string
+  static readonly apiKey= import.meta.env.VITE_APIKEY_CARRITOS as string
+
+  CrearCarrito(carrito: productosAgregados[], usuario: DatosUsuario) {
+    //TODO
+    const carritoCargado: crearCarritoRequest = {
+      productos: carrito,
+      datosUsuario: usuario,
+    };
+    fetch(CarritoService.baseUrl + "carritos", {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key":  CarritoService.apiKey,
+      },
+      body: JSON.stringify(carritoCargado),
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+  
+
 }
 
-export default carritoService;
+

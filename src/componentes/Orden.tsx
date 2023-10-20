@@ -7,11 +7,13 @@ import "componentes/responsive.css";
 import "componentes/Orden.css";
 import { Box, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
-import carritoService from "service/carritoService";
+import CarritoService from "service/carritoService";
 
 export default function Orden() {
   const { usuario } = useContext(UsuarioContext);
   const { carrito, cancelarCompra } = useContext(CarritoContext);
+
+  const carritoService : CarritoService = new CarritoService();
 
   function totalDeLaCompra() {
     let contador = 0;
@@ -55,7 +57,7 @@ export default function Orden() {
   });
 
   function finalizarCompra() {
-    carritoService(carrito, usuario);
+    carritoService.CrearCarrito(carrito, usuario);
     cancelarCompra();
   }
 

@@ -1,5 +1,5 @@
 import { Box, Grid } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import "componentes/RenderizadoUnicoProducto.css";
 import { InformacionDeProducto } from "tipos/InformacionDeProducto";
 import { Link } from "react-router-dom";
@@ -10,9 +10,32 @@ import "componentes/responsive.css";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import ProductosService from "service/productosService";
 
-function RenderizadoUnicoProducto(props: { producto: InformacionDeProducto }) {
-  let producto = props.producto;
+function RenderizadoUnicoProducto(props: { idProducto : string }) {
+ // let producto = props.producto;
+
+  const productoVacio: InformacionDeProducto = {
+    id: "",
+    nombre: "",
+    precio: 0,
+    urlImagen: [],
+
+    stock: 0,
+    descripcion: "",
+  };
+  const [producto, setProducto] =
+    useState<InformacionDeProducto>(productoVacio);
+
+  const productosService : ProductosService = new ProductosService();
+
+  useEffect(() => {
+      productosService.buscarProductoPorId(props.idProducto).then((data) => {
+        if (data) {
+          setProducto(data);
+        }
+      });
+  }, []);
 
   const { carrito, agregarAlCarrito } = useContext(CarritoContext);
 

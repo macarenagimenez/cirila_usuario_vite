@@ -4,50 +4,31 @@ import { InformacionDeProducto } from "tipos/InformacionDeProducto";
 import { Grid, Box } from "@mui/material";
 import CapaDeProducto from "componentes/CapaDeProducto";
 import "componentes/responsive.css";
-function ObtenerProductos(props: { apiURL: string }) {
-  const [productos, setProductos] = useState<InformacionDeProducto[]>([]);
-  type productoEntrante = {
-    id: string;
-    nombre: string;
-    descripcion: string;
-    precio: number;
-    imagenes: [
-      {
-        orden: number;
-        url: string;
-        alt: string;
-      }
-    ];
-    destacado: true;
-    categorias: null;
-    stock: number;
-    fechaCreacion: string;
-    ultimaFechaActualizacion: string;
-  };
-  useEffect(() => {
-    fetch(props.apiURL)
-      .then((response) => response.json())
-      .then((data) => {
-        let productosDestacados: InformacionDeProducto[] = [];
+import ProductosService from "service/productosService";
+import { TipoProductos } from "tipos/TipoProductos";
 
-        data.map((producto: productoEntrante): void => {
-          const nuevoProducto = (producto: productoEntrante) => {
-            let content: InformacionDeProducto = {
-              id: producto.id,
-              nombre: producto.nombre,
-              precio: producto.precio,
-              urlImagen: producto.imagenes,
-              stock: producto.stock,
-            };
-            return content;
-          };
-          productosDestacados.push(nuevoProducto(producto));
-          setProductos(productosDestacados);
-        });
-      })
-      .catch((err) => {
-        console.log(err);
+
+
+function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
+
+  const [productos, setProductos] = useState<InformacionDeProducto[]>([]);
+  const productosService : ProductosService = new ProductosService();
+
+  useEffect(() => {
+    if (props.tipoProductos === TipoProductos.DESTACADOS) {
+      productosService.buscarProductosDestacados().then((data) => {
+        if(data) {
+          setProductos(data);
+        }
       });
+    } else {
+      productosService.buscarProductos().then((data) => {
+        if (data) {
+          setProductos(data);
+        }
+      });
+    }
+      
   }, []);
 
   function mostrarProductosDestacados(productos: InformacionDeProducto[]) {
@@ -57,10 +38,10 @@ function ObtenerProductos(props: { apiURL: string }) {
 
       contenidoParaRenderizar.push(
         <>
-          <Grid item xs={3} sm={3} md={3}>
+          <Grid key={"prod-grid-"+i} item xs={3} sm={3} md={3}>
             <CapaDeProducto
               informacionProducto={InformaciónParaMostrar}
-              key={i}
+              key={"capaProd-"+i}
             />{" "}
           </Grid>
         </>
