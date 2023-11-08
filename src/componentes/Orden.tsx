@@ -6,10 +6,11 @@ import { productosAgregados } from "tipos/CarritoCargado";
 import "componentes/responsive.css";
 import "componentes/Orden.css";
 import { Box, Grid } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CarritoService from "service/carritoService";
 
 export default function Orden() {
+  const navigate = useNavigate(); 
   const { usuario } = useContext(UsuarioContext);
   const { carrito, cancelarCompra } = useContext(CarritoContext);
 
@@ -56,10 +57,20 @@ export default function Orden() {
     );
   });
 
-  function finalizarCompra() {
-    carritoService.CrearCarrito(carrito, usuario);
-    cancelarCompra();
-  }
+  function finalizarCompra(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    event.currentTarget.disabled = true;
+    carritoService.CrearCarrito(carrito, usuario)
+    .then(() => {
+      cancelarCompra()
+      navigate("/despedida");
+    })
+    .catch((error) => {
+      console.log(error);
+      navigate("/errorEnCompra");
+    });
+  };
+  
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -184,14 +195,12 @@ export default function Orden() {
               </Grid>
             </Grid>
           </div>
-          <Link to="/despedida">
             <button
               className="botonBasico botonFinalizarCompra"
-              onClick={() => finalizarCompra()}
+              onClick={(event) => finalizarCompra(event)}
             >
               FINALIZAR COMPRA
             </button>{" "}
-          </Link>{" "}
         </Grid>
       </Grid>
     </Box>

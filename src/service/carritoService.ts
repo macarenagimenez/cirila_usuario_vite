@@ -8,13 +8,13 @@ export default class CarritoService {
   static readonly baseUrl= import.meta.env.VITE_HOST_CARRITOS as string
   static readonly apiKey= import.meta.env.VITE_APIKEY_CARRITOS as string
 
-  CrearCarrito(carrito: productosAgregados[], usuario: DatosUsuario) {
+  CrearCarrito(carrito: productosAgregados[], usuario: DatosUsuario) : Promise<void>{
     //TODO
     const carritoCargado: crearCarritoRequest = {
       productos: carrito,
       datosUsuario: usuario,
     };
-    fetch(CarritoService.baseUrl + "carritos", {
+    return fetch(CarritoService.baseUrl + "carritos", {
       method: "POST",
       mode: "cors",
       cache: "no-cache",
@@ -23,9 +23,7 @@ export default class CarritoService {
         "x-api-key":  CarritoService.apiKey,
       },
       body: JSON.stringify(carritoCargado),
-    }).catch((err) => {
-      console.log(err);
-    });
+    }).then();
   }
   
 
