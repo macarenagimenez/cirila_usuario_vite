@@ -9,7 +9,7 @@ function PaginaDeProducto() {
         src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/encabezado-para-pagina-de-productos-6530334d5cdca.webp"
       ></img>{" "}
       <img
-        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/banner-cuotas-sin-interes-65303347c80a4.webp"
+        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/objetopreferido.webp"
         className="imagenHeaderunica"
       ></img>
       <MensajeBienvenida texto={TextoParaMarketing[3].texto} />

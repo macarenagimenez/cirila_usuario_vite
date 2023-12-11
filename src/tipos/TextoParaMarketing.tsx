@@ -5,7 +5,7 @@ type Textos = {
 
 let TextoParaMarketing: Textos[] = [
   {
-    texto: "3 cuotas sin interés con todas las tarjetas!",
+    texto: "...",
   },
   {
     texto: "productos destacados",

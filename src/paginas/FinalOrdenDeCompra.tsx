@@ -7,7 +7,7 @@ export default function FinalOrdenDeCompra() {
         width="100%"
       ></img>
       <img
-        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/banner-cuotas-sin-interes-65303347c80a4.webp"
+        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/objetopreferido.webp"
         className="imagenHeaderunica"
       ></img>
       <Orden />

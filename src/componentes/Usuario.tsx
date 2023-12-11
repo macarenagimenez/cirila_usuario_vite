@@ -9,15 +9,16 @@ export default function Usuario() {
   const { usuario, actualizarUsuario } = useContext(UsuarioContext);
 
   let formasDepago = [
-    { pago: "Transferencia 15% OFF", disabled: undefined },
-    { pago: "Tarjeta de crédito (3ctas/s/int)", disabled: undefined },
-
+    { pago: "Transferencia", disabled: undefined },
+    { pago: "Tarjeta de crédito", disabled: undefined },
     { pago: "Con amor 🤣", disabled: true },
   ];
 
   let formasDeEnvio: string[] = [
     "A domicilio",
-    "Envio a sucursal (correo arg)",
+    "A sucursal (correo arg)",
+    "A domicilio Rio IV, CBA.",
+    "Punto de retiro en Villa Mercedes (gratis, a coordinar)",
   ];
 
   let mediosDeContacto = [
@@ -131,7 +132,7 @@ export default function Usuario() {
             <TextField
               required
               id="outlined-basic"
-              label="Nombre y apellido"
+              label="Nombre y Apellido"
               variant="outlined"
               defaultValue={usuario.NombreCompleto}
               onChange={(e) => {
@@ -141,7 +142,7 @@ export default function Usuario() {
             <TextField
               required
               id="outlined-basic"
-              label="Provincia"
+              label="Localidad y Provincia"
               variant="outlined"
               defaultValue={usuario.Provincia}
               onChange={(e) => {
@@ -151,7 +152,7 @@ export default function Usuario() {
             <TextField
               required
               id="outlined-basic"
-              label="Localidad"
+              label="Domicilio (calle, altura)"
               variant="outlined"
               defaultValue={usuario.Localidad}
               onChange={(e) => {
@@ -181,7 +182,7 @@ export default function Usuario() {
             <TextField
               required
               id="outlined-basic"
-              label="Celular"
+              label="Celular (ej: 2657 307339)"
               variant="outlined"
               defaultValue={usuario.Celular}
               onChange={(e) => {
@@ -190,7 +191,7 @@ export default function Usuario() {
             />{" "}
             <TextField
               id="outlined-multiline-static"
-              label="¿Quisieras agregar algun mensaje?"
+              label="¿Quisieras agregar alguna indicación?"
               multiline
               rows={4}
               defaultValue={usuario.MensajeOpcional}
