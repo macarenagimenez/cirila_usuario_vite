@@ -1,7 +1,7 @@
 type DatosUsuario = {
   NombreCompleto: string;
-  Provincia: string;
-  Localidad: string;
+  LocalidadProvincia: string;
+  Domicilio: string;
   CodigoPostal: string;
   Correo: string;
   Celular: string;
@@ -14,8 +14,8 @@ type DatosUsuario = {
 
 let datosUsuarioVacio: DatosUsuario = {
   NombreCompleto: "",
-  Provincia: "",
-  Localidad: "",
+  LocalidadProvincia: "",
+  Domicilio: "",
   CodigoPostal: "",
   Correo: "",
   Celular: "",

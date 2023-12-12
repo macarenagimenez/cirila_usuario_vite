@@ -123,8 +123,8 @@ export default function Orden() {
             <div className="contenedorDatosContacto">
               <strong>Nombre y Apellido:</strong> {usuario.NombreCompleto}
               <br />
-              <strong>Localidad y Provincia:</strong> {usuario.Provincia} <br />
-              <strong> Domicilio:</strong> {usuario.Localidad} <br />{" "}
+              <strong>Localidad y Provincia:</strong> {usuario.LocalidadProvincia} <br />
+              <strong> Domicilio:</strong> {usuario.Domicilio} <br />{" "}
               <strong>CP:</strong> {usuario.CodigoPostal}
               <br />
               <strong>E-mail:</strong> {usuario.Correo}

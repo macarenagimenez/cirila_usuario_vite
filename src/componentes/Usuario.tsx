@@ -144,7 +144,7 @@ export default function Usuario() {
               id="outlined-basic"
               label="Localidad y Provincia"
               variant="outlined"
-              defaultValue={usuario.Provincia}
+              defaultValue={usuario.LocalidadProvincia}
               onChange={(e) => {
                 actualizarUsuario("Provincia", e.target.value);
               }}
@@ -154,7 +154,7 @@ export default function Usuario() {
               id="outlined-basic"
               label="Domicilio (calle, altura)"
               variant="outlined"
-              defaultValue={usuario.Localidad}
+              defaultValue={usuario.Domicilio}
               onChange={(e) => {
                 actualizarUsuario("Localidad", e.target.value);
               }}
