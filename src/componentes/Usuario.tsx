@@ -146,7 +146,7 @@ export default function Usuario() {
               variant="outlined"
               defaultValue={usuario.LocalidadProvincia}
               onChange={(e) => {
-                actualizarUsuario("Provincia", e.target.value);
+                actualizarUsuario("LocalidadProvincia", e.target.value);
               }}
             />{" "}
             <TextField
@@ -156,7 +156,7 @@ export default function Usuario() {
               variant="outlined"
               defaultValue={usuario.Domicilio}
               onChange={(e) => {
-                actualizarUsuario("Localidad", e.target.value);
+                actualizarUsuario("Domicilio", e.target.value);
               }}
             />{" "}
             <TextField
