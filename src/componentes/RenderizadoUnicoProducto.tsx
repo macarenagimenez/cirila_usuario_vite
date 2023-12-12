@@ -12,8 +12,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import ProductosService from "service/productosService";
 
-function RenderizadoUnicoProducto(props: { idProducto : string }) {
- // let producto = props.producto;
+function RenderizadoUnicoProducto(props: { idProducto: string }) {
+  // let producto = props.producto;
 
   const productoVacio: InformacionDeProducto = {
     id: "",
@@ -27,14 +27,14 @@ function RenderizadoUnicoProducto(props: { idProducto : string }) {
   const [producto, setProducto] =
     useState<InformacionDeProducto>(productoVacio);
 
-  const productosService : ProductosService = new ProductosService();
+  const productosService: ProductosService = new ProductosService();
 
   useEffect(() => {
-      productosService.buscarProductoPorId(props.idProducto).then((data) => {
-        if (data) {
-          setProducto(data);
-        }
-      });
+    productosService.buscarProductoPorId(props.idProducto).then((data) => {
+      if (data) {
+        setProducto(data);
+      }
+    });
   }, []);
 
   const { carrito, agregarAlCarrito } = useContext(CarritoContext);
@@ -132,18 +132,16 @@ function RenderizadoUnicoProducto(props: { idProducto : string }) {
           <hr />
           <p className="textoEnviosMediosDePago">
             {" "}
-            <span>Medios de Pago: </span> Aceptamos todas las tarjetas y tenés
-            15% OFF abonando con transferencia/efectivo.{" "}
+            <span>Medios de Pago: </span> Transferencia, tarjetas de crédito.{" "}
           </p>{" "}
           <hr />
           <p className="textoEnviosMediosDePago">
-            <span> Envíos a todo el país: </span>
-            desde $1350! <small>(Dependiendo la localidad/sucursal).</small>
+            <span> Envíos a sucursal Correo Argentino: </span>
+            $1800
+            <br /> <span> Envíos a domicilio: </span>
+            $2800
             <br />
-            <span>Envíos dentro de Rio Cuarto, CBA: </span>$300{" "}
-            <small>(Envío a domicilio los días sábados desde las 15hs).</small>{" "}
-            <br />
-            <span>Compras mayores a $25.000: ENVIO GRATIS</span>
+            <span>Envíos dentro de Rio Cuarto, CBA: </span>$500 <br />
           </p>
         </div>
       </div>

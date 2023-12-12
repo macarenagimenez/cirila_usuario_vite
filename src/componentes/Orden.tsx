@@ -10,33 +10,70 @@ import { Link, useNavigate } from "react-router-dom";
 import CarritoService from "service/carritoService";
 
 export default function Orden() {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const { usuario } = useContext(UsuarioContext);
   const { carrito, cancelarCompra } = useContext(CarritoContext);
 
-  const carritoService : CarritoService = new CarritoService();
+  const carritoService: CarritoService = new CarritoService();
 
+  // function totalDeLaCompra() {
+  //   let contador = 0;
+  //   for (let i = 0; i < carrito.length; i++) {
+  //     contador += carrito[i].precio * carrito[i].cantidad;
+  //   }
+  //   if (usuario.FormaPago === "Transferencia") {
+  //     let descuento = (contador * 0.85).toFixed(2);
+  //     return (
+  //       <>
+  //         Total:{" "}
+  //         <span style={{ textDecoration: "line-through", color: "grey" }}>
+  //           ${contador}
+  //         </span>
+  //         <div> Total -15% off: ${descuento} </div>{" "}
+  //       </>
+  //     );
+  //   } else {
+  //     return <span> Total: ${contador}</span>;
+  //   }
+  // }
   function totalDeLaCompra() {
     let contador = 0;
+
     for (let i = 0; i < carrito.length; i++) {
       contador += carrito[i].precio * carrito[i].cantidad;
     }
-    if (usuario.FormaPago === "Transferencia 15% OFF") {
-      let descuento = (contador * 0.85).toFixed(2);
+    if (usuario.FormaEnvio === "A domicilio en Argentina") {
+      let total = contador + 2800;
       return (
         <>
-          Total:{" "}
-          <span style={{ textDecoration: "line-through", color: "grey" }}>
-            ${contador}
-          </span>
-          <div> Total -15% off: ${descuento} </div>{" "}
+          ${contador} <br></br>
+          <small> + envío a domicilio : $2800</small> <br></br> <br></br>
+          <div> Total: ${total} </div>{" "}
+        </>
+      );
+    } else if (usuario.FormaEnvio === "A sucursal de Correo Argentino") {
+      let total = contador + 1800;
+      return (
+        <>
+          ${contador} <br></br>
+          <small> + envío a sucursal CA : $1800</small> <br></br> <br></br>
+          <div> Total: ${total} </div>{" "}
+        </>
+      );
+    } else if (usuario.FormaEnvio === "A domicilio en Rio IV, CBA.") {
+      let total = contador + 500;
+      return (
+        <>
+          ${contador} <br></br>
+          <small> + envío a domicilio Rio IV, CBA : $500</small> <br></br>{" "}
+          <br></br>
+          <div> Total: ${total} </div>{" "}
         </>
       );
     } else {
       return <span> Total: ${contador}</span>;
     }
   }
-
   let productosParaMostrarEnOrden = carrito.map((item: productosAgregados) => {
     return (
       <div className="contenedorRenderizadoDeProducto">
@@ -60,17 +97,17 @@ export default function Orden() {
   function finalizarCompra(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     event.currentTarget.disabled = true;
-    carritoService.CrearCarrito(carrito, usuario)
-    .then(() => {
-      cancelarCompra()
-      navigate("/despedida");
-    })
-    .catch((error) => {
-      console.log(error);
-      navigate("/errorEnCompra");
-    });
-  };
-  
+    carritoService
+      .CrearCarrito(carrito, usuario)
+      .then(() => {
+        cancelarCompra();
+        navigate("/despedida");
+      })
+      .catch((error) => {
+        console.log(error);
+        navigate("/errorEnCompra");
+      });
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -86,8 +123,8 @@ export default function Orden() {
             <div className="contenedorDatosContacto">
               <strong>Nombre y Apellido:</strong> {usuario.NombreCompleto}
               <br />
-              <strong>Provincia:</strong> {usuario.Provincia} <br />
-              <strong> Localidad:</strong> {usuario.Localidad} <br />{" "}
+              <strong>Localidad y Provincia:</strong> {usuario.LocalidadProvincia} <br />
+              <strong> Domicilio:</strong> {usuario.Domicilio} <br />{" "}
               <strong>CP:</strong> {usuario.CodigoPostal}
               <br />
               <strong>E-mail:</strong> {usuario.Correo}
@@ -128,22 +165,13 @@ export default function Orden() {
               </div>{" "}
               <hr />
               <small>
-                <p className="textoEnviosMediosDePago">
-                  <div className="contenedorEnviosMediosdepago">
-                    <p className="textoEnviosMediosDePago">
-                      <span> Envíos a todo el país: </span>
-                      desde $1350!{" "}
-                      <small>(Dependiendo la localidad/sucursal).</small>
-                      <br />
-                      <span>Envíos dentro de Rio Cuarto, CBA: </span>$300{" "}
-                      <small>
-                        (Envío a domicilio los días sábados desde las 15hs).
-                      </small>{" "}
-                      <br />
-                      <span>Compras mayores a $25.000: ENVIO GRATIS</span>
-                    </p>
-                  </div>
-                </p>
+                📩 Una vez que finalices tu compra, te enviaremos un mail con la
+                confirmación de tu pedido y nos contactaremos por el medio
+                elegido para coordinar el pago y el envío. <br />
+                <strong>
+                  No olvides de chequear tu casilla de correo 😉
+                </strong>{" "}
+                <br />
               </small>
             </div>{" "}
           </div>{" "}
@@ -195,12 +223,12 @@ export default function Orden() {
               </Grid>
             </Grid>
           </div>
-            <button
-              className="botonBasico botonFinalizarCompra"
-              onClick={(event) => finalizarCompra(event)}
-            >
-              FINALIZAR COMPRA
-            </button>{" "}
+          <button
+            className="botonBasico botonFinalizarCompra"
+            onClick={(event) => finalizarCompra(event)}
+          >
+            FINALIZAR COMPRA
+          </button>{" "}
         </Grid>
       </Grid>
     </Box>

@@ -35,7 +35,7 @@ let rutaParaPieDePagina: rutaDeImagen[] = [
   {
     src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/envios.png",
     alt: "envios, envio internacional",
-    texto: "Hacemos envios a todo el país",
+    texto: "Hacemos envios a toda la Argentina",
   },
   {
     src: "https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/comprasegura.png",

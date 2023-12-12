@@ -136,21 +136,17 @@ function ResumenDeCompra() {
                   <div className="contenedorEnviosMediosdepago">
                     <p className="textoEnviosMediosDePago">
                       {" "}
-                      <span>Medios de Pago: </span> Aceptamos todas las tarjetas
-                      y tenés 15% OFF abonando con transferencia/efectivo.{" "}
+                      <span>Medios de Pago: </span> Transferencia, tarjetas de
+                      crédito.{" "}
                     </p>{" "}
                     <hr />
                     <p className="textoEnviosMediosDePago">
-                      <span> Envíos a todo el país: </span>
-                      desde $1350!{" "}
-                      <small>(Dependiendo la localidad/sucursal).</small>
+                      <span> Envíos a sucursal Correo Argentino: </span>
+                      $1800
+                      <br /> <span> Envíos a domicilio: </span>
+                      $2800
                       <br />
-                      <span>Envíos dentro de Rio Cuarto, CBA: </span>$300{" "}
-                      <small>
-                        (Envío a domicilio los días sábados desde las 15hs).
-                      </small>{" "}
-                      <br />
-                      <span>Compras mayores a $25.000: ENVIO GRATIS</span>
+                      <span>Envíos dentro de Rio Cuarto, CBA: </span>$500 <br />
                     </p>
                   </div>
                   <Grid container item spacing={2}>
@@ -214,7 +210,7 @@ function ResumenDeCompra() {
         src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/encabezado-para-resumen-de-compra-6530334e93470.webp"
       ></img>
       <img
-        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/banner-cuotas-sin-interes-65303347c80a4.webp"
+        src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/objetopreferido.webp"
         className="imagenHeaderunica"
       ></img>
       <div className="contenedorResumenCompraConProductosAgregados">
