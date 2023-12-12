@@ -42,7 +42,7 @@ export default function Orden() {
     for (let i = 0; i < carrito.length; i++) {
       contador += carrito[i].precio * carrito[i].cantidad;
     }
-    if (usuario.FormaEnvio === "A domicilio") {
+    if (usuario.FormaEnvio === "A domicilio en Argentina") {
       let total = contador + 2800;
       return (
         <>
@@ -51,7 +51,7 @@ export default function Orden() {
           <div> Total: ${total} </div>{" "}
         </>
       );
-    } else if (usuario.FormaEnvio === "A sucursal (correo arg)") {
+    } else if (usuario.FormaEnvio === "A sucursal de Correo Argentino") {
       let total = contador + 1800;
       return (
         <>
@@ -60,7 +60,7 @@ export default function Orden() {
           <div> Total: ${total} </div>{" "}
         </>
       );
-    } else if (usuario.FormaEnvio === "A domicilio Rio IV, CBA.") {
+    } else if (usuario.FormaEnvio === "A domicilio en Rio IV, CBA.") {
       let total = contador + 500;
       return (
         <>

@@ -15,10 +15,10 @@ export default function Usuario() {
   ];
 
   let formasDeEnvio: string[] = [
-    "A domicilio",
-    "A sucursal (correo arg)",
-    "A domicilio Rio IV, CBA.",
-    "Punto de retiro en Villa Mercedes (gratis, a coordinar)",
+    "A domicilio en Argentina",
+    "A domicilio en Rio IV, CBA.",
+    "A sucursal de Correo Argentino",
+    "Retiro en Villa Mercedes ($0, a coordinar)",
   ];
 
   let mediosDeContacto = [
