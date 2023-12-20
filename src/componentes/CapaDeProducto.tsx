@@ -13,7 +13,7 @@ function CapaDeProducto(props: { informacionProducto: InformacionDeProducto }) {
   };
   let urlImagen = ""
   let altImagen = ""
-  if(props.informacionProducto?.urlImagen.length > 0) {
+  if(props.informacionProducto?.urlImagen?.length > 0) {
     urlImagen = props.informacionProducto.urlImagen[0].url
     altImagen = props.informacionProducto.urlImagen[0].alt
   }
