@@ -137,9 +137,9 @@ function RenderizadoUnicoProducto(props: { idProducto: string }) {
           <hr />
           <p className="textoEnviosMediosDePago">
             <span> Envíos a sucursal Correo Argentino: </span>
-            $1800
+            $2200
             <br /> <span> Envíos a domicilio: </span>
-            $2800
+            $3500
             <br />
             <span>Envíos dentro de Rio Cuarto, CBA: </span>$500 <br />
           </p>

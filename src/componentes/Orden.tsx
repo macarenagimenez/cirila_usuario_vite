@@ -43,20 +43,20 @@ export default function Orden() {
       contador += carrito[i].precio * carrito[i].cantidad;
     }
     if (usuario.FormaEnvio === "A domicilio en Argentina") {
-      let total = contador + 2800;
+      let total = contador + 3500;
       return (
         <>
           ${contador} <br></br>
-          <small> + envío a domicilio : $2800</small> <br></br> <br></br>
+          <small> + envío a domicilio : $3500</small> <br></br> <br></br>
           <div> Total: ${total} </div>{" "}
         </>
       );
     } else if (usuario.FormaEnvio === "A sucursal de Correo Argentino") {
-      let total = contador + 1800;
+      let total = contador + 2200;
       return (
         <>
           ${contador} <br></br>
-          <small> + envío a sucursal CA : $1800</small> <br></br> <br></br>
+          <small> + envío a sucursal CA : $2200</small> <br></br> <br></br>
           <div> Total: ${total} </div>{" "}
         </>
       );
@@ -123,7 +123,8 @@ export default function Orden() {
             <div className="contenedorDatosContacto">
               <strong>Nombre y Apellido:</strong> {usuario.NombreCompleto}
               <br />
-              <strong>Localidad y Provincia:</strong> {usuario.LocalidadProvincia} <br />
+              <strong>Localidad y Provincia:</strong>{" "}
+              {usuario.LocalidadProvincia} <br />
               <strong> Domicilio:</strong> {usuario.Domicilio} <br />{" "}
               <strong>CP:</strong> {usuario.CodigoPostal}
               <br />
