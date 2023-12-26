@@ -17,6 +17,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import Categorias from "./Categorias";
 
 function BarraDeNavegacion() {
   let { carrito } = useContext(CarritoContext);
@@ -54,12 +55,7 @@ function BarraDeNavegacion() {
               component="a"
               href="/"
               sx={{
-                mr: 2,
                 display: { xs: "none", md: "flex" },
-                fontFamily: "Katibeh",
-                fontSize: "32px",
-                color: "#174642",
-                textDecoration: "none",
               }}
             >
               <img
@@ -69,52 +65,18 @@ function BarraDeNavegacion() {
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon sx={{ color: "#F4CFC7" }} />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
+              {" "}
+              <Button
+                onClick={handleCloseNavMenu}
                 sx={{
-                  display: { xs: "block", md: "none" },
+                  my: 2,
+                  color: "white",
+                  display: "block",
+                  fontFamily: "Montserrat",
                 }}
               >
-                {" "}
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography fontFamily="Montserrat" textAlign="center">
-                    {" "}
-                    <Link to="/productos" className="estiloDeBarra">
-                      Productos
-                    </Link>
-                  </Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography fontFamily="Montserrat" textAlign="center">
-                    {" "}
-                    <Link to="/" className="estiloDeBarra">
-                      Inicio
-                    </Link>
-                  </Typography>
-                </MenuItem>{" "}
-              </Menu>
+                <Categorias />
+              </Button>
             </Box>
 
             <Typography
@@ -164,9 +126,7 @@ function BarraDeNavegacion() {
                   fontFamily: "Montserrat",
                 }}
               >
-                <Link to="/productos" className="estiloDeBarra">
-                  Productos
-                </Link>
+                <Categorias />
               </Button>
             </Box>
 
