@@ -12,13 +12,20 @@ export default class CategoriasService {
     })
       .then((response) => response.json())
       .then((data) => {
-        let categorias: Categorias[] = data.map((item: any): Categorias => {
+
+        function mapCategoria(item: any): Categorias {
           let categoria: Categorias = {
             id: item.id,
             nombre: item.nombre,
-            subcategorias: item.subcategorias,
-          };
+            subcategorias: item.subcategorias?.map((item: any) => {
+              return mapCategoria(item);
+            })
+          }
           return categoria;
+        }
+
+        let categorias: Categorias[] = data.map((item: any): Categorias => {
+          return mapCategoria(item);
         });
         return categorias;
       })

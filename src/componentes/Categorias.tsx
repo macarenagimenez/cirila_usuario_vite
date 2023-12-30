@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
@@ -17,7 +17,9 @@ export default function BasicMenu() {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const navigate = useNavigate(); 
+  const handleClose = (categoriaId:string) => {
+    navigate("/productos", { state: { categoriaId: categoriaId }});
     setAnchorEl(null);
   };
   const categoriasService: CategoriasService = new CategoriasService();
@@ -25,7 +27,6 @@ export default function BasicMenu() {
   useEffect(() => {
     categoriasService.buscarCategorias().then((data) => {
       if (data) {
-        console.log(data);
         let todos: Categorias = {
           id: "",
           nombre: "Todos los productos",
@@ -37,13 +38,15 @@ export default function BasicMenu() {
     });
   }, []);
 
-  let mostrarCategorias = () => {
+  const mostrarCategorias = () => {
     let conjuntodeCategorias = [];
     for (let i = 0; i < categorias.length; i++) {
       conjuntodeCategorias.push(
-        <Link to="/productos">
-          <MenuItem onClick={handleClose}>{categorias[i].nombre}</MenuItem>{" "}
-        </Link>
+        
+          <MenuItem onClick={()=>handleClose(categorias[i].id)}>
+            {categorias[i].nombre}
+          </MenuItem>
+
       );
     }
 

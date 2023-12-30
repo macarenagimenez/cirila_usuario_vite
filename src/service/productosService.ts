@@ -1,11 +1,19 @@
 import { InformacionDeProducto } from "tipos/InformacionDeProducto";
 
+export type BuscarProductosParams = {
+  categoriaId? : string;
+}
+
 export default class ProductosService {
   static readonly baseUrl = import.meta.env.VITE_HOST_PRODUCTOS;
   static readonly apiKey = import.meta.env.VITE_APIKEY_PRODUCTOS;
 
-  async buscarProductos(): Promise<void | InformacionDeProducto[]> {
-    return fetch(ProductosService.baseUrl + "bff/catalogo/productos", {
+  async buscarProductos(params : BuscarProductosParams): Promise<void | InformacionDeProducto[]> {
+    let url = ProductosService.baseUrl + "bff/catalogo/productos";
+    if (params.categoriaId) {
+      url += "?categoriaId=" + params.categoriaId;
+    }
+    return fetch(url, {
       headers: {
         "Content-Type": "application/json",
         "x-api-key": ProductosService.apiKey,
