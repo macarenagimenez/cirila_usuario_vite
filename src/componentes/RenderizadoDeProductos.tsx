@@ -24,18 +24,20 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
         }
       });
     } else {
-      console.log("location: "+ state.categoriaId);
-      let params : BuscarProductosParams = {
-        categoriaId : state.categoriaId,
-      }
-      productosService.buscarProductos(params).then((data) => {
-        if (data) {
-          setProductos(data);
+      if (state?.categoria?.id !== undefined) {
+        let params : BuscarProductosParams = {
+          categoriaId : state.categoria.id,
         }
-      });
+        productosService.buscarProductos(params).then((data) => {
+          if (data) {
+            setProductos(data);
+          }
+        });
+      }
+      
     }
       
-  }, [state.categoriaId]);
+  }, [state?.categoria]);
 
   function mostrarProductosDestacados(productos: InformacionDeProducto[]) {
     let contenidoParaRenderizar = [];

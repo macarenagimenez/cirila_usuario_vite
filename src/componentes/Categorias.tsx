@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
@@ -7,21 +7,16 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import CategoriasService from "service/categoriasService";
 import { Categorias } from "tipos/Categorias";
-import { Typography } from "@mui/material";
+import { Box, ClickAwayListener, Fade, Grow, MenuList, Paper, Popper, Typography } from "@mui/material";
+import { height } from "@fortawesome/free-solid-svg-icons/fa0";
 
 export default function BasicMenu() {
   const [categorias, setCategorias] = useState<Categorias[]>([]);
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef<HTMLButtonElement>(null);
   const navigate = useNavigate(); 
-  const handleClose = (categoriaId:string) => {
-    navigate("/productos", { state: { categoriaId: categoriaId }});
-    setAnchorEl(null);
-  };
+
   const categoriasService: CategoriasService = new CategoriasService();
 
   useEffect(() => {
@@ -38,12 +33,12 @@ export default function BasicMenu() {
     });
   }, []);
 
-  const mostrarCategorias = () => {
-    let conjuntodeCategorias = [];
+  const mostrarCategorias = () : Array<JSX.Element> => {
+    let conjuntodeCategorias : Array<JSX.Element>  = [];
     for (let i = 0; i < categorias.length; i++) {
       conjuntodeCategorias.push(
         
-          <MenuItem onClick={()=>handleClose(categorias[i].id)}>
+          <MenuItem onClick={(e)=>handleClose(e, categorias[i])}>
             {categorias[i].nombre}
           </MenuItem>
 
@@ -53,29 +48,89 @@ export default function BasicMenu() {
     return conjuntodeCategorias;
   };
 
+  const handleClose = (event: Event | React.SyntheticEvent, categoria?: Categorias) => {
+    if (
+      anchorRef.current &&
+      anchorRef.current.contains(event.target as HTMLElement)
+    ) {
+      return;
+    }
+    if (categoria) {
+      navigate("/productos", { state: { categoria: categoria }});
+    }
+
+    setOpen(false);
+  };
+  function handleListKeyDown(event: React.KeyboardEvent) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpen(false);
+    } else if (event.key === 'Escape') {
+      setOpen(false);
+    }
+  }
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current!.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
   return (
     <div>
       <Typography fontFamily="Montserrat" textAlign="center">
         <Button
-          id="basic-button"
-          aria-controls={open ? "basic-menu" : undefined}
+          ref={anchorRef}
+          id="composition-button"
+          aria-controls={open ? 'composition-menu' : undefined}
+          aria-expanded={open ? 'true' : undefined}
           aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}
+          onClick={handleToggle}
+          sx={{
+            textDecorationLine: "none",
+            color: "#f4cfc7",
+            display: "block",
+            padding: "8px",
+            marginTop: "7px",
+          }}
         >
           Productos
         </Button>
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorEl}
+        <Popper
           open={open}
-          onClose={handleClose}
-          MenuListProps={{
-            "aria-labelledby": "basic-button",
-          }}
+          anchorEl={anchorRef.current}
+          role={undefined}
+          placement="bottom"
+          transition
+          disablePortal
+
         >
-          {mostrarCategorias()}
-        </Menu>
+            {({ TransitionProps }) => (
+          <Fade {...TransitionProps} timeout={350}>
+            <Paper sx={{height: "auto", display: "block"}}>
+                <ClickAwayListener onClickAway={(e)=>handleClose(e, undefined)}>
+
+                <MenuList
+                  autoFocusItem={open}
+                  id="composition-menu"
+                  aria-labelledby="composition-button"
+                  onKeyDown={handleListKeyDown}
+                  
+                >
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    {mostrarCategorias()}
+                </MenuList>
+                </ClickAwayListener>
+                </Paper>
+            </Fade>
+            )}
+        </Popper>
       </Typography>
     </div>
   );
