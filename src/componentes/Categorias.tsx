@@ -3,12 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import CategoriasService from "service/categoriasService";
 import { Categorias } from "tipos/Categorias";
-import { Box, ClickAwayListener, Fade, Grow, MenuList, Paper, Popper, Typography } from "@mui/material";
-import { height } from "@fortawesome/free-solid-svg-icons/fa0";
+import { ClickAwayListener, Fade, MenuList, Popper, Paper, Typography, Box, ListItemText, MenuItem } from "@mui/material";
+
 
 export default function BasicMenu() {
   const [categorias, setCategorias] = useState<Categorias[]>([]);
@@ -33,15 +31,24 @@ export default function BasicMenu() {
     });
   }, []);
 
+  const hover = {
+    "&:hover": {
+      border: "1px solid #efe181",
+      color: '#e7a908',
+      backgroundColor: '#e2e8eb'
+    },
+  };
+
   const mostrarCategorias = () : Array<JSX.Element> => {
     let conjuntodeCategorias : Array<JSX.Element>  = [];
     for (let i = 0; i < categorias.length; i++) {
       conjuntodeCategorias.push(
-        
-          <MenuItem onClick={(e)=>handleClose(e, categorias[i])}>
+        <>
+          <ListItemText sx={hover} onClick={(e)=>handleClose(e, categorias[i])} >
             {categorias[i].nombre}
-          </MenuItem>
 
+          </ListItemText>
+        </>
       );
     }
 
@@ -121,10 +128,11 @@ export default function BasicMenu() {
                   id="composition-menu"
                   aria-labelledby="composition-button"
                   onKeyDown={handleListKeyDown}
-                  
+                  dense
                 >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
                     {mostrarCategorias()}
+
+                  
                 </MenuList>
                 </ClickAwayListener>
                 </Paper>
