@@ -40,6 +40,12 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
   }, [state?.categoria]);
 
   function mostrarProductosDestacados(productos: InformacionDeProducto[]) {
+    if(productos.length== 0){
+      return (
+      <div className="cargando">
+        Ups, no nos quedan productos de esta categoria...
+      </div>)
+    }
     let contenidoParaRenderizar = [];
     for (let i = 0; i < productos.length; i++) {
       let InformaciónParaMostrar = productos[i];

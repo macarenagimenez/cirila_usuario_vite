@@ -44,10 +44,10 @@ export default function BasicMenu() {
     for (let i = 0; i < categorias.length; i++) {
       conjuntodeCategorias.push(
         <>
-          <ListItemText sx={hover} onClick={(e)=>handleClose(e, categorias[i])} >
+          <Box sx={hover} onClick={(e)=>handleClose(e, categorias[i])} >
             {categorias[i].nombre}
 
-          </ListItemText>
+          </Box>
         </>
       );
     }
