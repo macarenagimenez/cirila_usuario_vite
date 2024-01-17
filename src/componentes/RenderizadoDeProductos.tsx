@@ -15,7 +15,7 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
   const [productos, setProductos] = useState<InformacionDeProducto[]>([]);
   const productosService : ProductosService = new ProductosService();
   const {state} = useLocation();
-  const [datosBuscadosFinalizado, setDatosBuscadosFinalizado] = useState<Boolean>(false)
+  const [cargaDatosFinalizado, setDatosBuscadosFinalizado] = useState<Boolean>(false)
 
   useEffect(() => {
     setDatosBuscadosFinalizado(false)
@@ -48,7 +48,7 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
   }, [state?.categoria]);
 
   function mostrarProductosDestacados(productos: InformacionDeProducto[]) {
-    if(datosBuscadosFinalizado && productos.length== 0){
+    if(cargaDatosFinalizado && productos.length== 0){
       return (
       <div className="cargando">
         Ups, no nos quedan productos de esta categoria...
@@ -85,7 +85,7 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
   return (
     <>
       {
-        !datosBuscadosFinalizado && 
+        !cargaDatosFinalizado && 
           <LinearProgress color="primary"/>
       }
       

@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UsuarioContext } from "contexts/UsuarioContexto";
 import { CarritoContext } from "contexts/CarritoContexto";
 
 import { productosAgregados } from "tipos/CarritoCargado";
 import "componentes/responsive.css";
 import "componentes/Orden.css";
-import { Box, Grid } from "@mui/material";
+import { Box, CircularProgress, Container, Grid } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import CarritoService from "service/carritoService";
 
@@ -13,6 +13,8 @@ export default function Orden() {
   const navigate = useNavigate();
   const { usuario } = useContext(UsuarioContext);
   const { carrito, cancelarCompra } = useContext(CarritoContext);
+  const [botonFinalizadoPresionado, setBotonFinalizadoPresionado] = useState<Boolean>(false)
+
 
   const carritoService: CarritoService = new CarritoService();
 
@@ -95,6 +97,7 @@ export default function Orden() {
   });
 
   function finalizarCompra(event: React.MouseEvent<HTMLButtonElement>) {
+    setBotonFinalizadoPresionado(true)
     event.preventDefault();
     event.currentTarget.disabled = true;
     carritoService
@@ -224,12 +227,26 @@ export default function Orden() {
               </Grid>
             </Grid>
           </div>
-          <button
-            className="botonBasico botonFinalizarCompra"
-            onClick={(event) => finalizarCompra(event)}
-          >
-            FINALIZAR COMPRA
-          </button>{" "}
+          {
+            botonFinalizadoPresionado &&
+            <Container fixed>
+              <div style= {{display: 'block', marginLeft: 'auto', marginRight:'auto', width:"fit-content"}}>
+                <CircularProgress/>
+                <p>Estamos procesando tu compra...</p>
+              </div>
+            </Container>
+          }
+          {
+            !botonFinalizadoPresionado &&
+            <>
+              <button
+                className="botonBasico botonFinalizarCompra"
+                onClick={(event) => finalizarCompra(event)}
+              >
+                FINALIZAR COMPRA
+              </button>{" "}
+            </>
+          }
         </Grid>
       </Grid>
     </Box>
