@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import * as React from "react";
 import { useContext } from "react";
 import { CarritoContext } from "contexts/CarritoContexto";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,13 +9,11 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
+import Categorias from "./Categorias";
 
 function BarraDeNavegacion() {
   let { carrito } = useContext(CarritoContext);
@@ -28,17 +25,6 @@ function BarraDeNavegacion() {
     }
     return contador;
   }
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
 
   return (
     <>
@@ -54,12 +40,7 @@ function BarraDeNavegacion() {
               component="a"
               href="/"
               sx={{
-                mr: 2,
                 display: { xs: "none", md: "flex" },
-                fontFamily: "Katibeh",
-                fontSize: "32px",
-                color: "#174642",
-                textDecoration: "none",
               }}
             >
               <img
@@ -69,52 +50,17 @@ function BarraDeNavegacion() {
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon sx={{ color: "#F4CFC7" }} />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
+              {" "}
+              <Button
                 sx={{
-                  display: { xs: "block", md: "none" },
+                  my: 2,
+                  color: "white",
+                  display: "block",
+                  fontFamily: "Montserrat",
                 }}
               >
-                {" "}
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography fontFamily="Montserrat" textAlign="center">
-                    {" "}
-                    <Link to="/productos" className="estiloDeBarra">
-                      Productos
-                    </Link>
-                  </Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography fontFamily="Montserrat" textAlign="center">
-                    {" "}
-                    <Link to="/" className="estiloDeBarra">
-                      Inicio
-                    </Link>
-                  </Typography>
-                </MenuItem>{" "}
-              </Menu>
+                <Categorias />
+              </Button>
             </Box>
 
             <Typography
@@ -143,7 +89,6 @@ function BarraDeNavegacion() {
               }}
             >
               <Button
-                onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
                   color: "white",
@@ -156,7 +101,6 @@ function BarraDeNavegacion() {
                 </Link>
               </Button>{" "}
               <Button
-                onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
                   color: "white",
@@ -164,9 +108,7 @@ function BarraDeNavegacion() {
                   fontFamily: "Montserrat",
                 }}
               >
-                <Link to="/productos" className="estiloDeBarra">
-                  Productos
-                </Link>
+                <Categorias />
               </Button>
             </Box>
 

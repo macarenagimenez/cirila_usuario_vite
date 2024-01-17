@@ -4,8 +4,9 @@ import { InformacionDeProducto } from "tipos/InformacionDeProducto";
 import { Grid, Box } from "@mui/material";
 import CapaDeProducto from "componentes/CapaDeProducto";
 import "componentes/responsive.css";
-import ProductosService from "service/productosService";
+import ProductosService, { BuscarProductosParams } from "service/productosService";
 import { TipoProductos } from "tipos/TipoProductos";
+import { useLocation } from "react-router-dom";
 
 
 
@@ -13,6 +14,7 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
 
   const [productos, setProductos] = useState<InformacionDeProducto[]>([]);
   const productosService : ProductosService = new ProductosService();
+  const {state} = useLocation();
 
   useEffect(() => {
     if (props.tipoProductos === TipoProductos.DESTACADOS) {
@@ -22,16 +24,31 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
         }
       });
     } else {
-      productosService.buscarProductos().then((data) => {
+      let params : BuscarProductosParams = {
+        categoriaId : "",
+      }
+      if (state?.categoria?.id !== undefined) {
+        params = {
+          categoriaId : state.categoria.id,
+        }
+        
+      }
+      productosService.buscarProductos(params).then((data) => {
         if (data) {
           setProductos(data);
         }
       });
     }
       
-  }, []);
+  }, [state?.categoria]);
 
   function mostrarProductosDestacados(productos: InformacionDeProducto[]) {
+    if(productos.length== 0){
+      return (
+      <div className="cargando">
+        Ups, no nos quedan productos de esta categoria...
+      </div>)
+    }
     let contenidoParaRenderizar = [];
     for (let i = 0; i < productos.length; i++) {
       let InformaciónParaMostrar = productos[i];

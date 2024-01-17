@@ -1,7 +1,17 @@
 import TodosLosProductos from "secciones/TodosLosProductos";
 import MensajeBienvenida from "componentes/MensajeBienvenida";
-import { TextoParaMarketing } from "tipos/TextoParaMarketing";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 function PaginaDeProducto() {
+
+  const {state} = useLocation();
+  const [nombreCategoria, setNombreCategoria] = useState<string>("Todos los productos");
+
+  useEffect(() => {
+    if (state?.categoria?.nombre !== undefined) {
+      setNombreCategoria(state.categoria.nombre);
+    }
+  }, [state?.categoria?.nombre]);
   return (
     <>
       <img
@@ -12,7 +22,7 @@ function PaginaDeProducto() {
         src="https://prod-cirila-public-product-images.s3.amazonaws.com/imagenes/ImagenesFront/objetopreferido.webp"
         className="imagenHeaderunica"
       ></img>
-      <MensajeBienvenida texto={TextoParaMarketing[3].texto} />
+      <MensajeBienvenida texto={nombreCategoria} />
       <TodosLosProductos />
     </>
   );
