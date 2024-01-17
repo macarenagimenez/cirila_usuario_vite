@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import * as React from "react";
 import { useContext } from "react";
 import { CarritoContext } from "contexts/CarritoContexto";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,17 +25,6 @@ function BarraDeNavegacion() {
     }
     return contador;
   }
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
 
   return (
     <>
@@ -64,7 +52,6 @@ function BarraDeNavegacion() {
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               {" "}
               <Button
-                onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
                   color: "white",
@@ -102,7 +89,6 @@ function BarraDeNavegacion() {
               }}
             >
               <Button
-                onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
                   color: "white",
@@ -115,7 +101,6 @@ function BarraDeNavegacion() {
                 </Link>
               </Button>{" "}
               <Button
-                onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
                   color: "white",

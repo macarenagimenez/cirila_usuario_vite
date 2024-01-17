@@ -1,12 +1,11 @@
 import TodosLosProductos from "secciones/TodosLosProductos";
 import MensajeBienvenida from "componentes/MensajeBienvenida";
-import { TextoParaMarketing } from "tipos/TextoParaMarketing";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 function PaginaDeProducto() {
 
   const {state} = useLocation();
-  const [nombreCategoria, setNombreCategoria] = useState<string>("");
+  const [nombreCategoria, setNombreCategoria] = useState<string>("Todos los productos");
 
   useEffect(() => {
     if (state?.categoria?.nombre !== undefined) {

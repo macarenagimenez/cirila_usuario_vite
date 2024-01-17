@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import CategoriasService from "service/categoriasService";
 import { Categorias } from "tipos/Categorias";
-import { ClickAwayListener, Fade, MenuList, Popper, Paper, Typography, Box, ListItemText, MenuItem } from "@mui/material";
+import { ClickAwayListener, Fade, MenuList, Popper, Paper, Typography, Box} from "@mui/material";
 
 
 export default function BasicMenu() {

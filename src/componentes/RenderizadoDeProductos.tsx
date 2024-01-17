@@ -24,17 +24,20 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
         }
       });
     } else {
+      let params : BuscarProductosParams = {
+        categoriaId : "",
+      }
       if (state?.categoria?.id !== undefined) {
-        let params : BuscarProductosParams = {
+        params = {
           categoriaId : state.categoria.id,
         }
-        productosService.buscarProductos(params).then((data) => {
-          if (data) {
-            setProductos(data);
-          }
-        });
+        
       }
-      
+      productosService.buscarProductos(params).then((data) => {
+        if (data) {
+          setProductos(data);
+        }
+      });
     }
       
   }, [state?.categoria]);
