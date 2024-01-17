@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import CategoriasService from "service/categoriasService";
 import { Categorias } from "tipos/Categorias";
-import { ClickAwayListener, Fade, MenuList, Popper, Paper, Typography, Box} from "@mui/material";
+import { ClickAwayListener, Fade, MenuList, Popper, Paper, Typography, Box, Divider} from "@mui/material";
 
 
 export default function BasicMenu() {
@@ -37,6 +37,10 @@ export default function BasicMenu() {
       color: '#e7a908',
       backgroundColor: '#e2e8eb'
     },
+    "&" : {
+      fontWeight : 600,
+      padding: "5px 15px"
+    }
   };
 
   const mostrarCategorias = () : Array<JSX.Element> => {
@@ -46,8 +50,8 @@ export default function BasicMenu() {
         <>
           <Box sx={hover} onClick={(e)=>handleClose(e, categorias[i])} >
             {categorias[i].nombre}
-
           </Box>
+          <Divider></Divider>
         </>
       );
     }
@@ -128,6 +132,7 @@ export default function BasicMenu() {
                   id="composition-menu"
                   aria-labelledby="composition-button"
                   onKeyDown={handleListKeyDown}
+                  sx={{padding: "0 5px"}}
                   dense
                 >
                     {mostrarCategorias()}
