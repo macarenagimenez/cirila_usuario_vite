@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, CircularProgress, Container, Grid } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import "componentes/RenderizadoUnicoProducto.css";
 import { InformacionDeProducto } from "tipos/InformacionDeProducto";
@@ -26,13 +26,16 @@ function RenderizadoUnicoProducto(props: { idProducto: string }) {
   };
   const [producto, setProducto] =
     useState<InformacionDeProducto>(productoVacio);
+  const [cargaDatosFinalizado, setDatosBuscadosFinalizado] = useState<Boolean>(false)
 
   const productosService: ProductosService = new ProductosService();
 
   useEffect(() => {
+    setDatosBuscadosFinalizado(false)
     productosService.buscarProductoPorId(props.idProducto).then((data) => {
       if (data) {
         setProducto(data);
+        setDatosBuscadosFinalizado(true)
       }
     });
   }, []);
@@ -149,18 +152,30 @@ function RenderizadoUnicoProducto(props: { idProducto: string }) {
   );
 
   return (
-    <div className="contenedorInformacionProductoSeleccionado">
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-        >
-          {imagen()}
-          {texto}
-        </Grid>
-      </Box>
-    </div>
+    <>
+      {
+        !cargaDatosFinalizado && 
+          <Container fixed>
+            <CircularProgress sx={{display: "block", marginLeft: "auto", marginRight:"auto"}} color="primary"/>
+          </Container >
+      }
+      {
+        cargaDatosFinalizado && 
+        <div className="contenedorInformacionProductoSeleccionado">
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid
+              container
+              spacing={{ xs: 2, md: 3 }}
+              columns={{ xs: 4, sm: 8, md: 12 }}
+            >
+              {imagen()}
+              {texto}
+            </Grid>
+          </Box>
+        </div>
+    }
+    </>
+    
   );
 }
 export default RenderizadoUnicoProducto;
