@@ -1,7 +1,7 @@
 //devuelve un array de productos y devolverlos renderizados en grilla
 import { useState, useEffect } from "react";
 import { InformacionDeProducto } from "tipos/InformacionDeProducto";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, LinearProgress } from "@mui/material";
 import CapaDeProducto from "componentes/CapaDeProducto";
 import "componentes/responsive.css";
 import ProductosService, { BuscarProductosParams } from "service/productosService";
@@ -15,12 +15,16 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
   const [productos, setProductos] = useState<InformacionDeProducto[]>([]);
   const productosService : ProductosService = new ProductosService();
   const {state} = useLocation();
+  const [datosBuscadosFinalizado, setDatosBuscadosFinalizado] = useState<Boolean>(false)
 
   useEffect(() => {
+    setDatosBuscadosFinalizado(false)
+    setProductos([])
     if (props.tipoProductos === TipoProductos.DESTACADOS) {
       productosService.buscarProductosDestacados().then((data) => {
         if(data) {
           setProductos(data);
+          setDatosBuscadosFinalizado(true);
         }
       });
     } else {
@@ -36,6 +40,7 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
       productosService.buscarProductos(params).then((data) => {
         if (data) {
           setProductos(data);
+          setDatosBuscadosFinalizado(true);
         }
       });
     }
@@ -43,7 +48,7 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
   }, [state?.categoria]);
 
   function mostrarProductosDestacados(productos: InformacionDeProducto[]) {
-    if(productos.length== 0){
+    if(datosBuscadosFinalizado && productos.length== 0){
       return (
       <div className="cargando">
         Ups, no nos quedan productos de esta categoria...
@@ -77,6 +82,16 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
       </Box>
     );
   }
-  return mostrarProductosDestacados(productos);
+  return (
+    <>
+      {
+        !datosBuscadosFinalizado && 
+          <LinearProgress color="primary"/>
+      }
+      
+      {mostrarProductosDestacados(productos)}
+
+    </>
+    );
 }
 export default ObtenerProductos;
