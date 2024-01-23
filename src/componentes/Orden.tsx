@@ -13,8 +13,8 @@ export default function Orden() {
   const navigate = useNavigate();
   const { usuario } = useContext(UsuarioContext);
   const { carrito, cancelarCompra } = useContext(CarritoContext);
-  const [botonFinalizadoPresionado, setBotonFinalizadoPresionado] = useState<Boolean>(false)
-
+  const [botonFinalizadoPresionado, setBotonFinalizadoPresionado] =
+    useState<Boolean>(false);
 
   const carritoService: CarritoService = new CarritoService();
 
@@ -45,20 +45,20 @@ export default function Orden() {
       contador += carrito[i].precio * carrito[i].cantidad;
     }
     if (usuario.FormaEnvio === "A domicilio en Argentina") {
-      let total = contador + 3500;
+      let total = contador + 4600;
       return (
         <>
           ${contador} <br></br>
-          <small> + envío a domicilio : $3500</small> <br></br> <br></br>
+          <small> + envío a domicilio : $4600</small> <br></br> <br></br>
           <div> Total: ${total} </div>{" "}
         </>
       );
     } else if (usuario.FormaEnvio === "A sucursal de Correo Argentino") {
-      let total = contador + 2200;
+      let total = contador + 2800;
       return (
         <>
           ${contador} <br></br>
-          <small> + envío a sucursal CA : $2200</small> <br></br> <br></br>
+          <small> + envío a sucursal CA : $2800</small> <br></br> <br></br>
           <div> Total: ${total} </div>{" "}
         </>
       );
@@ -97,7 +97,7 @@ export default function Orden() {
   });
 
   function finalizarCompra(event: React.MouseEvent<HTMLButtonElement>) {
-    setBotonFinalizadoPresionado(true)
+    setBotonFinalizadoPresionado(true);
     event.preventDefault();
     event.currentTarget.disabled = true;
     carritoService
@@ -227,26 +227,31 @@ export default function Orden() {
               </Grid>
             </Grid>
           </div>
-          {
-            botonFinalizadoPresionado &&
+          {botonFinalizadoPresionado && (
             <Container fixed>
-              <div style= {{display: 'block', marginLeft: 'auto', marginRight:'auto', width:"fit-content"}}>
-                <CircularProgress/>
+              <div
+                style={{
+                  display: "block",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  width: "fit-content",
+                }}
+              >
+                <CircularProgress />
                 <p>Estamos procesando tu compra...</p>
               </div>
             </Container>
-          }
-          {
-            !botonFinalizadoPresionado &&
+          )}
+          {!botonFinalizadoPresionado && (
             <>
               <button
-                className="botonBasico botonFinalizarCompra"
+                className="botonBasico botonFinalizarCompra caminoFeliz"
                 onClick={(event) => finalizarCompra(event)}
               >
                 FINALIZAR COMPRA
               </button>{" "}
             </>
-          }
+          )}
         </Grid>
       </Grid>
     </Box>

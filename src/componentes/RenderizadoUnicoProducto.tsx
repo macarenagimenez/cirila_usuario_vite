@@ -26,16 +26,17 @@ function RenderizadoUnicoProducto(props: { idProducto: string }) {
   };
   const [producto, setProducto] =
     useState<InformacionDeProducto>(productoVacio);
-  const [cargaDatosFinalizado, setDatosBuscadosFinalizado] = useState<Boolean>(false)
+  const [cargaDatosFinalizado, setDatosBuscadosFinalizado] =
+    useState<Boolean>(false);
 
   const productosService: ProductosService = new ProductosService();
 
   useEffect(() => {
-    setDatosBuscadosFinalizado(false)
+    setDatosBuscadosFinalizado(false);
     productosService.buscarProductoPorId(props.idProducto).then((data) => {
       if (data) {
         setProducto(data);
-        setDatosBuscadosFinalizado(true)
+        setDatosBuscadosFinalizado(true);
       }
     });
   }, []);
@@ -110,7 +111,7 @@ function RenderizadoUnicoProducto(props: { idProducto: string }) {
       >
         {mensajeBotonCarrito(producto)}
       </button>{" "}
-      <button className="botonBasico">
+      <button className="botonBasico caminoFeliz">
         <Link to="/carritoDeCompras">Ver carrito</Link>
       </button>
       <div className="mensajeSobreStock">
@@ -140,9 +141,9 @@ function RenderizadoUnicoProducto(props: { idProducto: string }) {
           <hr />
           <p className="textoEnviosMediosDePago">
             <span> Envíos a sucursal Correo Argentino: </span>
-            $2200
+            $2800
             <br /> <span> Envíos a domicilio: </span>
-            $3500
+            $4600
             <br />
             <span>Envíos dentro de Rio Cuarto, CBA: </span>$500 <br />
           </p>
@@ -153,14 +154,15 @@ function RenderizadoUnicoProducto(props: { idProducto: string }) {
 
   return (
     <>
-      {
-        !cargaDatosFinalizado && 
-          <Container fixed>
-            <CircularProgress sx={{display: "block", marginLeft: "auto", marginRight:"auto"}} color="primary"/>
-          </Container >
-      }
-      {
-        cargaDatosFinalizado && 
+      {!cargaDatosFinalizado && (
+        <Container fixed>
+          <CircularProgress
+            sx={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
+            color="primary"
+          />
+        </Container>
+      )}
+      {cargaDatosFinalizado && (
         <div className="contenedorInformacionProductoSeleccionado">
           <Box sx={{ flexGrow: 1 }}>
             <Grid
@@ -173,9 +175,8 @@ function RenderizadoUnicoProducto(props: { idProducto: string }) {
             </Grid>
           </Box>
         </div>
-    }
+      )}
     </>
-    
   );
 }
 export default RenderizadoUnicoProducto;

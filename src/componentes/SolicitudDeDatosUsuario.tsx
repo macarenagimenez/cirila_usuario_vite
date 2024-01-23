@@ -52,7 +52,7 @@ export default function SolicitudDeDatosUsuario() {
           </Grid>
         </div>
         <Link to="/resumenOrdenDeCompra">
-          <button className="botonBasico botonFinalizarCompra">
+          <button className="botonBasico botonFinalizarCompra caminoFeliz">
             CONTINUAR COMPRA
           </button>{" "}
         </Link>{" "}

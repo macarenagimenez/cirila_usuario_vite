@@ -142,9 +142,9 @@ function ResumenDeCompra() {
                     <hr />
                     <p className="textoEnviosMediosDePago">
                       <span> Envíos a sucursal Correo Argentino: </span>
-                      $2200
+                      $2800
                       <br /> <span> Envíos a domicilio: </span>
-                      $3500
+                      $4600
                       <br />
                       <span>Envíos dentro de Rio Cuarto, CBA: </span>$500 <br />
                     </p>
@@ -171,7 +171,7 @@ function ResumenDeCompra() {
                       className="textoIzquierdaResumen responsive_botonCentrado"
                     >
                       <Link to="/cargaDeDatos">
-                        <button className="botonBasico">
+                        <button className="botonBasico caminoFeliz">
                           Continuar compra
                         </button>{" "}
                       </Link>
