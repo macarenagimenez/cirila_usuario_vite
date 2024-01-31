@@ -14,8 +14,11 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
 
   const [productos, setProductos] = useState<InformacionDeProducto[]>([]);
   const productosService : ProductosService = new ProductosService();
-  const {state} = useLocation();
   const [cargaDatosFinalizado, setDatosBuscadosFinalizado] = useState<Boolean>(false)
+
+  const {state} = useLocation();
+  let parametros = new URLSearchParams(window.location.search);
+  let categoriaId = parametros.get("categoriaId") || "";
 
   useEffect(() => {
     setDatosBuscadosFinalizado(false)
@@ -29,13 +32,7 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
       });
     } else {
       let params : BuscarProductosParams = {
-        categoriaId : "",
-      }
-      if (state?.categoria?.id !== undefined) {
-        params = {
-          categoriaId : state.categoria.id,
-        }
-        
+        categoriaId : categoriaId,
       }
       productosService.buscarProductos(params).then((data) => {
         if (data) {
@@ -45,7 +42,7 @@ function ObtenerProductos(props : { tipoProductos : TipoProductos}) {
       });
     }
       
-  }, [state?.categoria]);
+  }, [state]);
 
   function mostrarProductosDestacados(productos: InformacionDeProducto[]) {
     if(cargaDatosFinalizado && productos.length== 0){

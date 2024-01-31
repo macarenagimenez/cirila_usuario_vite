@@ -13,34 +13,39 @@ import QuienesSomos from "paginas/QuienesSomos";
 import CompraFinalizada from "paginas/CompraFinalizada";
 import ScrollToTop from "hooks/scrollToTop";
 import ErrorGuardadoCarrito from "componentes/ErrorGuardadoCarrito";
+import { CategoriaProvider } from "contexts/CategoriaContexto";
 
 function App() {
   //TODO refactorizar
   return (
-    <CarritoProvider>
-      <UsuarioProvider>
-        <BrowserRouter>
-          {" "}
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<CapaFija />}>
-              <Route index element={<Bienvenida />} />
-              <Route path="productos" element={<PaginaDeProductos />} />
-              <Route path="quienesSomos" element={<QuienesSomos />} />
-              <Route path="producto" element={<ProductoSeleccionado />} />
-              <Route path="carritoDeCompras" element={<Carrito />} />
-              <Route path="cargaDeDatos" element={<CargaDeDatos />} />
-              <Route
-                path="resumenOrdenDeCompra"
-                element={<FinalOrdenDeCompra />}
-              />
-              <Route path="despedida" element={<CompraFinalizada />} />
-              <Route path="errorEnCompra" element={<ErrorGuardadoCarrito />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </UsuarioProvider>
-    </CarritoProvider>
+    <>
+      <CategoriaProvider>
+      <CarritoProvider>
+        <UsuarioProvider>
+          <BrowserRouter>
+            {" "}
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<CapaFija />}>
+                <Route index element={<Bienvenida />} />
+                <Route path="productos" element={<PaginaDeProductos />} />
+                <Route path="quienesSomos" element={<QuienesSomos />} />
+                <Route path="producto" element={<ProductoSeleccionado />} />
+                <Route path="carritoDeCompras" element={<Carrito />} />
+                <Route path="cargaDeDatos" element={<CargaDeDatos />} />
+                <Route
+                  path="resumenOrdenDeCompra"
+                  element={<FinalOrdenDeCompra />}
+                />
+                <Route path="despedida" element={<CompraFinalizada />} />
+                <Route path="errorEnCompra" element={<ErrorGuardadoCarrito />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </UsuarioProvider>
+      </CarritoProvider>
+      </CategoriaProvider>
+      </>
   );
 }
 

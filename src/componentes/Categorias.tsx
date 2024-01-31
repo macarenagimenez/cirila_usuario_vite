@@ -1,35 +1,25 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Button from "@mui/material/Button";
-import CategoriasService from "service/categoriasService";
 import { Categorias } from "tipos/Categorias";
 import { ClickAwayListener, Fade, MenuList, Popper, Paper, Typography, Box, Divider} from "@mui/material";
+import { CategoriaContext } from "contexts/CategoriaContexto";
 
 
 export default function BasicMenu() {
-  const [categorias, setCategorias] = useState<Categorias[]>([]);
 
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
   const navigate = useNavigate(); 
 
-  const categoriasService: CategoriasService = new CategoriasService();
+  const { categoriasContext } = useContext(CategoriaContext);
+  const [categorias, setCategorias] = useState<Categorias[]>([]);
 
   useEffect(() => {
-    categoriasService.buscarCategorias().then((data) => {
-      if (data) {
-        let todos: Categorias = {
-          id: "",
-          nombre: "Todos los productos",
-          subcategorias: [],
-        };
-        data.push(todos);
-        setCategorias(data);
-      }
-    });
-  }, []);
+      setCategorias(categoriasContext);
+    }, [categoriasContext]);
 
   const hover = {
     "&:hover": {
@@ -67,7 +57,7 @@ export default function BasicMenu() {
       return;
     }
     if (categoria) {
-      navigate("/productos", { state: { categoria: categoria }});
+      navigate("/productos?categoriaId="+categoria.id, { state: { categoria: categoria } });
     }
 
     setOpen(false);
