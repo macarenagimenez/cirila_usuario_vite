@@ -45,20 +45,20 @@ export default function Orden() {
       contador += carrito[i].precio * carrito[i].cantidad;
     }
     if (usuario.FormaEnvio === "A domicilio en Argentina") {
-      let total = contador + 4600;
+      let total = contador + 4851;
       return (
         <>
           ${contador} <br></br>
-          <small> + envío a domicilio : $4600</small> <br></br> <br></br>
+          <small> + envío a domicilio : $4851</small> <br></br> <br></br>
           <div> Total: ${total} </div>{" "}
         </>
       );
     } else if (usuario.FormaEnvio === "A sucursal de Correo Argentino") {
-      let total = contador + 2800;
+      let total = contador + 2922;
       return (
         <>
           ${contador} <br></br>
-          <small> + envío a sucursal CA : $2800</small> <br></br> <br></br>
+          <small> + envío a sucursal CA : $2922</small> <br></br> <br></br>
           <div> Total: ${total} </div>{" "}
         </>
       );
