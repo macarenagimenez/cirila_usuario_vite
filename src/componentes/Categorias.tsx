@@ -122,7 +122,7 @@ export default function BasicMenu() {
                   id="composition-menu"
                   aria-labelledby="composition-button"
                   onKeyDown={handleListKeyDown}
-                  sx={{padding: "0 5px"}}
+                  sx={{padding: "0 5px", overflowY: "scroll", maxHeight: "600px"}}
                   dense
                 >
                     {mostrarCategorias()}
