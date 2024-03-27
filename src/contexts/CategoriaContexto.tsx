@@ -38,7 +38,6 @@ export function CategoriaProvider({
   }, []);
 
   const cargarCategorias = (): void => {
-    console.log("cargando categorias...")
     categoriasService.buscarCategorias().then((data) => {
       if (data) {
         let todos: Categorias = {
@@ -47,6 +46,10 @@ export function CategoriaProvider({
           subcategorias: [],
         };
         data.push(todos);
+        console.log("sin ordenar:", data);
+        //ordenar por nombre ascendente
+        data.sort((a, b) => a.nombre.localeCompare(b.nombre));
+        console.log("ordenado:", data);
         setCategorias(data);
       }
     });

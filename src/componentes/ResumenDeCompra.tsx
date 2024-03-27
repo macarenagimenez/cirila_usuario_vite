@@ -142,9 +142,9 @@ function ResumenDeCompra() {
                     <hr />
                     <p className="textoEnviosMediosDePago">
                       <span> Envíos a sucursal Correo Argentino: </span>
-                      $2922
+                      $3360
                       <br /> <span> Envíos a domicilio: </span>
-                      $4851
+                      $5579
                       <br />
                       <span>Envíos dentro de Rio Cuarto, CBA: </span>$500 <br />
                     </p>
